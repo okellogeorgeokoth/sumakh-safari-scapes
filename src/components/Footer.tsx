@@ -31,7 +31,7 @@ const Footer = () => {
               <FooterLink href="/gallery" label="Photo Gallery" />
               <FooterLink href="/about" label="About Us" />
               <FooterLink href="/contact" label="Contact" />
-              <FooterLink href="/booking" label="Book a Safari" />
+              <FooterLink href="/booknow" label="Book a Safari" />
             </ul>
           </div>
 

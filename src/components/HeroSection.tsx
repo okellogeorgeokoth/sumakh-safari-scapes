@@ -3,10 +3,10 @@ import { useState, useEffect } from 'react';
 import { ChevronRight } from 'lucide-react';
 
 const heroImages = [
-  "/public/lovable-uploads/4e85ab06-cb98-486a-bfd7-861a79b562ab.png",
-  "/public/lovable-uploads/aa970d22-5828-4358-87ad-e46953031aeb.png",
-  "/public/lovable-uploads/f3efa77a-b14d-41c7-9fc8-a6b63a8c267c.png",
-  "/public/lovable-uploads/1baf8a69-d4b8-4982-bcad-e47c9281d3a1.png"
+  "/lovable-uploads/4e85ab06-cb98-486a-bfd7-861a79b562ab.png",
+  "/lovable-uploads/aa970d22-5828-4358-87ad-e46953031aeb.png",
+  "/lovable-uploads/f3efa77a-b14d-41c7-9fc8-a6b63a8c267c.png",
+  "/lovable-uploads/1baf8a69-d4b8-4982-bcad-e47c9281d3a1.png"
 ];
 
 const HeroSection = () => {
