@@ -34,7 +34,7 @@ const tourItems: TourItem[] = [
     location: "Kenya",
     duration: "8 Days / 7 Nights",
     rating: 4.9,
-    image: "/public/lovable-uploads/083c7f7a-a928-400d-afb5-bebd810ab07e.png",
+    image: "/lovable-uploads/083c7f7a-a928-400d-afb5-bebd810ab07e.png",
     price: "$2,199",
     highlights: ["Masai Mara Game Reserve", "Lake Nakuru", "Amboseli National Park"]
   },
@@ -44,7 +44,7 @@ const tourItems: TourItem[] = [
     location: "Tanzania",
     duration: "10 Days / 9 Nights",
     rating: 4.8,
-    image: "/public/lovable-uploads/01971a13-5094-424e-aba4-20473892d2cd.png",
+    image: "/lovable-uploads/01971a13-5094-424e-aba4-20473892d2cd.png",
     price: "$2,899",
     highlights: ["Serengeti National Park", "Ngorongoro Crater", "Zanzibar Beach Stay"]
   },
@@ -54,7 +54,7 @@ const tourItems: TourItem[] = [
     location: "South Africa",
     duration: "12 Days / 11 Nights",
     rating: 4.7,
-    image: "/public/lovable-uploads/b001e1c4-ee94-4106-bb1e-20a0ccabcace.png",
+    image: "/lovable-uploads/b001e1c4-ee94-4106-bb1e-20a0ccabcace.png",
     price: "$3,499",
     highlights: ["Kruger National Park", "Cape Town", "Garden Route"]
   },
@@ -64,7 +64,7 @@ const tourItems: TourItem[] = [
     location: "Uganda",
     duration: "7 Days / 6 Nights",
     rating: 5.0,
-    image: "/public/lovable-uploads/bb27b92c-e758-489f-83c8-c808ec122b89.png",
+    image: "/lovable-uploads/bb27b92c-e758-489f-83c8-c808ec122b89.png",
     price: "$3,299",
     highlights: ["Bwindi Impenetrable Forest", "Queen Elizabeth National Park", "Lake Victoria"]
   },
@@ -74,7 +74,7 @@ const tourItems: TourItem[] = [
     location: "Botswana",
     duration: "9 Days / 8 Nights",
     rating: 4.9,
-    image: "/public/lovable-uploads/b6d5f483-0b53-4292-84c9-e677a83536eb.png",
+    image: "/lovable-uploads/b6d5f483-0b53-4292-84c9-e677a83536eb.png",
     price: "$3,799",
     highlights: ["Okavango Delta", "Chobe National Park", "Moremi Game Reserve"]
   }

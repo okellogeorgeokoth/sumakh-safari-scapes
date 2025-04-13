@@ -10,7 +10,7 @@ const Footer = () => {
           {/* About Section */}
           <div>
             <img 
-              src="/public/lovable-uploads/fcb37ae0-1e7f-41e3-ae91-6e2fd118f583.png" 
+              src="/lovable-uploads/fcb37ae0-1e7f-41e3-ae91-6e2fd118f583.png" 
               alt="Sumakh Safaris Logo" 
               className="h-24 mb-4" 
             />

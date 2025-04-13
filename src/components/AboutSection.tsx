@@ -41,24 +41,24 @@ const AboutSection = () => {
           <div className="order-1 lg:order-2 grid grid-cols-2 gap-4">
             <div className="space-y-4">
               <img 
-                src="/public/lovable-uploads/b001e1c4-ee94-4106-bb1e-20a0ccabcace.png"
+                src="/lovable-uploads/b001e1c4-ee94-4106-bb1e-20a0ccabcace.png"
                 alt="Safari experience" 
                 className="rounded-lg h-48 w-full object-cover"
               />
               <img 
-                src="/public/lovable-uploads/2134e863-3ca4-4039-84d7-9dd07c81e59f.png"
+                src="/lovable-uploads/2134e863-3ca4-4039-84d7-9dd07c81e59f.png"
                 alt="Safari wildlife" 
                 className="rounded-lg h-64 w-full object-cover"
               />
             </div>
             <div className="space-y-4 mt-8">
               <img 
-                src="/public/lovable-uploads/d43e9e4b-afa5-4931-93c2-16fbe3e76750.png"
+                src="/lovable-uploads/d43e9e4b-afa5-4931-93c2-16fbe3e76750.png"
                 alt="Safari landscape" 
                 className="rounded-lg h-64 w-full object-cover"
               />
               <img 
-                src="/public/lovable-uploads/3bf25673-fec4-40c6-af9b-e01badc4ee80.png"
+                src="/lovable-uploads/3bf25673-fec4-40c6-af9b-e01badc4ee80.png"
                 alt="Safari animals" 
                 className="rounded-lg h-48 w-full object-cover"
               />

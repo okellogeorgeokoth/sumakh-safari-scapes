@@ -9,7 +9,7 @@ const testimonials = [
     location: "United States",
     rating: 5,
     testimonial: "Our Serengeti safari exceeded all expectations! The wildlife sightings were incredible, and our guide's knowledge made the experience even more special. The accommodations were comfortable and authentic. We'll definitely book with SUMAKH again!",
-    image: "/public/lovable-uploads/b6d5f483-0b53-4292-84c9-e677a83536eb.png"
+    image: "/lovable-uploads/b6d5f483-0b53-4292-84c9-e677a83536eb.png"
   },
   {
     id: 2,
@@ -17,7 +17,7 @@ const testimonials = [
     location: "Australia",
     rating: 5,
     testimonial: "The Masai Mara tour was a life-changing experience. We saw the big five in just two days! The staff was professional and friendly, making us feel safe and comfortable throughout the journey. The sunset views were absolutely breathtaking.",
-    image: "/public/lovable-uploads/e7b05f1e-e028-4c52-8917-df1731faddd6.png"
+    image: "/lovable-uploads/e7b05f1e-e028-4c52-8917-df1731faddd6.png"
   },
   {
     id: 3,
@@ -25,7 +25,7 @@ const testimonials = [
     location: "Spain",
     rating: 5,
     testimonial: "From the moment we were picked up at the airport, SUMAKH provided top-notch service. Our family safari to Kruger Park was perfectly organized with attention to every detail. The kids loved the special activities arranged for them, and we all enjoyed the close wildlife encounters.",
-    image: "/public/lovable-uploads/083c7f7a-a928-400d-afb5-bebd810ab07e.png"
+    image: "/lovable-uploads/083c7f7a-a928-400d-afb5-bebd810ab07e.png"
   }
 ];
 

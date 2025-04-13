@@ -5,32 +5,32 @@ import { X } from 'lucide-react';
 const galleryImages = [
   {
     id: 1,
-    src: "/public/lovable-uploads/01971a13-5094-424e-aba4-20473892d2cd.png",
+    src: "/lovable-uploads/01971a13-5094-424e-aba4-20473892d2cd.png",
     alt: "Gazelle in safari"
   },
   {
     id: 2,
-    src: "/public/lovable-uploads/bb27b92c-e758-489f-83c8-c808ec122b89.png",
+    src: "/lovable-uploads/bb27b92c-e758-489f-83c8-c808ec122b89.png",
     alt: "Lion pride in safari"
   },
   {
     id: 3,
-    src: "/public/lovable-uploads/4e85ab06-cb98-486a-bfd7-861a79b562ab.png",
+    src: "/lovable-uploads/4e85ab06-cb98-486a-bfd7-861a79b562ab.png",
     alt: "Safari landscape with animals"
   },
   {
     id: 4,
-    src: "/public/lovable-uploads/aa970d22-5828-4358-87ad-e46953031aeb.png",
+    src: "/lovable-uploads/aa970d22-5828-4358-87ad-e46953031aeb.png",
     alt: "Giraffe in natural habitat"
   },
   {
     id: 5,
-    src: "/public/lovable-uploads/f3efa77a-b14d-41c7-9fc8-a6b63a8c267c.png",
+    src: "/lovable-uploads/f3efa77a-b14d-41c7-9fc8-a6b63a8c267c.png",
     alt: "Leopard resting"
   },
   {
     id: 6,
-    src: "/public/lovable-uploads/1baf8a69-d4b8-4982-bcad-e47c9281d3a1.png",
+    src: "/lovable-uploads/1baf8a69-d4b8-4982-bcad-e47c9281d3a1.png",
     alt: "Elephant family"
   }
 ];

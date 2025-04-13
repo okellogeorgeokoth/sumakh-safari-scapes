@@ -39,7 +39,7 @@ const NavBar = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <img 
-              src="/public/lovable-uploads/fcb37ae0-1e7f-41e3-ae91-6e2fd118f583.png" 
+              src="/lovable-uploads/fcb37ae0-1e7f-41e3-ae91-6e2fd118f583.png" 
               alt="Sumakh Safaris Logo" 
               className="h-16 md:h-20"
             />
@@ -53,9 +53,9 @@ const NavBar = () => {
             <NavLink href="/gallery" label="Gallery" />
             <NavLink href="/about" label="About" />
             <NavLink href="/contact" label="Contact" />
-            <Link to="/booknow" className="px-6 py-2 bg-safari-gold text-white rounded hover:bg-safari-brown transition-colors">
+            <button className="px-6 py-2 bg-safari-gold text-white rounded hover:bg-safari-brown transition-colors">
               Book Now
-            </Link>
+            </button>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -83,13 +83,9 @@ const NavBar = () => {
               <MobileNavLink href="/gallery" label="Gallery" onClick={toggleMobileMenu} />
               <MobileNavLink href="/about" label="About" onClick={toggleMobileMenu} />
               <MobileNavLink href="/contact" label="Contact" onClick={toggleMobileMenu} />
-              <Link 
-                to="/booknow" 
-                className="w-full px-6 py-3 bg-safari-gold text-white rounded hover:bg-safari-brown transition-colors"
-                onClick={toggleMobileMenu}
-              >
+              <button className="w-full px-6 py-3 bg-safari-gold text-white rounded hover:bg-safari-brown transition-colors">
                 Book Now
-              </Link>
+              </button>
             </nav>
           </div>
         </div>

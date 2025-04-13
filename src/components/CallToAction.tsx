@@ -4,7 +4,7 @@ const CallToAction = () => {
     <section 
       className="py-20 bg-safari-brown relative"
       style={{
-        backgroundImage: `url('/public/lovable-uploads/d43e9e4b-afa5-4931-93c2-16fbe3e76750.png')`,
+        backgroundImage: `url('/lovable-uploads/d43e9e4b-afa5-4931-93c2-16fbe3e76750.png')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center'
       }}
