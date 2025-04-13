@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const safariPackages = [
   {
-    id: 1,
+    id: "tour-1",
     title: "Masai Mara Adventure",
     description: "Experience the wonder of the Masai Mara with our 5-day adventure safari. Witness the great migration and encounter Africa's magnificent wildlife up close.",
     price: "From $1,200",
@@ -14,7 +14,7 @@ const safariPackages = [
     image: "/lovable-uploads/4e85ab06-cb98-486a-bfd7-861a79b562ab.png"
   },
   {
-    id: 2,
+    id: "tour-2",
     title: "Serengeti Explorer",
     description: "Explore the vast plains of Serengeti National Park on this 7-day safari. Perfect for wildlife photographers and nature enthusiasts.",
     price: "From $1,800",
@@ -22,7 +22,7 @@ const safariPackages = [
     image: "/lovable-uploads/b001e1c4-ee94-4106-bb1e-20a0ccabcace.png"
   },
   {
-    id: 3,
+    id: "tour-3",
     title: "Amboseli & Tsavo Safari",
     description: "Combine two iconic Kenyan parks in one amazing 6-day journey. See elephants against the backdrop of Mt. Kilimanjaro.",
     price: "From $1,500",
@@ -30,7 +30,7 @@ const safariPackages = [
     image: "/lovable-uploads/aa970d22-5828-4358-87ad-e46953031aeb.png"
   },
   {
-    id: 4,
+    id: "tour-4",
     title: "Luxury Kruger Expedition",
     description: "Experience South Africa's premier wildlife destination in luxury. This 8-day safari includes private game drives and premium accommodations.",
     price: "From $2,300",
@@ -38,7 +38,7 @@ const safariPackages = [
     image: "/lovable-uploads/f3efa77a-b14d-41c7-9fc8-a6b63a8c267c.png"
   },
   {
-    id: 5,
+    id: "tour-5",
     title: "Tanzania Northern Circuit",
     description: "Visit Tanzania's northern safari circuit including Tarangire, Ngorongoro Crater and the Serengeti on this comprehensive 10-day safari.",
     price: "From $2,800",
@@ -46,7 +46,7 @@ const safariPackages = [
     image: "/lovable-uploads/0d822250-7ed2-4474-a513-653b6544aa6d.png"
   },
   {
-    id: 6,
+    id: "serengeti-adventure",
     title: "Botswana Delta Safari",
     description: "Explore the unique Okavango Delta ecosystem by traditional mokoro canoe and safari vehicle on this unforgettable 6-day adventure.",
     price: "From $2,100",
@@ -75,24 +75,28 @@ const Safaris = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {safariPackages.map((safari) => (
               <div key={safari.id} className="bg-white rounded-lg overflow-hidden shadow-lg transform transition duration-300 hover:-translate-y-2">
-                <img
-                  src={safari.image}
-                  alt={safari.title}
-                  className="w-full h-56 object-cover"
-                />
+                <Link to={`/safaris/${safari.id}`}>
+                  <img
+                    src={safari.image}
+                    alt={safari.title}
+                    className="w-full h-56 object-cover transition-transform duration-300 hover:scale-105"
+                  />
+                </Link>
                 <div className="p-6">
                   <div className="flex justify-between items-center mb-4">
                     <span className="text-safari-gold font-semibold">{safari.duration}</span>
                     <span className="text-safari-brown font-bold">{safari.price}</span>
                   </div>
-                  <h3 className="text-xl font-bold mb-2 text-safari-darkbrown">{safari.title}</h3>
+                  <Link to={`/safaris/${safari.id}`} className="block hover:text-safari-gold transition-colors">
+                    <h3 className="text-xl font-bold mb-2 text-safari-darkbrown">{safari.title}</h3>
+                  </Link>
                   <p className="text-gray-600 mb-4">{safari.description}</p>
                   <div className="flex justify-between items-center">
                     <Button asChild className="bg-safari-gold hover:bg-safari-brown text-white">
                       <Link to="/booknow">Book Now</Link>
                     </Button>
-                    <Button variant="outline" className="border-safari-gold text-safari-gold hover:bg-safari-gold hover:text-white">
-                      View Details
+                    <Button variant="outline" asChild className="border-safari-gold text-safari-gold hover:bg-safari-gold hover:text-white">
+                      <Link to={`/safaris/${safari.id}`}>View Details</Link>
                     </Button>
                   </div>
                 </div>

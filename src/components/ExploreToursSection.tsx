@@ -133,20 +133,24 @@ const TourCard = ({ tour }: { tour: TourItem }) => {
   return (
     <Card className="h-full overflow-hidden shadow-lg hover:shadow-xl card-hover border-0">
       <div className="relative">
-        <img 
-          src={tour.image} 
-          alt={tour.title} 
-          className="w-full h-56 object-cover"
-        />
-        <div className="absolute top-4 right-4 bg-safari-gold text-white font-bold py-1 px-3 rounded-full">
-          {tour.price}
-        </div>
+        <Link to={`/safaris/${tour.id}`}>
+          <img 
+            src={tour.image} 
+            alt={tour.title} 
+            className="w-full h-56 object-cover transition-transform duration-300 hover:scale-105"
+          />
+          <div className="absolute top-4 right-4 bg-safari-gold text-white font-bold py-1 px-3 rounded-full">
+            {tour.price}
+          </div>
+        </Link>
       </div>
       
       <CardContent className="p-5">
-        <CardTitle className="text-safari-brown text-xl mb-2">
-          {tour.title}
-        </CardTitle>
+        <Link to={`/safaris/${tour.id}`} className="block hover:text-safari-gold transition-colors">
+          <CardTitle className="text-safari-brown text-xl mb-2">
+            {tour.title}
+          </CardTitle>
+        </Link>
         
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center text-safari-darkbrown">

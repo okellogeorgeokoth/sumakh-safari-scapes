@@ -79,21 +79,25 @@ const FeaturedSafaris = () => {
 
 const SafariCard = ({ safari }: { safari: SafariCard }) => {
   return (
-    <div className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl card-hover">
+    <div className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-transform duration-300 hover:-translate-y-2">
       <div className="relative">
-        <img 
-          src={safari.image} 
-          alt={safari.title} 
-          className="w-full h-64 object-cover"
-        />
-        <div className="absolute top-4 right-4 bg-safari-gold text-white font-bold py-2 px-4 rounded-full">
-          {safari.price}
-        </div>
+        <Link to={`/safaris/${safari.id}`}>
+          <img 
+            src={safari.image} 
+            alt={safari.title} 
+            className="w-full h-64 object-cover transition-transform duration-300 hover:scale-105"
+          />
+          <div className="absolute top-4 right-4 bg-safari-gold text-white font-bold py-2 px-4 rounded-full">
+            {safari.price}
+          </div>
+        </Link>
       </div>
       <div className="p-6">
-        <h3 className="font-heading text-xl font-bold mb-3 text-safari-brown">
-          {safari.title}
-        </h3>
+        <Link to={`/safaris/${safari.id}`} className="block hover:text-safari-gold transition-colors">
+          <h3 className="font-heading text-xl font-bold mb-3 text-safari-brown">
+            {safari.title}
+          </h3>
+        </Link>
         <p className="text-gray-600 mb-4">
           {safari.description}
         </p>
