@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Facebook, Instagram, Mail, Phone, MapPin } from 'lucide-react';
-import { FaXTwitter, FaWhatsapp } from 'react-icons/fa6'; // Using react-icons for X and WhatsApp
+import { FaXTwitter, FaWhatsapp } from 'react-icons/fa6';
 
 const Footer = () => {
   return (
@@ -96,13 +96,21 @@ const Footer = () => {
           <p className="text-safari-beige text-sm">
             &copy; {new Date().getFullYear()} SUMAKH SAFARIS. All rights reserved.
           </p>
-          <div className="flex space-x-6 mt-4 md:mt-0">
+          <div className="flex flex-wrap items-center gap-6 mt-4 md:mt-0">
             <Link to="/privacy-policy" className="text-sm text-safari-beige hover:text-safari-gold">
               Privacy Policy
             </Link>
             <Link to="/terms-conditions" className="text-sm text-safari-beige hover:text-safari-gold">
               Terms & Conditions
             </Link>
+            <a 
+              href="https://my-portfolio-snowy-pi.vercel.app/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-sm text-safari-beige hover:text-safari-gold"
+            >
+              Website Developer
+            </a>
           </div>
         </div>
       </div>
