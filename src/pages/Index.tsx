@@ -1,6 +1,7 @@
 
 import HeroSection from '../components/HeroSection';
 import FeaturedSafaris from '../components/FeaturedSafaris';
+import ExploreToursSection from '../components/ExploreToursSection';
 import AboutSection from '../components/AboutSection';
 import Testimonials from '../components/Testimonials';
 import GallerySection from '../components/GallerySection';
@@ -15,6 +16,7 @@ const Index = () => {
       <NavBar />
       <HeroSection />
       <FeaturedSafaris />
+      <ExploreToursSection />
       <AboutSection />
       <GallerySection />
       <Testimonials />
