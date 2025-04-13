@@ -3,6 +3,9 @@ import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
 import { Button } from '../components/ui/button';
+import { Card, CardContent } from '../components/ui/card';
+import { Avatar, AvatarImage, AvatarFallback } from '../components/ui/avatar';
+import { UserRound, Mail, MapPin } from 'lucide-react';
 
 const teamMembers = [
   {
@@ -10,21 +13,27 @@ const teamMembers = [
     name: "James Kimathi",
     role: "Founder & Lead Guide",
     bio: "With over 20 years of experience in African safaris, James founded Sumakh Safaris to share his passion for wildlife conservation and authentic safari experiences.",
-    image: "/lovable-uploads/3bf25673-fec4-40c6-af9b-e01badc4ee80.png"
+    image: "/lovable-uploads/3bf25673-fec4-40c6-af9b-e01badc4ee80.png",
+    contact: "james@sumakhsafaris.com",
+    location: "Nairobi, Kenya"
   },
   {
     id: 2,
     name: "Sophia Njeri",
     role: "Safari Operations Manager",
     bio: "Sophia ensures every safari exceeds expectations. Her attention to detail and knowledge of the best safari destinations makes every journey unforgettable.",
-    image: "/lovable-uploads/95ba0202-21e5-4c0b-bbb3-aacb836f480f.png"
+    image: "/lovable-uploads/95ba0202-21e5-4c0b-bbb3-aacb836f480f.png",
+    contact: "sophia@sumakhsafaris.com",
+    location: "Mombasa, Kenya"
   },
   {
     id: 3,
     name: "Daniel Omondi",
     role: "Wildlife Expert & Guide",
     bio: "A certified wildlife biologist, Daniel provides guests with in-depth knowledge of African ecosystems and animal behavior on every safari.",
-    image: "/lovable-uploads/e7b05f1e-e028-4c52-8917-df1731faddd6.png"
+    image: "/lovable-uploads/e7b05f1e-e028-4c52-8917-df1731faddd6.png",
+    contact: "daniel@sumakhsafaris.com",
+    location: "Arusha, Tanzania"
   }
 ];
 
@@ -102,24 +111,54 @@ const About = () => {
           </div>
         </div>
 
-        {/* Our Team Section */}
-        <div className="container mx-auto py-16 px-4">
-          <h2 className="text-3xl font-bold text-safari-darkbrown text-center mb-12">Meet Our Team</h2>
-          <div className="grid md:grid-cols-3 gap-10">
-            {teamMembers.map(member => (
-              <div key={member.id} className="bg-white rounded-lg overflow-hidden shadow-md">
-                <img 
-                  src={member.image} 
-                  alt={member.name} 
-                  className="w-full h-64 object-cover"
-                />
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-safari-darkbrown mb-1">{member.name}</h3>
-                  <p className="text-safari-gold font-medium mb-4">{member.role}</p>
-                  <p className="text-safari-brown">{member.bio}</p>
-                </div>
-              </div>
-            ))}
+        {/* Meet Our Team Section */}
+        <div className="bg-white py-16 px-4">
+          <div className="container mx-auto">
+            <h2 className="text-3xl font-bold text-safari-darkbrown text-center mb-4">Meet Our Team</h2>
+            <p className="text-safari-brown text-center mb-12 max-w-3xl mx-auto">
+              Our passionate team of experienced safari guides and travel specialists are 
+              dedicated to creating unforgettable African adventures for our guests.
+            </p>
+            
+            <div className="grid md:grid-cols-3 gap-10">
+              {teamMembers.map(member => (
+                <Card key={member.id} className="overflow-hidden border-none shadow-lg hover:shadow-xl transition-shadow duration-300">
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent rounded-t-lg"></div>
+                    <img 
+                      src={member.image} 
+                      alt={member.name} 
+                      className="w-full h-64 object-cover rounded-t-lg"
+                    />
+                    <Avatar className="absolute bottom-4 left-4 h-24 w-24 border-4 border-white shadow-md">
+                      <AvatarImage src={member.image} alt={member.name} />
+                      <AvatarFallback className="bg-safari-gold text-white text-2xl">
+                        {member.name.split(' ').map(n => n[0]).join('')}
+                      </AvatarFallback>
+                    </Avatar>
+                  </div>
+                  <CardContent className="pt-6">
+                    <h3 className="text-xl font-bold text-safari-darkbrown mb-1">{member.name}</h3>
+                    <p className="text-safari-gold font-medium mb-3">{member.role}</p>
+                    <p className="text-safari-brown mb-4">{member.bio}</p>
+                    <div className="flex flex-col space-y-2 text-sm text-safari-brown">
+                      <div className="flex items-center">
+                        <UserRound size={16} className="mr-2 text-safari-gold" />
+                        <span>{member.name}</span>
+                      </div>
+                      <div className="flex items-center">
+                        <Mail size={16} className="mr-2 text-safari-gold" />
+                        <span>{member.contact}</span>
+                      </div>
+                      <div className="flex items-center">
+                        <MapPin size={16} className="mr-2 text-safari-gold" />
+                        <span>{member.location}</span>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </div>
         </div>
 
