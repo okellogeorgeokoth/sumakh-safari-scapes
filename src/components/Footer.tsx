@@ -1,6 +1,6 @@
-
 import { Link } from 'react-router-dom';
-import { Facebook, Twitter, Instagram, Mail, Phone, MapPin } from 'lucide-react';
+import { Facebook, Instagram, Mail, Phone, MapPin } from 'lucide-react';
+import { FaXTwitter, FaWhatsapp } from 'react-icons/fa6'; // Using react-icons for X and WhatsApp
 
 const Footer = () => {
   return (
@@ -78,10 +78,13 @@ const Footer = () => {
                 <Facebook size={20} />
               </a>
               <a href="#" className="text-white hover:text-safari-gold transition-colors">
-                <Twitter size={20} />
+                <FaXTwitter size={20} />
               </a>
               <a href="#" className="text-white hover:text-safari-gold transition-colors">
                 <Instagram size={20} />
+              </a>
+              <a href="https://wa.me/254123456789" className="text-white hover:text-safari-gold transition-colors">
+                <FaWhatsapp size={20} />
               </a>
             </div>
           </div>
