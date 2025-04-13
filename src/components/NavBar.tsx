@@ -53,9 +53,9 @@ const NavBar = () => {
             <NavLink href="/gallery" label="Gallery" />
             <NavLink href="/about" label="About" />
             <NavLink href="/contact" label="Contact" />
-            <button className="px-6 py-2 bg-safari-gold text-white rounded hover:bg-safari-brown transition-colors">
+            <Link to="/booknow" className="px-6 py-2 bg-safari-gold text-white rounded hover:bg-safari-brown transition-colors">
               Book Now
-            </button>
+            </Link>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -83,9 +83,13 @@ const NavBar = () => {
               <MobileNavLink href="/gallery" label="Gallery" onClick={toggleMobileMenu} />
               <MobileNavLink href="/about" label="About" onClick={toggleMobileMenu} />
               <MobileNavLink href="/contact" label="Contact" onClick={toggleMobileMenu} />
-              <button className="w-full px-6 py-3 bg-safari-gold text-white rounded hover:bg-safari-brown transition-colors">
+              <Link 
+                to="/booknow" 
+                className="w-full px-6 py-3 bg-safari-gold text-white rounded hover:bg-safari-brown transition-colors"
+                onClick={toggleMobileMenu}
+              >
                 Book Now
-              </button>
+              </Link>
             </nav>
           </div>
         </div>
