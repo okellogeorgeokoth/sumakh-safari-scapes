@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { ChevronRight } from 'lucide-react';
 
@@ -18,13 +19,6 @@ const HeroSection = () => {
 
     return () => clearInterval(interval);
   }, []);
-
-  const scrollToSection = (sectionId) => {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   return (
     <div className="relative h-screen">
@@ -57,31 +51,31 @@ const HeroSection = () => {
             Discover untamed wilderness with our expert guides and unforgettable safari experiences
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <button
-              onClick={() => scrollToSection('safaris')}
+            <a
+              href="/safaris"
               className="px-8 py-3 bg-safari-gold text-white text-lg rounded hover:bg-safari-brown transition-colors"
             >
               Explore Safaris
-            </button>
-            <button
-              onClick={() => scrollToSection('contact')}
+            </a>
+            <a
+              href="/contact"
               className="px-8 py-3 border-2 border-white text-white text-lg rounded hover:bg-white/20 transition-colors"
             >
               Contact Us
-            </button>
+            </a>
           </div>
         </div>
       </div>
 
       {/* Scroll Down Indicator */}
       <div className="absolute bottom-10 left-0 right-0 flex justify-center">
-        <button 
-          onClick={() => scrollToSection('featured-safaris')}
+        <a 
+          href="#featured-safaris" 
           className="text-white animate-bounce flex flex-col items-center"
         >
           <span className="mb-2">Scroll Down</span>
           <ChevronRight className="rotate-90" size={24} />
-        </button>
+        </a>
       </div>
     </div>
   );
