@@ -84,7 +84,7 @@ const NavBar = () => {
               <MobileNavLink href="/about" label="About" onClick={toggleMobileMenu} />
               <MobileNavLink href="/contact" label="Contact" onClick={toggleMobileMenu} />
               <button className="w-full px-6 py-3 bg-safari-gold text-white rounded hover:bg-safari-brown transition-colors">
-                Book Now
+              <NavLink href="/BookNow" label="Book Now" />
               </button>
             </nav>
           </div>
