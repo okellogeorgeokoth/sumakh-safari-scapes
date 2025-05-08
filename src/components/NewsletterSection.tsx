@@ -2,6 +2,8 @@
 import { useState } from 'react';
 import { toast } from 'sonner';
 import { supabase } from '@/integrations/supabase/client';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 
 const NewsletterSection = () => {
   const [email, setEmail] = useState('');
@@ -59,7 +61,7 @@ const NewsletterSection = () => {
           </div>
 
           <form onSubmit={handleSubmit} className="flex flex-col md:flex-row gap-4">
-            <input
+            <Input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -67,14 +69,16 @@ const NewsletterSection = () => {
               className="flex-1 px-4 py-3 border border-safari-tan rounded focus:outline-none focus:border-safari-gold"
               required
               disabled={isSubmitting}
+              aria-label="Email address"
             />
-            <button
+            <Button
               type="submit"
+              variant="default"
               className="px-6 py-3 bg-safari-gold text-white rounded hover:bg-safari-brown transition-colors whitespace-nowrap"
               disabled={isSubmitting}
             >
               {isSubmitting ? 'Subscribing...' : 'Subscribe Now'}
-            </button>
+            </Button>
           </form>
 
           <p className="text-sm text-gray-500 mt-4 text-center">
