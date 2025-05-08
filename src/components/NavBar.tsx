@@ -54,7 +54,7 @@ const NavBar = () => {
             <NavLink href="/about" label="About" />
             <NavLink href="/contact" label="Contact" />
             <button className="px-6 py-2 bg-safari-gold text-white rounded hover:bg-safari-brown transition-colors">
-              Book Now
+            <NavLink href="/BookNow" label="Book Now" />
             </button>
           </nav>
 
