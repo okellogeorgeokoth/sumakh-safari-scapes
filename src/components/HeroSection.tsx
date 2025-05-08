@@ -52,13 +52,13 @@ const HeroSection = () => {
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <a
-              href="/safaris"
+              href="/Safaris"
               className="px-8 py-3 bg-safari-gold text-white text-lg rounded hover:bg-safari-brown transition-colors"
             >
               Explore Safaris
             </a>
             <a
-              href="/contact"
+              href="/Contact"
               className="px-8 py-3 border-2 border-white text-white text-lg rounded hover:bg-white/20 transition-colors"
             >
               Contact Us
