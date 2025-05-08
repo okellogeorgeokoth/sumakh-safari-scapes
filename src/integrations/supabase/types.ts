@@ -9,7 +9,99 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      [_ in never]: never
+      booking_requests: {
+        Row: {
+          accommodation_type: string
+          created_at: string
+          email: string
+          first_name: string
+          group_size: string
+          id: string
+          last_name: string
+          phone: string | null
+          selected_safari: string
+          special_requirements: string | null
+          travel_date: string
+        }
+        Insert: {
+          accommodation_type: string
+          created_at?: string
+          email: string
+          first_name: string
+          group_size: string
+          id?: string
+          last_name: string
+          phone?: string | null
+          selected_safari: string
+          special_requirements?: string | null
+          travel_date: string
+        }
+        Update: {
+          accommodation_type?: string
+          created_at?: string
+          email?: string
+          first_name?: string
+          group_size?: string
+          id?: string
+          last_name?: string
+          phone?: string | null
+          selected_safari?: string
+          special_requirements?: string | null
+          travel_date?: string
+        }
+        Relationships: []
+      }
+      contact_submissions: {
+        Row: {
+          created_at: string
+          email: string
+          group_size: string | null
+          id: string
+          message: string
+          name: string
+          phone: string | null
+          travel_date: string | null
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          group_size?: string | null
+          id?: string
+          message: string
+          name: string
+          phone?: string | null
+          travel_date?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          group_size?: string | null
+          id?: string
+          message?: string
+          name?: string
+          phone?: string | null
+          travel_date?: string | null
+        }
+        Relationships: []
+      }
+      newsletter_subscriptions: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

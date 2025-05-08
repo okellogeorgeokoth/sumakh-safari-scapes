@@ -1,4 +1,6 @@
 
+import { Link } from 'react-router-dom';
+
 const CallToAction = () => {
   return (
     <section 
@@ -20,18 +22,18 @@ const CallToAction = () => {
             a customized itinerary that matches your interests and preferences.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <a 
-              href="/contact" 
+            <Link 
+              to="/contact" 
               className="px-8 py-3 bg-safari-gold text-white text-lg rounded hover:bg-opacity-90 transition-colors"
             >
               Contact Us
-            </a>
-            <a 
-              href="/booking" 
+            </Link>
+            <Link 
+              to="/booknow" 
               className="px-8 py-3 border-2 border-white text-white text-lg rounded hover:bg-white/10 transition-colors"
             >
               Book a Safari
-            </a>
+            </Link>
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { ChevronRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const heroImages = [
   "/lovable-uploads/4e85ab06-cb98-486a-bfd7-861a79b562ab.png",
@@ -51,18 +52,18 @@ const HeroSection = () => {
             Discover untamed wilderness with our expert guides and unforgettable safari experiences
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <a
-              href="/safaris"
+            <Link
+              to="/safaris"
               className="px-8 py-3 bg-safari-gold text-white text-lg rounded hover:bg-safari-brown transition-colors"
             >
               Explore Safaris
-            </a>
-            <a
-              href="/contact"
+            </Link>
+            <Link
+              to="/contact"
               className="px-8 py-3 border-2 border-white text-white text-lg rounded hover:bg-white/20 transition-colors"
             >
               Contact Us
-            </a>
+            </Link>
           </div>
         </div>
       </div>

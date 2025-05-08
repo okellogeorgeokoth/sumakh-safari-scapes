@@ -4,6 +4,7 @@ import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import { Button } from '../components/ui/button';
 import { toast } from 'sonner';
+import { supabase } from '@/integrations/supabase/client';
 
 type SafariOption = {
   id: string;
@@ -25,16 +26,17 @@ const safariOptions: SafariOption[] = [
 const BookNow = () => {
   const [step, setStep] = useState(1);
   const [bookingData, setBookingData] = useState({
-    firstName: '',
-    lastName: '',
+    first_name: '',
+    last_name: '',
     email: '',
     phone: '',
-    selectedSafari: '',
-    travelDate: '',
-    groupSize: '',
-    accommodationType: 'standard',
-    specialRequirements: ''
+    selected_safari: '',
+    travel_date: '',
+    group_size: '',
+    accommodation_type: 'standard',
+    special_requirements: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -44,12 +46,12 @@ const BookNow = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (step === 1) {
       // Validate first step
-      if (!bookingData.firstName || !bookingData.lastName || !bookingData.email) {
+      if (!bookingData.first_name || !bookingData.last_name || !bookingData.email) {
         toast.error("Please fill in all required fields");
         return;
       }
@@ -57,30 +59,49 @@ const BookNow = () => {
       window.scrollTo(0, 0);
     } else if (step === 2) {
       // Validate second step
-      if (!bookingData.selectedSafari || !bookingData.travelDate || !bookingData.groupSize) {
+      if (!bookingData.selected_safari || !bookingData.travel_date || !bookingData.group_size) {
         toast.error("Please fill in all required fields");
         return;
       }
       setStep(3);
       window.scrollTo(0, 0);
     } else {
-      // Submit the form
-      toast.success("Your booking request has been submitted successfully!");
-      console.log("Booking data:", bookingData);
+      // Submit the form to Supabase
+      setIsSubmitting(true);
       
-      // Reset form after submission
-      setBookingData({
-        firstName: '',
-        lastName: '',
-        email: '',
-        phone: '',
-        selectedSafari: '',
-        travelDate: '',
-        groupSize: '',
-        accommodationType: 'standard',
-        specialRequirements: ''
-      });
-      setStep(1);
+      try {
+        const { error } = await supabase
+          .from('booking_requests')
+          .insert([bookingData]);
+          
+        if (error) {
+          console.error("Error submitting booking request:", error);
+          toast.error("Failed to submit your booking. Please try again later.");
+          return;
+        }
+        
+        toast.success("Your booking request has been submitted successfully!");
+        console.log("Booking data:", bookingData);
+        
+        // Reset form after submission
+        setBookingData({
+          first_name: '',
+          last_name: '',
+          email: '',
+          phone: '',
+          selected_safari: '',
+          travel_date: '',
+          group_size: '',
+          accommodation_type: 'standard',
+          special_requirements: ''
+        });
+        setStep(1);
+      } catch (error) {
+        console.error('Unexpected error during submission:', error);
+        toast.error('An unexpected error occurred. Please try again.');
+      } finally {
+        setIsSubmitting(false);
+      }
     }
   };
 
@@ -92,24 +113,24 @@ const BookNow = () => {
             <h2 className="text-2xl font-bold text-safari-darkbrown">Personal Information</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label htmlFor="firstName" className="block text-safari-brown mb-2">First Name*</label>
+                <label htmlFor="first_name" className="block text-safari-brown mb-2">First Name*</label>
                 <input
                   type="text"
-                  id="firstName"
-                  name="firstName"
-                  value={bookingData.firstName}
+                  id="first_name"
+                  name="first_name"
+                  value={bookingData.first_name}
                   onChange={handleChange}
                   className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-safari-gold"
                   required
                 />
               </div>
               <div>
-                <label htmlFor="lastName" className="block text-safari-brown mb-2">Last Name*</label>
+                <label htmlFor="last_name" className="block text-safari-brown mb-2">Last Name*</label>
                 <input
                   type="text"
-                  id="lastName"
-                  name="lastName"
-                  value={bookingData.lastName}
+                  id="last_name"
+                  name="last_name"
+                  value={bookingData.last_name}
                   onChange={handleChange}
                   className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-safari-gold"
                   required
@@ -146,11 +167,11 @@ const BookNow = () => {
           <div className="space-y-6">
             <h2 className="text-2xl font-bold text-safari-darkbrown">Safari Details</h2>
             <div>
-              <label htmlFor="selectedSafari" className="block text-safari-brown mb-2">Select Safari Package*</label>
+              <label htmlFor="selected_safari" className="block text-safari-brown mb-2">Select Safari Package*</label>
               <select
-                id="selectedSafari"
-                name="selectedSafari"
-                value={bookingData.selectedSafari}
+                id="selected_safari"
+                name="selected_safari"
+                value={bookingData.selected_safari}
                 onChange={handleChange}
                 className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-safari-gold"
                 required
@@ -165,23 +186,23 @@ const BookNow = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label htmlFor="travelDate" className="block text-safari-brown mb-2">Preferred Travel Date*</label>
+                <label htmlFor="travel_date" className="block text-safari-brown mb-2">Preferred Travel Date*</label>
                 <input
                   type="date"
-                  id="travelDate"
-                  name="travelDate"
-                  value={bookingData.travelDate}
+                  id="travel_date"
+                  name="travel_date"
+                  value={bookingData.travel_date}
                   onChange={handleChange}
                   className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-safari-gold"
                   required
                 />
               </div>
               <div>
-                <label htmlFor="groupSize" className="block text-safari-brown mb-2">Group Size*</label>
+                <label htmlFor="group_size" className="block text-safari-brown mb-2">Group Size*</label>
                 <select
-                  id="groupSize"
-                  name="groupSize"
-                  value={bookingData.groupSize}
+                  id="group_size"
+                  name="group_size"
+                  value={bookingData.group_size}
                   onChange={handleChange}
                   className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-safari-gold"
                   required
@@ -197,15 +218,15 @@ const BookNow = () => {
               </div>
             </div>
             <div>
-              <label htmlFor="accommodationType" className="block text-safari-brown mb-2">Accommodation Type</label>
+              <label htmlFor="accommodation_type" className="block text-safari-brown mb-2">Accommodation Type</label>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="flex items-center">
                   <input
                     type="radio"
                     id="standard"
-                    name="accommodationType"
+                    name="accommodation_type"
                     value="standard"
-                    checked={bookingData.accommodationType === 'standard'}
+                    checked={bookingData.accommodation_type === 'standard'}
                     onChange={handleChange}
                     className="mr-2"
                   />
@@ -215,9 +236,9 @@ const BookNow = () => {
                   <input
                     type="radio"
                     id="comfort"
-                    name="accommodationType"
+                    name="accommodation_type"
                     value="comfort"
-                    checked={bookingData.accommodationType === 'comfort'}
+                    checked={bookingData.accommodation_type === 'comfort'}
                     onChange={handleChange}
                     className="mr-2"
                   />
@@ -227,9 +248,9 @@ const BookNow = () => {
                   <input
                     type="radio"
                     id="luxury"
-                    name="accommodationType"
+                    name="accommodation_type"
                     value="luxury"
-                    checked={bookingData.accommodationType === 'luxury'}
+                    checked={bookingData.accommodation_type === 'luxury'}
                     onChange={handleChange}
                     className="mr-2"
                   />
@@ -244,11 +265,11 @@ const BookNow = () => {
           <div className="space-y-6">
             <h2 className="text-2xl font-bold text-safari-darkbrown">Additional Information</h2>
             <div>
-              <label htmlFor="specialRequirements" className="block text-safari-brown mb-2">Special Requirements or Requests</label>
+              <label htmlFor="special_requirements" className="block text-safari-brown mb-2">Special Requirements or Requests</label>
               <textarea
-                id="specialRequirements"
-                name="specialRequirements"
-                value={bookingData.specialRequirements}
+                id="special_requirements"
+                name="special_requirements"
+                value={bookingData.special_requirements}
                 onChange={handleChange}
                 rows={5}
                 className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-safari-gold"
@@ -259,13 +280,13 @@ const BookNow = () => {
             <div className="bg-safari-beige p-6 rounded-lg">
               <h3 className="text-xl font-bold text-safari-darkbrown mb-4">Booking Summary</h3>
               <div className="space-y-2">
-                <p><span className="font-semibold">Name:</span> {bookingData.firstName} {bookingData.lastName}</p>
+                <p><span className="font-semibold">Name:</span> {bookingData.first_name} {bookingData.last_name}</p>
                 <p><span className="font-semibold">Email:</span> {bookingData.email}</p>
                 <p><span className="font-semibold">Phone:</span> {bookingData.phone || 'Not provided'}</p>
-                <p><span className="font-semibold">Safari Package:</span> {safariOptions.find(option => option.id === bookingData.selectedSafari)?.name || ''}</p>
-                <p><span className="font-semibold">Travel Date:</span> {bookingData.travelDate}</p>
-                <p><span className="font-semibold">Group Size:</span> {bookingData.groupSize}</p>
-                <p><span className="font-semibold">Accommodation Type:</span> {bookingData.accommodationType.charAt(0).toUpperCase() + bookingData.accommodationType.slice(1)}</p>
+                <p><span className="font-semibold">Safari Package:</span> {safariOptions.find(option => option.id === bookingData.selected_safari)?.name || ''}</p>
+                <p><span className="font-semibold">Travel Date:</span> {bookingData.travel_date}</p>
+                <p><span className="font-semibold">Group Size:</span> {bookingData.group_size}</p>
+                <p><span className="font-semibold">Accommodation Type:</span> {bookingData.accommodation_type.charAt(0).toUpperCase() + bookingData.accommodation_type.slice(1)}</p>
               </div>
             </div>
             
@@ -365,8 +386,9 @@ const BookNow = () => {
                     <Button
                       type="submit"
                       className="bg-safari-gold hover:bg-safari-brown text-white px-8"
+                      disabled={isSubmitting}
                     >
-                      {step === 3 ? 'Submit Booking' : 'Continue'}
+                      {step === 3 ? (isSubmitting ? 'Submitting...' : 'Submit Booking') : 'Continue'}
                     </Button>
                   </div>
                 </div>
