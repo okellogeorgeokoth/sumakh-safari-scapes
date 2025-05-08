@@ -32,7 +32,10 @@ const NewsletterSection = () => {
         return;
       }
       
-      toast.success('Thank you for subscribing to our newsletter!');
+      toast.success('Thank you for subscribing to our newsletter!', {
+        duration: 5000,
+        icon: '🎉',
+      });
       setEmail('');
     } catch (error) {
       console.error('Unexpected error during submission:', error);
