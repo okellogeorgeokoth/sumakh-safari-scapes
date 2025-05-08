@@ -20,9 +20,13 @@ const NewsletterSection = () => {
     setIsSubmitting(true);
     
     try {
-      const { error } = await supabase
+      console.log('Attempting to submit email:', email);
+      
+      const { data, error } = await supabase
         .from('newsletter_subscriptions')
         .insert([{ email }]);
+        
+      console.log('Supabase response:', { data, error });
         
       if (error) {
         if (error.code === '23505') {
@@ -31,14 +35,13 @@ const NewsletterSection = () => {
           console.error('Error submitting newsletter subscription:', error);
           toast.error('Failed to submit. Please try again later.');
         }
-        return;
+      } else {
+        toast.success('Thank you for subscribing to our newsletter!', {
+          duration: 5000,
+          icon: '🎉',
+        });
+        setEmail('');
       }
-      
-      toast.success('Thank you for subscribing to our newsletter!', {
-        duration: 5000,
-        icon: '🎉',
-      });
-      setEmail('');
     } catch (error) {
       console.error('Unexpected error during submission:', error);
       toast.error('An unexpected error occurred. Please try again.');
