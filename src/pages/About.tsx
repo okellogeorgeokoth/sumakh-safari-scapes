@@ -10,15 +10,33 @@ import { UserRound, Mail, MapPin } from 'lucide-react';
 const teamMembers = [
   {
     id: 1,
+    name: "Khalif Lekudere",
+    role: "Chief Executive Officer",
+    bio: "With extensive experience in the tourism industry, Khalif leads Sumakh Safaris with a vision for authentic and sustainable safari experiences that showcase the best of African wildlife.",
+    image: "/lovable-uploads/fb10be0b-1470-4cb9-8a59-91297e3216f9.png",
+    contact: "khalif@sumakhsafaris.com",
+    location: "Nairobi, Kenya"
+  },
+  {
+    id: 2,
+    name: "Boniface Naimadu",
+    role: "Managing Director",
+    bio: "Boniface oversees the day-to-day operations of Sumakh Safaris, ensuring that every safari exceeds expectations while maintaining our commitment to conservation and local communities.",
+    image: "/lovable-uploads/f37542ac-a6ff-42d6-90e0-53ef0dae4c97.png",
+    contact: "boniface@sumakhsafaris.com",
+    location: "Nairobi, Kenya"
+  },
+  {
+    id: 3,
     name: "James Kimathi",
-    role: "Founder & Lead Guide",
-    bio: "With over 20 years of experience in African safaris, James founded Sumakh Safaris to share his passion for wildlife conservation and authentic safari experiences.",
+    role: "Lead Safari Guide",
+    bio: "With over 20 years of experience in African safaris, James brings unparalleled knowledge of wildlife and conservation to every safari experience.",
     image: "/lovable-uploads/3bf25673-fec4-40c6-af9b-e01badc4ee80.png",
     contact: "james@sumakhsafaris.com",
     location: "Nairobi, Kenya"
   },
   {
-    id: 2,
+    id: 4,
     name: "Sophia Njeri",
     role: "Safari Operations Manager",
     bio: "Sophia ensures every safari exceeds expectations. Her attention to detail and knowledge of the best safari destinations makes every journey unforgettable.",
@@ -27,7 +45,7 @@ const teamMembers = [
     location: "Mombasa, Kenya"
   },
   {
-    id: 3,
+    id: 5,
     name: "Daniel Omondi",
     role: "Wildlife Expert & Guide",
     bio: "A certified wildlife biologist, Daniel provides guests with in-depth knowledge of African ecosystems and animal behavior on every safari.",
@@ -71,13 +89,47 @@ const About = () => {
           </div>
         </div>
 
+        {/* Leadership Section */}
+        <div className="container mx-auto py-16 px-4">
+          <h2 className="text-3xl font-bold text-safari-darkbrown text-center mb-12">Our Leadership</h2>
+          <div className="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto">
+            {teamMembers.slice(0, 2).map(leader => (
+              <Card key={leader.id} className="overflow-hidden border-none shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent rounded-t-lg"></div>
+                  <img 
+                    src={leader.image} 
+                    alt={leader.name} 
+                    className="w-full h-72 object-cover object-center rounded-t-lg"
+                  />
+                </div>
+                <CardContent className="pt-6">
+                  <h3 className="text-2xl font-bold text-safari-darkbrown mb-1">{leader.name}</h3>
+                  <p className="text-safari-gold font-medium mb-3">{leader.role}</p>
+                  <p className="text-safari-brown mb-4">{leader.bio}</p>
+                  <div className="flex flex-col space-y-2 text-sm text-safari-brown">
+                    <div className="flex items-center">
+                      <Mail size={16} className="mr-2 text-safari-gold" />
+                      <span>{leader.contact}</span>
+                    </div>
+                    <div className="flex items-center">
+                      <MapPin size={16} className="mr-2 text-safari-gold" />
+                      <span>{leader.location}</span>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+
         {/* Our Story Section */}
         <div className="container mx-auto py-16 px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl font-bold text-safari-darkbrown mb-6">Our Story</h2>
               <p className="text-safari-brown mb-4">
-                Sumakh Safaris was born from a deep love for Africa's wilderness and a desire to share its magic with travelers from around the world. Founded in 2005 by James Kimathi, a native Kenyan with a passion for wildlife conservation, our company has grown from humble beginnings to become a respected name in African safari experiences.
+                Sumakh Safaris was born from a deep love for Africa's wilderness and a desire to share its magic with travelers from around the world. Founded in 2005 by Khalif Lekudere, a native Kenyan with a passion for wildlife conservation, our company has grown from humble beginnings to become a respected name in African safari experiences.
               </p>
               <p className="text-safari-brown mb-4">
                 The name "Sumakh" comes from the Swahili word for "journey" and reflects our belief that every safari is not just a vacation, but a transformative journey that connects people with nature in profound ways.
@@ -121,7 +173,7 @@ const About = () => {
             </p>
             
             <div className="grid md:grid-cols-3 gap-10">
-              {teamMembers.map(member => (
+              {teamMembers.slice(2).map(member => (
                 <Card key={member.id} className="overflow-hidden border-none shadow-lg hover:shadow-xl transition-shadow duration-300">
                   <div className="relative">
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent rounded-t-lg"></div>

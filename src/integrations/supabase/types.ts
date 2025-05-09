@@ -11,11 +11,26 @@ export type Database = {
     Tables: {
       booking_requests: {
         Row: {
+<<<<<<< HEAD
+=======
+          accommodation_type: string
+          adults: string
+          check_in_date: string
+          check_out_date: string | null
+          children: string
+          created_at: string
+          email: string
+          first_name: string
+>>>>>>> 9bb207adf3f408ffb2e4fe9fa948e966ae42d9a8
           id: string
           created_at: string
           first_name: string
           last_name: string
+<<<<<<< HEAD
           email: string
+=======
+          notes: string | null
+>>>>>>> 9bb207adf3f408ffb2e4fe9fa948e966ae42d9a8
           phone: string | null
           preferred_destination: string
           check_in_date: string
@@ -26,11 +41,26 @@ export type Database = {
           special_requirements: string | null
         }
         Insert: {
+<<<<<<< HEAD
+=======
+          accommodation_type: string
+          adults?: string
+          check_in_date: string
+          check_out_date?: string | null
+          children?: string
+          created_at?: string
+          email: string
+          first_name: string
+>>>>>>> 9bb207adf3f408ffb2e4fe9fa948e966ae42d9a8
           id?: string
           created_at?: string
           first_name: string
           last_name: string
+<<<<<<< HEAD
           email: string
+=======
+          notes?: string | null
+>>>>>>> 9bb207adf3f408ffb2e4fe9fa948e966ae42d9a8
           phone?: string | null
           preferred_destination: string
           check_in_date: string
@@ -41,11 +71,26 @@ export type Database = {
           special_requirements?: string | null
         }
         Update: {
+<<<<<<< HEAD
+=======
+          accommodation_type?: string
+          adults?: string
+          check_in_date?: string
+          check_out_date?: string | null
+          children?: string
+          created_at?: string
+          email?: string
+          first_name?: string
+>>>>>>> 9bb207adf3f408ffb2e4fe9fa948e966ae42d9a8
           id?: string
           created_at?: string
           first_name?: string
           last_name?: string
+<<<<<<< HEAD
           email?: string
+=======
+          notes?: string | null
+>>>>>>> 9bb207adf3f408ffb2e4fe9fa948e966ae42d9a8
           phone?: string | null
           preferred_destination?: string
           check_in_date?: string
