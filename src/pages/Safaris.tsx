@@ -1,4 +1,3 @@
-
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import { Button } from '../components/ui/button';
@@ -29,6 +28,55 @@ const safariPackages = [
     duration: "6 days",
     image: "/lovable-uploads/aa970d22-5828-4358-87ad-e46953031aeb.png"
   },
+  // New Kenyan destinations added below
+  {
+    id: "tour-6",
+    title: "Samburu Special",
+    description: "Discover the unique wildlife of Samburu National Reserve, home to species not found in other Kenyan parks like the Grevy's zebra and reticulated giraffe.",
+    price: "From $1,400",
+    duration: "4 days",
+    image: "/lovable-uploads/samburu.jpeg"
+  },
+  {
+    id: "tour-7",
+    title: "Lake Nakuru & Naivasha",
+    description: "A birdwatcher's paradise featuring flamingos at Lake Nakuru and boat rides among hippos at Lake Naivasha.",
+    price: "From $1,100",
+    duration: "3 days",
+    image: "/lovable-uploads/naivasha.jpg"
+  },
+  {
+    id: "tour-8",
+    title: "Laikipia Plateau Experience",
+    description: "Exclusive wildlife viewing in Kenya's private conservancies with opportunities for walking safaris and night game drives.",
+    price: "From $1,800",
+    duration: "5 days",
+    image: "/lovable-uploads/laiikipia.jpeg"
+  },
+  {
+    id: "tour-9",
+    title: "Meru National Park Adventure",
+    description: "Explore the wild and less-visited Meru National Park, famous for its diverse landscapes and the setting of 'Born Free'.",
+    price: "From $1,600",
+    duration: "4 days",
+    image: "/lovable-uploads/meru.jpeg"
+  },
+  {
+    id: "tour-10",
+    title: "Coastal & Tsavo Combo",
+    description: "Combine wildlife viewing in Tsavo East/West with relaxation at Diani Beach for the perfect bush-and-beach holiday.",
+    price: "From $2,000",
+    duration: "7 days",
+    image: "/lovable-uploads/coastal.jpg"
+  },
+  {
+    id: "tour-11",
+    title: "Aberdare Mountain Retreat",
+    description: "Stay in unique tree lodges overlooking waterholes in Aberdare National Park, known for its dramatic waterfalls and dense forests.",
+    price: "From $1,300",
+    duration: "3 days",
+    image: "/lovable-uploads/aberdare.jpg"
+  },
   {
     id: "tour-4",
     title: "Luxury Kruger Expedition",
@@ -52,7 +100,7 @@ const safariPackages = [
     price: "From $2,100",
     duration: "6 days",
     image: "/lovable-uploads/2134e863-3ca4-4039-84d7-9dd07c81e59f.png"
-  }
+  },
 ];
 
 const Safaris = () => {

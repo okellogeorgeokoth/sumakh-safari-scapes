@@ -1,27 +1,9 @@
-
 import { useState } from 'react';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import { Button } from '../components/ui/button';
 import { toast } from 'sonner';
 import { supabase } from '@/integrations/supabase/client';
-
-type SafariOption = {
-  id: string;
-  name: string;
-  price: string;
-  duration: string;
-};
-
-const safariOptions: SafariOption[] = [
-  { id: 'masai-mara', name: 'Masai Mara Adventure', price: '$1,200', duration: '5 days' },
-  { id: 'serengeti', name: 'Serengeti Explorer', price: '$1,800', duration: '7 days' },
-  { id: 'amboseli', name: 'Amboseli & Tsavo Safari', price: '$1,500', duration: '6 days' },
-  { id: 'kruger', name: 'Luxury Kruger Expedition', price: '$2,300', duration: '8 days' },
-  { id: 'tanzania', name: 'Tanzania Northern Circuit', price: '$2,800', duration: '10 days' },
-  { id: 'botswana', name: 'Botswana Delta Safari', price: '$2,100', duration: '6 days' },
-  { id: 'custom', name: 'Custom Safari Package', price: 'Variable', duration: 'Flexible' }
-];
 
 const BookNow = () => {
   const [step, setStep] = useState(1);
@@ -30,9 +12,11 @@ const BookNow = () => {
     last_name: '',
     email: '',
     phone: '',
-    selected_safari: '',
-    travel_date: '',
-    group_size: '',
+    preferred_destination: '',
+    check_in_date: '',
+    check_out_date: '',
+    adults: '',
+    children: '',
     accommodation_type: 'standard',
     special_requirements: ''
   });
@@ -59,7 +43,7 @@ const BookNow = () => {
       window.scrollTo(0, 0);
     } else if (step === 2) {
       // Validate second step
-      if (!bookingData.selected_safari || !bookingData.travel_date || !bookingData.group_size) {
+      if (!bookingData.preferred_destination || !bookingData.check_in_date || !bookingData.check_out_date || !bookingData.adults) {
         toast.error("Please fill in all required fields");
         return;
       }
@@ -72,7 +56,11 @@ const BookNow = () => {
       try {
         const { error } = await supabase
           .from('booking_requests')
-          .insert([bookingData]);
+          .insert([{
+            ...bookingData,
+            adults: parseInt(bookingData.adults, 10),
+            children: bookingData.children ? parseInt(bookingData.children, 10) : 0
+          }]);
           
         if (error) {
           console.error("Error submitting booking request:", error);
@@ -89,9 +77,11 @@ const BookNow = () => {
           last_name: '',
           email: '',
           phone: '',
-          selected_safari: '',
-          travel_date: '',
-          group_size: '',
+          preferred_destination: '',
+          check_in_date: '',
+          check_out_date: '',
+          adults: '',
+          children: '',
           accommodation_type: 'standard',
           special_requirements: ''
         });
@@ -167,54 +157,69 @@ const BookNow = () => {
           <div className="space-y-6">
             <h2 className="text-2xl font-bold text-safari-darkbrown">Safari Details</h2>
             <div>
-              <label htmlFor="selected_safari" className="block text-safari-brown mb-2">Select Safari Package*</label>
-              <select
-                id="selected_safari"
-                name="selected_safari"
-                value={bookingData.selected_safari}
+              <label htmlFor="preferred_destination" className="block text-safari-brown mb-2">Preferred Safari Destination*</label>
+              <input
+                type="text"
+                id="preferred_destination"
+                name="preferred_destination"
+                value={bookingData.preferred_destination}
                 onChange={handleChange}
                 className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-safari-gold"
+                placeholder="e.g. Masai Mara, Amboseli, Serengeti"
                 required
-              >
-                <option value="">Select a Safari Package</option>
-                {safariOptions.map((option) => (
-                  <option key={option.id} value={option.id}>
-                    {option.name} - {option.duration} - {option.price}
-                  </option>
-                ))}
-              </select>
+              />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label htmlFor="travel_date" className="block text-safari-brown mb-2">Preferred Travel Date*</label>
+                <label htmlFor="check_in_date" className="block text-safari-brown mb-2">Check-in Date*</label>
                 <input
                   type="date"
-                  id="travel_date"
-                  name="travel_date"
-                  value={bookingData.travel_date}
+                  id="check_in_date"
+                  name="check_in_date"
+                  value={bookingData.check_in_date}
                   onChange={handleChange}
                   className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-safari-gold"
                   required
                 />
               </div>
               <div>
-                <label htmlFor="group_size" className="block text-safari-brown mb-2">Group Size*</label>
-                <select
-                  id="group_size"
-                  name="group_size"
-                  value={bookingData.group_size}
+                <label htmlFor="check_out_date" className="block text-safari-brown mb-2">Check-out Date*</label>
+                <input
+                  type="date"
+                  id="check_out_date"
+                  name="check_out_date"
+                  value={bookingData.check_out_date}
                   onChange={handleChange}
                   className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-safari-gold"
                   required
-                >
-                  <option value="">Select Group Size</option>
-                  <option value="1">1 person</option>
-                  <option value="2">2 people</option>
-                  <option value="3-4">3-4 people</option>
-                  <option value="5-6">5-6 people</option>
-                  <option value="7-8">7-8 people</option>
-                  <option value="9+">9+ people</option>
-                </select>
+                />
+              </div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label htmlFor="adults" className="block text-safari-brown mb-2">Number of Adults*</label>
+                <input
+                  type="number"
+                  id="adults"
+                  name="adults"
+                  min="1"
+                  value={bookingData.adults}
+                  onChange={handleChange}
+                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-safari-gold"
+                  required
+                />
+              </div>
+              <div>
+                <label htmlFor="children" className="block text-safari-brown mb-2">Number of Children</label>
+                <input
+                  type="number"
+                  id="children"
+                  name="children"
+                  min="0"
+                  value={bookingData.children}
+                  onChange={handleChange}
+                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-safari-gold"
+                />
               </div>
             </div>
             <div>
@@ -283,9 +288,10 @@ const BookNow = () => {
                 <p><span className="font-semibold">Name:</span> {bookingData.first_name} {bookingData.last_name}</p>
                 <p><span className="font-semibold">Email:</span> {bookingData.email}</p>
                 <p><span className="font-semibold">Phone:</span> {bookingData.phone || 'Not provided'}</p>
-                <p><span className="font-semibold">Safari Package:</span> {safariOptions.find(option => option.id === bookingData.selected_safari)?.name || ''}</p>
-                <p><span className="font-semibold">Travel Date:</span> {bookingData.travel_date}</p>
-                <p><span className="font-semibold">Group Size:</span> {bookingData.group_size}</p>
+                <p><span className="font-semibold">Preferred Destination:</span> {bookingData.preferred_destination}</p>
+                <p><span className="font-semibold">Check-in Date:</span> {bookingData.check_in_date}</p>
+                <p><span className="font-semibold">Check-out Date:</span> {bookingData.check_out_date}</p>
+                <p><span className="font-semibold">Group Size:</span> {bookingData.adults} adults, {bookingData.children || '0'} children</p>
                 <p><span className="font-semibold">Accommodation Type:</span> {bookingData.accommodation_type.charAt(0).toUpperCase() + bookingData.accommodation_type.slice(1)}</p>
               </div>
             </div>
