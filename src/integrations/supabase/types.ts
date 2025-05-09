@@ -12,42 +12,51 @@ export type Database = {
       booking_requests: {
         Row: {
           accommodation_type: string
+          adults: string
+          check_in_date: string
+          check_out_date: string | null
+          children: string
           created_at: string
           email: string
           first_name: string
-          group_size: string
           id: string
           last_name: string
+          notes: string | null
           phone: string | null
           selected_safari: string
           special_requirements: string | null
-          travel_date: string
         }
         Insert: {
           accommodation_type: string
+          adults?: string
+          check_in_date: string
+          check_out_date?: string | null
+          children?: string
           created_at?: string
           email: string
           first_name: string
-          group_size: string
           id?: string
           last_name: string
+          notes?: string | null
           phone?: string | null
           selected_safari: string
           special_requirements?: string | null
-          travel_date: string
         }
         Update: {
           accommodation_type?: string
+          adults?: string
+          check_in_date?: string
+          check_out_date?: string | null
+          children?: string
           created_at?: string
           email?: string
           first_name?: string
-          group_size?: string
           id?: string
           last_name?: string
+          notes?: string | null
           phone?: string | null
           selected_safari?: string
           special_requirements?: string | null
-          travel_date?: string
         }
         Relationships: []
       }

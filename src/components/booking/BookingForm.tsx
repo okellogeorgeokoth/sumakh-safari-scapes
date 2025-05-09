@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -66,20 +65,20 @@ const BookingForm = () => {
       setIsSubmitting(true);
       
       try {
-        // Format the data for submission to match the database schema
+        // Format the data for submission to match the updated database schema
         const bookingData = {
           first_name: values.first_name,
           last_name: values.last_name,
           email: values.email,
           phone: values.phone || null,
           selected_safari: values.selected_safari,
-          travel_date: format(values.check_in_date, "yyyy-MM-dd"),
+          check_in_date: format(values.check_in_date, "yyyy-MM-dd"),
           check_out_date: format(values.check_out_date, "yyyy-MM-dd"),
           adults: values.adults,
           children: values.children,
-          group_size: `${values.adults} adults, ${values.children} children`,
           accommodation_type: values.accommodation_type,
-          special_requirements: values.special_requirements || null
+          special_requirements: values.special_requirements || null,
+          notes: null // Added to match the updated schema
         };
         
         const { error } = await supabase
