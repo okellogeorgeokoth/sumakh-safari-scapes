@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { useState } from 'react';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
@@ -57,11 +56,7 @@ const BookNow = () => {
       try {
         const { error } = await supabase
           .from('booking_requests')
-          .insert([{
-            ...bookingData,
-            adults: parseInt(bookingData.adults, 10),
-            children: bookingData.children ? parseInt(bookingData.children, 10) : 0
-          }]);
+          .insert([bookingData]);
           
         if (error) {
           console.error("Error submitting booking request:", error);
@@ -311,22 +306,115 @@ const BookNow = () => {
     }
   };
 
-=======
-
-import React from 'react';
-import NavBar from '../components/NavBar';
-import Footer from '../components/Footer';
-import BookingHeader from '../components/booking/BookingHeader';
-import BookingForm from '../components/booking/BookingForm';
-
-const BookNow = () => {
->>>>>>> 9bb207adf3f408ffb2e4fe9fa948e966ae42d9a8
   return (
     <div>
       <NavBar />
       <div className="min-h-screen">
-        <BookingHeader />
-        <BookingForm />
+        {/* Page Header */}
+        <div className="bg-safari-darkbrown py-20">
+          <div className="container mx-auto text-center px-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Book Your Safari</h1>
+            <p className="text-xl text-safari-beige max-w-2xl mx-auto">
+              Begin your journey to experience the magic of Africa's wilderness
+            </p>
+          </div>
+        </div>
+
+        {/* Booking Process Steps */}
+        <div className="container mx-auto py-12 px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="flex justify-between items-center mb-12">
+              <div 
+                className={`flex flex-col items-center ${
+                  step >= 1 ? 'text-safari-gold' : 'text-gray-400'
+                }`}
+              >
+                <div className={`w-10 h-10 rounded-full flex items-center justify-center mb-2 ${
+                  step >= 1 ? 'bg-safari-gold text-white' : 'bg-gray-200'
+                }`}>
+                  1
+                </div>
+                <span className="text-sm">Personal Info</span>
+              </div>
+              <div className={`flex-1 h-1 mx-2 ${
+                step >= 2 ? 'bg-safari-gold' : 'bg-gray-200'
+              }`}></div>
+              <div 
+                className={`flex flex-col items-center ${
+                  step >= 2 ? 'text-safari-gold' : 'text-gray-400'
+                }`}
+              >
+                <div className={`w-10 h-10 rounded-full flex items-center justify-center mb-2 ${
+                  step >= 2 ? 'bg-safari-gold text-white' : 'bg-gray-200'
+                }`}>
+                  2
+                </div>
+                <span className="text-sm">Safari Details</span>
+              </div>
+              <div className={`flex-1 h-1 mx-2 ${
+                step >= 3 ? 'bg-safari-gold' : 'bg-gray-200'
+              }`}></div>
+              <div 
+                className={`flex flex-col items-center ${
+                  step >= 3 ? 'text-safari-gold' : 'text-gray-400'
+                }`}
+              >
+                <div className={`w-10 h-10 rounded-full flex items-center justify-center mb-2 ${
+                  step >= 3 ? 'bg-safari-gold text-white' : 'bg-gray-200'
+                }`}>
+                  3
+                </div>
+                <span className="text-sm">Confirmation</span>
+              </div>
+            </div>
+
+            {/* Booking Form */}
+            <div className="bg-white p-8 rounded-lg shadow-lg">
+              <form onSubmit={handleSubmit}>
+                {renderStepContent()}
+                
+                <div className="flex justify-between mt-10">
+                  {step > 1 && (
+                    <Button
+                      type="button"
+                      variant="outline"
+                      className="border-safari-gold text-safari-gold hover:bg-safari-gold hover:text-white"
+                      onClick={() => setStep(step - 1)}
+                    >
+                      Previous
+                    </Button>
+                  )}
+                  <div className={step > 1 ? '' : 'ml-auto'}>
+                    <Button
+                      type="submit"
+                      className="bg-safari-gold hover:bg-safari-brown text-white px-8"
+                      disabled={isSubmitting}
+                    >
+                      {step === 3 ? (isSubmitting ? 'Submitting...' : 'Submit Booking') : 'Continue'}
+                    </Button>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            {/* Contact Information */}
+            <div className="mt-8 bg-safari-beige p-6 rounded-lg shadow">
+              <h3 className="text-lg font-bold text-safari-darkbrown mb-4">Need assistance?</h3>
+              <p className="text-safari-brown mb-4">
+                Our safari specialists are ready to help you plan your perfect African adventure.
+                Contact us directly for personalized assistance.
+              </p>
+              <div className="flex items-center">
+                <span className="text-safari-gold font-bold mr-2">Email:</span>
+                <span className="text-safari-brown">bookings@sumakhsafaris.com</span>
+              </div>
+              <div className="flex items-center mt-2">
+                <span className="text-safari-gold font-bold mr-2">Phone:</span>
+                <span className="text-safari-brown">+254 712 345 678</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <Footer />
     </div>
