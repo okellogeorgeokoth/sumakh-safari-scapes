@@ -32,7 +32,7 @@ const tourItems: TourItem[] = [
     location: "Masai Mara, Kenya",
     duration: "4 Days / 3 Nights",
     rating: 4.9,
-    image: "/lovable-uploads/masai-mara.png",
+    image: "/lovable-uploads/aberdare.jpg",
     highlights: ["Game drives in Masai Mara", "Visit Maasai village", "Hot air balloon safari"]
   },
   {
@@ -41,7 +41,7 @@ const tourItems: TourItem[] = [
     location: "Mombasa, Kenya",
     duration: "5 Days / 4 Nights",
     rating: 4.8,
-    image: "/lovable-uploads/mombasa-beach.png",
+    image: "/lovable-uploads/coastal.jpg",
     highlights: ["Old Town exploration", "Beach relaxation", "Fort Jesus visit"]
   },
   {
@@ -50,7 +50,7 @@ const tourItems: TourItem[] = [
     location: "Mount Kenya",
     duration: "6 Days / 5 Nights",
     rating: 4.7,
-    image: "/lovable-uploads/mount-kenya.png",
+    image: "/lovable-uploads/meru.jpeg",
     highlights: ["Point Lenana summit", "Mountain forests", "Alpine vegetation"]
   },
   {
@@ -59,7 +59,7 @@ const tourItems: TourItem[] = [
     location: "Amboseli, Kenya",
     duration: "3 Days / 2 Nights",
     rating: 5.0,
-    image: "/lovable-uploads/amboseli.png",
+    image: "/lovable-uploads/2134e863-3ca4-4039-84d7-9dd07c81e59f.png",
     highlights: ["Elephant sightings", "View of Kilimanjaro", "Game drives"]
   },
   {
@@ -68,7 +68,7 @@ const tourItems: TourItem[] = [
     location: "Naivasha & Nakuru",
     duration: "4 Days / 3 Nights",
     rating: 4.9,
-    image: "/lovable-uploads/lake-nakuru.png",
+    image: "/lovable-uploads/naivasha.jpg",
     highlights: ["Lake Nakuru flamingos", "Hell's Gate cycling", "Boat ride in Naivasha"]
   },
   {
@@ -77,7 +77,7 @@ const tourItems: TourItem[] = [
     location: "Samburu, Kenya",
     duration: "4 Days / 3 Nights",
     rating: 4.8,
-    image: "/lovable-uploads/samburu.png",
+    image: "/lovable-uploads/samburu.jpeg",
     highlights: ["Special five wildlife", "Cultural experience", "Ewaso Nyiro river"]
   }
 ];

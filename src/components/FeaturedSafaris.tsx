@@ -10,7 +10,6 @@ interface SafariCard {
   duration: string;
   location: string;
   groupSize: string;
-  price: string;
 }
 
 const safaris: SafariCard[] = [
@@ -21,8 +20,7 @@ const safaris: SafariCard[] = [
     image: "/lovable-uploads/0d822250-7ed2-4474-a513-653b6544aa6d.png",
     duration: "7 Days",
     location: "Tanzania",
-    groupSize: "2-8 people",
-    price: "$2,500"
+    groupSize: "2-8 people"
   },
   {
     id: "masai-mara",
@@ -31,8 +29,7 @@ const safaris: SafariCard[] = [
     image: "/lovable-uploads/95ba0202-21e5-4c0b-bbb3-aacb836f480f.png",
     duration: "5 Days",
     location: "Kenya",
-    groupSize: "2-6 people",
-    price: "$1,800"
+    groupSize: "2-6 people"
   },
   {
     id: "kruger-expedition",
@@ -41,8 +38,7 @@ const safaris: SafariCard[] = [
     image: "/lovable-uploads/dec41872-c8c3-4837-aeab-2ac82286def2.png",
     duration: "6 Days",
     location: "South Africa",
-    groupSize: "4-10 people",
-    price: "$2,200"
+    groupSize: "4-10 people"
   }
 ];
 
@@ -87,9 +83,6 @@ const SafariCard = ({ safari }: { safari: SafariCard }) => {
             alt={safari.title} 
             className="w-full h-64 object-cover transition-transform duration-300 hover:scale-105"
           />
-          <div className="absolute top-4 right-4 bg-safari-gold text-white font-bold py-2 px-4 rounded-full">
-            {safari.price}
-          </div>
         </Link>
       </div>
       <div className="p-6">

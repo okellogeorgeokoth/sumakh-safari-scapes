@@ -8,7 +8,7 @@ const safariPackages = [
     id: "tour-1",
     title: "Masai Mara Adventure",
     description: "Experience the wonder of the Masai Mara with our 5-day adventure safari. Witness the great migration and encounter Africa's magnificent wildlife up close.",
-    price: "From $1,200",
+   
     duration: "5 days",
     image: "/lovable-uploads/4e85ab06-cb98-486a-bfd7-861a79b562ab.png"
   },
@@ -16,7 +16,7 @@ const safariPackages = [
     id: "tour-2",
     title: "Serengeti Explorer",
     description: "Explore the vast plains of Serengeti National Park on this 7-day safari. Perfect for wildlife photographers and nature enthusiasts.",
-    price: "From $1,800",
+    
     duration: "7 days",
     image: "/lovable-uploads/b001e1c4-ee94-4106-bb1e-20a0ccabcace.png"
   },
@@ -24,7 +24,7 @@ const safariPackages = [
     id: "tour-3",
     title: "Amboseli & Tsavo Safari",
     description: "Combine two iconic Kenyan parks in one amazing 6-day journey. See elephants against the backdrop of Mt. Kilimanjaro.",
-    price: "From $1,500",
+   
     duration: "6 days",
     image: "/lovable-uploads/aa970d22-5828-4358-87ad-e46953031aeb.png"
   },
@@ -33,7 +33,7 @@ const safariPackages = [
     id: "tour-6",
     title: "Samburu Special",
     description: "Discover the unique wildlife of Samburu National Reserve, home to species not found in other Kenyan parks like the Grevy's zebra and reticulated giraffe.",
-    price: "From $1,400",
+    
     duration: "4 days",
     image: "/lovable-uploads/samburu.jpeg"
   },
@@ -41,7 +41,7 @@ const safariPackages = [
     id: "tour-7",
     title: "Lake Nakuru & Naivasha",
     description: "A birdwatcher's paradise featuring flamingos at Lake Nakuru and boat rides among hippos at Lake Naivasha.",
-    price: "From $1,100",
+    
     duration: "3 days",
     image: "/lovable-uploads/naivasha.jpg"
   },
@@ -49,7 +49,7 @@ const safariPackages = [
     id: "tour-8",
     title: "Laikipia Plateau Experience",
     description: "Exclusive wildlife viewing in Kenya's private conservancies with opportunities for walking safaris and night game drives.",
-    price: "From $1,800",
+    
     duration: "5 days",
     image: "/lovable-uploads/laiikipia.jpeg"
   },
@@ -57,7 +57,7 @@ const safariPackages = [
     id: "tour-9",
     title: "Meru National Park Adventure",
     description: "Explore the wild and less-visited Meru National Park, famous for its diverse landscapes and the setting of 'Born Free'.",
-    price: "From $1,600",
+    
     duration: "4 days",
     image: "/lovable-uploads/meru.jpeg"
   },
@@ -65,7 +65,7 @@ const safariPackages = [
     id: "tour-10",
     title: "Coastal & Tsavo Combo",
     description: "Combine wildlife viewing in Tsavo East/West with relaxation at Diani Beach for the perfect bush-and-beach holiday.",
-    price: "From $2,000",
+  
     duration: "7 days",
     image: "/lovable-uploads/coastal.jpg"
   },
@@ -73,7 +73,7 @@ const safariPackages = [
     id: "tour-11",
     title: "Aberdare Mountain Retreat",
     description: "Stay in unique tree lodges overlooking waterholes in Aberdare National Park, known for its dramatic waterfalls and dense forests.",
-    price: "From $1,300",
+    
     duration: "3 days",
     image: "/lovable-uploads/aberdare.jpg"
   },
@@ -81,7 +81,7 @@ const safariPackages = [
     id: "tour-4",
     title: "Luxury Kruger Expedition",
     description: "Experience South Africa's premier wildlife destination in luxury. This 8-day safari includes private game drives and premium accommodations.",
-    price: "From $2,300",
+    
     duration: "8 days",
     image: "/lovable-uploads/f3efa77a-b14d-41c7-9fc8-a6b63a8c267c.png"
   },
@@ -89,7 +89,7 @@ const safariPackages = [
     id: "tour-5",
     title: "Tanzania Northern Circuit",
     description: "Visit Tanzania's northern safari circuit including Tarangire, Ngorongoro Crater and the Serengeti on this comprehensive 10-day safari.",
-    price: "From $2,800",
+   
     duration: "10 days",
     image: "/lovable-uploads/0d822250-7ed2-4474-a513-653b6544aa6d.png"
   },
@@ -97,7 +97,7 @@ const safariPackages = [
     id: "serengeti-adventure",
     title: "Botswana Delta Safari",
     description: "Explore the unique Okavango Delta ecosystem by traditional mokoro canoe and safari vehicle on this unforgettable 6-day adventure.",
-    price: "From $2,100",
+
     duration: "6 days",
     image: "/lovable-uploads/2134e863-3ca4-4039-84d7-9dd07c81e59f.png"
   },
@@ -133,7 +133,6 @@ const Safaris = () => {
                 <div className="p-6">
                   <div className="flex justify-between items-center mb-4">
                     <span className="text-safari-gold font-semibold">{safari.duration}</span>
-                    <span className="text-safari-brown font-bold">{safari.price}</span>
                   </div>
                   <Link to={`/safaris/${safari.id}`} className="block hover:text-safari-gold transition-colors">
                     <h3 className="text-xl font-bold mb-2 text-safari-darkbrown">{safari.title}</h3>
