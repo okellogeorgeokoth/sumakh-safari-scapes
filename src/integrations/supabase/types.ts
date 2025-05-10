@@ -16,14 +16,17 @@ export type Database = {
           check_in_date: string
           check_out_date: string | null
           children: string
+          children_ages: string | null
           created_at: string
           email: string
-          first_name: string
+          first_name: string | null
           id: string
-          last_name: string
+          last_name: string | null
+          legal_name: string | null
           notes: string | null
           phone: string | null
-          selected_safari: string
+          preferred_destination: string | null
+          selected_safari: string | null
           special_requirements: string | null
         }
         Insert: {
@@ -32,14 +35,17 @@ export type Database = {
           check_in_date: string
           check_out_date?: string | null
           children?: string
+          children_ages?: string | null
           created_at?: string
           email: string
-          first_name: string
+          first_name?: string | null
           id?: string
-          last_name: string
+          last_name?: string | null
+          legal_name?: string | null
           notes?: string | null
           phone?: string | null
-          selected_safari: string
+          preferred_destination?: string | null
+          selected_safari?: string | null
           special_requirements?: string | null
         }
         Update: {
@@ -48,14 +54,17 @@ export type Database = {
           check_in_date?: string
           check_out_date?: string | null
           children?: string
+          children_ages?: string | null
           created_at?: string
           email?: string
-          first_name?: string
+          first_name?: string | null
           id?: string
-          last_name?: string
+          last_name?: string | null
+          legal_name?: string | null
           notes?: string | null
           phone?: string | null
-          selected_safari?: string
+          preferred_destination?: string | null
+          selected_safari?: string | null
           special_requirements?: string | null
         }
         Relationships: []
