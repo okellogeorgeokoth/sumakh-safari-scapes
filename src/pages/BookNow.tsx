@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
@@ -116,22 +115,9 @@ const BookNow = () => {
           <div className="space-y-6">
             <h2 className="text-2xl font-bold text-safari-darkbrown">Personal Information</h2>
             
-            <div>
-              <label htmlFor="legal_name" className="block text-safari-brown mb-2">Legal Name (as on travel documents)*</label>
-              <input
-                type="text"
-                id="legal_name"
-                name="legal_name"
-                value={bookingData.legal_name}
-                onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-safari-gold"
-                required
-              />
-            </div>
-            
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label htmlFor="first_name" className="block text-safari-brown mb-2">First Name</label>
+                <label htmlFor="first_name" className="block text-safari-brown mb-2">First Name*</label>
                 <input
                   type="text"
                   id="first_name"
@@ -139,10 +125,11 @@ const BookNow = () => {
                   value={bookingData.first_name}
                   onChange={handleChange}
                   className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-safari-gold"
+                  required
                 />
               </div>
               <div>
-                <label htmlFor="last_name" className="block text-safari-brown mb-2">Last Name</label>
+                <label htmlFor="last_name" className="block text-safari-brown mb-2">Last Name*</label>
                 <input
                   type="text"
                   id="last_name"
@@ -150,6 +137,7 @@ const BookNow = () => {
                   value={bookingData.last_name}
                   onChange={handleChange}
                   className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-safari-gold"
+                  required
                 />
               </div>
             </div>
@@ -207,21 +195,6 @@ const BookNow = () => {
                 />
               </div>
             </div>
-            
-            {bookingData.children && (
-              <div>
-                <label htmlFor="children_ages" className="block text-safari-brown mb-2">Children Ages (separate with commas)</label>
-                <input
-                  type="text"
-                  id="children_ages"
-                  name="children_ages"
-                  value={bookingData.children_ages}
-                  onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-safari-gold"
-                  placeholder="e.g. 5, 8, 12"
-                />
-              </div>
-            )}
           </div>
         );
       case 2:
@@ -230,12 +203,12 @@ const BookNow = () => {
             <h2 className="text-2xl font-bold text-safari-darkbrown">Safari Details</h2>
             
             <div>
-              <label htmlFor="preferred_destination" className="block text-safari-brown mb-2">Preferred Safari Destination*</label>
+              <label htmlFor="selected_safari" className="block text-safari-brown mb-2">Selected Safari*</label>
               <input
                 type="text"
-                id="preferred_destination"
-                name="preferred_destination"
-                value={bookingData.preferred_destination}
+                id="selected_safari"
+                name="selected_safari"
+                value={bookingData.selected_safari}
                 onChange={handleChange}
                 className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-safari-gold"
                 placeholder="e.g. Masai Mara, Amboseli, Serengeti"
@@ -244,7 +217,7 @@ const BookNow = () => {
             </div>
             
             <div>
-              <label htmlFor="preferred_month" className="block text-safari-brown mb-2">Preferred Month/Year*</label>
+              <label htmlFor="preferred_month" className="block text-safari-brown mb-2">Preferred Month/Year</label>
               <input
                 type="month"
                 id="preferred_month"
@@ -252,7 +225,6 @@ const BookNow = () => {
                 value={bookingData.preferred_month}
                 onChange={handleChange}
                 className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-safari-gold"
-                required
               />
             </div>
             
@@ -347,15 +319,12 @@ const BookNow = () => {
             <div className="bg-safari-beige p-6 rounded-lg">
               <h3 className="text-xl font-bold text-safari-darkbrown mb-4">Booking Summary</h3>
               <div className="space-y-2">
-                <p><span className="font-semibold">Legal Name:</span> {bookingData.legal_name}</p>
+                <p><span className="font-semibold">Name:</span> {bookingData.first_name} {bookingData.last_name}</p>
                 <p><span className="font-semibold">Email:</span> {bookingData.email}</p>
                 <p><span className="font-semibold">Phone:</span> {bookingData.phone || 'Not provided'}</p>
                 <p><span className="font-semibold">Travelers:</span> {bookingData.adults} adults, {bookingData.children || '0'} children</p>
-                {bookingData.children_ages && (
-                  <p><span className="font-semibold">Children Ages:</span> {bookingData.children_ages}</p>
-                )}
-                <p><span className="font-semibold">Destination:</span> {bookingData.preferred_destination}</p>
-                <p><span className="font-semibold">Preferred Month:</span> {bookingData.preferred_month}</p>
+                <p><span className="font-semibold">Safari:</span> {bookingData.selected_safari}</p>
+                <p><span className="font-semibold">Preferred Month:</span> {bookingData.preferred_month || 'Not specified'}</p>
                 <p><span className="font-semibold">Dates:</span> {bookingData.check_in_date} to {bookingData.check_out_date}</p>
                 <p><span className="font-semibold">Accommodation:</span> {bookingData.accommodation_type.charAt(0).toUpperCase() + bookingData.accommodation_type.slice(1)}</p>
               </div>
