@@ -11,61 +11,52 @@ export type Database = {
     Tables: {
       booking_requests: {
         Row: {
-          id: string
-          created_at: string
-          legal_name: string
-          first_name: string | null
-          last_name: string | null
-          email: string
-          phone: string | null
-          preferred_destination: string
-          preferred_month: string | null
-          check_in_date: string
-          check_out_date: string
-          adults: number
-          children: number | null
-          children_ages: string | null
           accommodation_type: string
+          adults: string
+          check_in_date: string
+          check_out_date: string | null
+          children: string
+          created_at: string
+          email: string
+          first_name: string
+          id: string
+          last_name: string
+          notes: string | null
+          phone: string | null
+          selected_safari: string
           special_requirements: string | null
-          agree_to_terms: boolean
         }
         Insert: {
-          id?: string
-          created_at?: string
-          legal_name: string
-          first_name?: string | null
-          last_name?: string | null
-          email: string
-          phone?: string | null
-          preferred_destination: string
-          preferred_month?: string | null
+          accommodation_type?: string
+          adults?: string
           check_in_date: string
-          check_out_date: string
-          adults: number
-          children?: number | null
-          children_ages?: string | null
-          accommodation_type: string
+          check_out_date?: string | null
+          children?: string
+          created_at?: string
+          email: string
+          first_name: string
+          id?: string
+          last_name: string
+          notes?: string | null
+          phone?: string | null
+          selected_safari: string
           special_requirements?: string | null
-          agree_to_terms: boolean
         }
         Update: {
-          id?: string
-          created_at?: string
-          legal_name?: string
-          first_name?: string | null
-          last_name?: string | null
-          email?: string
-          phone?: string | null
-          preferred_destination?: string
-          preferred_month?: string | null
-          check_in_date?: string
-          check_out_date?: string
-          adults?: number
-          children?: number | null
-          children_ages?: string | null
           accommodation_type?: string
+          adults?: string
+          check_in_date?: string
+          check_out_date?: string | null
+          children?: string
+          created_at?: string
+          email?: string
+          first_name?: string
+          id?: string
+          last_name?: string
+          notes?: string | null
+          phone?: string | null
+          selected_safari?: string
           special_requirements?: string | null
-          agree_to_terms?: boolean
         }
         Relationships: []
       }
