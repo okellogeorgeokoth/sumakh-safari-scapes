@@ -1,4 +1,3 @@
-
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
@@ -6,6 +5,8 @@ import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
 import { Avatar, AvatarImage, AvatarFallback } from '../components/ui/avatar';
 import { UserRound, Mail, MapPin } from 'lucide-react';
+import AboutSection from '../components/AboutSection';
+import { AspectRatio } from '../components/ui/aspect-ratio';
 
 const teamMembers = [
   {
@@ -95,29 +96,32 @@ const About = () => {
           <div className="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto">
             {teamMembers.slice(0, 2).map(leader => (
               <Card key={leader.id} className="overflow-hidden border-none shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <div className="relative">
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent rounded-t-lg"></div>
-                  <img 
-                    src={leader.image} 
-                    alt={leader.name} 
-                    className="w-full h-72 object-cover object-center rounded-t-lg"
-                  />
-                </div>
-                <CardContent className="pt-6">
-                  <h3 className="text-2xl font-bold text-safari-darkbrown mb-1">{leader.name}</h3>
-                  <p className="text-safari-gold font-medium mb-3">{leader.role}</p>
-                  <p className="text-safari-brown mb-4">{leader.bio}</p>
-                  <div className="flex flex-col space-y-2 text-sm text-safari-brown">
-                    <div className="flex items-center">
-                      <Mail size={16} className="mr-2 text-safari-gold" />
-                      <span>{leader.contact}</span>
-                    </div>
-                    <div className="flex items-center">
-                      <MapPin size={16} className="mr-2 text-safari-gold" />
-                      <span>{leader.location}</span>
+                <div className="p-6 flex flex-col md:flex-row md:items-start gap-6">
+                  <div className="md:w-1/3 flex-shrink-0">
+                    <AspectRatio ratio={1/1} className="bg-safari-beige rounded-lg overflow-hidden">
+                      <img 
+                        src={leader.image} 
+                        alt={leader.name} 
+                        className="w-full h-full object-cover object-center rounded-lg"
+                      />
+                    </AspectRatio>
+                  </div>
+                  <div className="md:w-2/3">
+                    <h3 className="text-2xl font-bold text-safari-darkbrown mb-1">{leader.name}</h3>
+                    <p className="text-safari-gold font-medium mb-3">{leader.role}</p>
+                    <p className="text-safari-brown mb-4">{leader.bio}</p>
+                    <div className="flex flex-col space-y-2 text-sm text-safari-brown">
+                      <div className="flex items-center">
+                        <Mail size={16} className="mr-2 text-safari-gold" />
+                        <span>{leader.contact}</span>
+                      </div>
+                      <div className="flex items-center">
+                        <MapPin size={16} className="mr-2 text-safari-gold" />
+                        <span>{leader.location}</span>
+                      </div>
                     </div>
                   </div>
-                </CardContent>
+                </div>
               </Card>
             ))}
           </div>
@@ -175,21 +179,14 @@ const About = () => {
             <div className="grid md:grid-cols-3 gap-10">
               {teamMembers.slice(2).map(member => (
                 <Card key={member.id} className="overflow-hidden border-none shadow-lg hover:shadow-xl transition-shadow duration-300">
-                  <div className="relative">
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent rounded-t-lg"></div>
-                    <img 
-                      src={member.image} 
-                      alt={member.name} 
-                      className="w-full h-64 object-cover rounded-t-lg"
-                    />
-                    <Avatar className="absolute bottom-4 left-4 h-24 w-24 border-4 border-white shadow-md">
-                      <AvatarImage src={member.image} alt={member.name} />
-                      <AvatarFallback className="bg-safari-gold text-white text-2xl">
-                        {member.name.split(' ').map(n => n[0]).join('')}
-                      </AvatarFallback>
-                    </Avatar>
-                  </div>
-                  <CardContent className="pt-6">
+                  <div className="p-6">
+                    <AspectRatio ratio={1/1} className="mb-6 bg-safari-beige rounded-lg overflow-hidden">
+                      <img 
+                        src={member.image} 
+                        alt={member.name} 
+                        className="w-full h-full object-cover object-center"
+                      />
+                    </AspectRatio>
                     <h3 className="text-xl font-bold text-safari-darkbrown mb-1">{member.name}</h3>
                     <p className="text-safari-gold font-medium mb-3">{member.role}</p>
                     <p className="text-safari-brown mb-4">{member.bio}</p>
@@ -207,7 +204,7 @@ const About = () => {
                         <span>{member.location}</span>
                       </div>
                     </div>
-                  </CardContent>
+                  </div>
                 </Card>
               ))}
             </div>
