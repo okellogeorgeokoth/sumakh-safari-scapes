@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
@@ -8,18 +9,16 @@ import { supabase } from '@/integrations/supabase/client';
 const BookNow = () => {
   const [step, setStep] = useState(1);
   const [bookingData, setBookingData] = useState({
-    legal_name: '',
     first_name: '',
     last_name: '',
     email: '',
     phone: '',
-    preferred_destination: '',
+    selected_safari: '',
     preferred_month: '',
     check_in_date: '',
     check_out_date: '',
-    adults: '',
-    children: '',
-    children_ages: '',
+    adults: '1',  // Changed to string to match database schema
+    children: '0', // Changed to string to match database schema
     accommodation_type: 'standard',
     special_requirements: '',
     agree_to_terms: false
@@ -40,14 +39,14 @@ const BookNow = () => {
     e.preventDefault();
     
     if (step === 1) {
-      if (!bookingData.legal_name || !bookingData.email || !bookingData.adults) {
+      if (!bookingData.first_name || !bookingData.email || !bookingData.adults) {
         toast.error("Please fill in all required fields");
         return;
       }
       setStep(2);
       window.scrollTo(0, 0);
     } else if (step === 2) {
-      if (!bookingData.preferred_destination || !bookingData.preferred_month || !bookingData.check_in_date || !bookingData.check_out_date) {
+      if (!bookingData.selected_safari || !bookingData.check_in_date || !bookingData.check_out_date) {
         toast.error("Please fill in all required fields");
         return;
       }
@@ -62,13 +61,23 @@ const BookNow = () => {
       setIsSubmitting(true);
       
       try {
+        // Format the data to match the updated database schema
         const { error } = await supabase
           .from('booking_requests')
-          .insert([{
-            ...bookingData,
-            adults: parseInt(bookingData.adults, 10),
-            children: bookingData.children ? parseInt(bookingData.children, 10) : 0
-          }]);
+          .insert({
+            first_name: bookingData.first_name,
+            last_name: bookingData.last_name,
+            email: bookingData.email,
+            phone: bookingData.phone || null,
+            selected_safari: bookingData.selected_safari,
+            check_in_date: bookingData.check_in_date,
+            check_out_date: bookingData.check_out_date || null,
+            adults: bookingData.adults,
+            children: bookingData.children,
+            accommodation_type: bookingData.accommodation_type,
+            special_requirements: bookingData.special_requirements || null,
+            notes: null
+          });
           
         if (error) throw error;
         
@@ -76,18 +85,16 @@ const BookNow = () => {
         
         // Reset form
         setBookingData({
-          legal_name: '',
           first_name: '',
           last_name: '',
           email: '',
           phone: '',
-          preferred_destination: '',
+          selected_safari: '',
           preferred_month: '',
           check_in_date: '',
           check_out_date: '',
-          adults: '',
-          children: '',
-          children_ages: '',
+          adults: '1',
+          children: '0',
           accommodation_type: 'standard',
           special_requirements: '',
           agree_to_terms: false
