@@ -2,10 +2,8 @@ import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
 import { Button } from '../components/ui/button';
-import { Card, CardContent } from '../components/ui/card';
-import { Avatar, AvatarImage, AvatarFallback } from '../components/ui/avatar';
+import { Card } from '../components/ui/card';
 import { UserRound, Mail, MapPin } from 'lucide-react';
-import AboutSection from '../components/AboutSection';
 import { AspectRatio } from '../components/ui/aspect-ratio';
 
 const teamMembers = [
@@ -167,7 +165,7 @@ const About = () => {
           </div>
         </div>
 
-        {/* Meet Our Team Section */}
+        {/* Meet Our Team Section 
         <div className="bg-white py-16 px-4">
           <div className="container mx-auto">
             <h2 className="text-3xl font-bold text-safari-darkbrown text-center mb-4">Meet Our Team</h2>
@@ -209,7 +207,7 @@ const About = () => {
               ))}
             </div>
           </div>
-        </div>
+        </div>*/}
 
         {/* Conservation Section */}
         <div className="bg-safari-darkbrown py-16 px-4">
