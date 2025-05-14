@@ -196,17 +196,7 @@ const BookNow = () => {
                   required
                 />
               </div>
-              <div>
-                <label htmlFor="last_name" className="block text-safari-brown mb-2">Last Name</label>
-                <input
-                  type="text"
-                  id="last_name"
-                  name="last_name"
-                  value={bookingData.last_name}
-                  onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-safari-gold"
-                />
-              </div>
+
               <div>
                 <label htmlFor="nationality" className="block text-safari-brown mb-2">Nationality</label>
                 <input
