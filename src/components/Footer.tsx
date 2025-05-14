@@ -87,7 +87,7 @@ const Footer = () => {
             <ul className="space-y-4">
               <li className="flex items-start">
                 <MapPin className="mr-3 h-5 w-5 text-safari-gold shrink-0 mt-1" />
-                <span>Safari House, Wildlife Road<br />Nairobi, Kenya</span>
+                <span>Safari House, Samburu County<br />Samburu, Kenya</span>
               </li>
               <li className="flex items-center">
                 <Phone className="mr-3 h-5 w-5 text-safari-gold" />
