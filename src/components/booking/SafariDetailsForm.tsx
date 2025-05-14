@@ -8,15 +8,11 @@ import { Button } from "@/components/ui/button";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
 import { CalendarIcon } from "lucide-react";
+import { SafariOption } from './SafariOptions';
 
 interface SafariDetailsFormProps {
   form: UseFormReturn<any>;
-  safariOptions: {
-    id: string;
-    name: string;
-    location: string;
-    duration: string;
-  }[];
+  safariOptions: SafariOption[];
 }
 
 const SafariDetailsForm = ({ form, safariOptions }: SafariDetailsFormProps) => {
@@ -38,7 +34,7 @@ const SafariDetailsForm = ({ form, safariOptions }: SafariDetailsFormProps) => {
                 <option value="">Select a Safari Package</option>
                 {safariOptions.map((option) => (
                   <option key={option.id} value={option.id}>
-                    {option.name} - {option.location} - {option.duration}
+                    {option.name} - {option.location}
                   </option>
                 ))}
               </select>
