@@ -12,6 +12,11 @@ const heroImages = [
 
 const HeroSection = () => {
   const [currentImage, setCurrentImage] = useState(0);
+  
+  // Add logging to confirm component is rendering
+  useEffect(() => {
+    console.log('HeroSection rendered');
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {

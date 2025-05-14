@@ -4,11 +4,11 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { StrictMode } from 'react'; // Import StrictMode
+import { StrictMode, useEffect } from 'react'; // Import useEffect
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Safaris from "./pages/Safaris";
-import SafariDetails from "./pages/SafariDetails"; // Import the correct component
+import SafariDetails from "./pages/SafariDetails";
 import Destinations from "./pages/Destinations";
 import Gallery from "./pages/Gallery";
 import About from "./pages/About";
@@ -28,6 +28,11 @@ const queryClient = new QueryClient({
 
 // Properly define App as a function component
 const App = () => {
+  // Add log to confirm App is rendering
+  useEffect(() => {
+    console.log('App component rendered');
+  }, []);
+
   return (
     <StrictMode>
       <QueryClientProvider client={queryClient}>

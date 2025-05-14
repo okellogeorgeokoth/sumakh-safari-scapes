@@ -9,19 +9,28 @@ import CallToAction from '../components/CallToAction';
 import NewsletterSection from '../components/NewsletterSection';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
+import { useEffect } from 'react';
 
 const Index = () => {
+  // Add a simple useEffect to log when the component renders
+  useEffect(() => {
+    console.log('Index page rendered');
+    // This will help us confirm the page is loading correctly
+  }, []);
+
   return (
-    <div>
+    <div className="min-h-screen">
       <NavBar />
-      <HeroSection />
-      <FeaturedSafaris />
-      <ExploreToursSection />
-      <AboutSection />
-      <GallerySection />
-      <Testimonials />
-      <CallToAction />
-      <NewsletterSection />
+      <main>
+        <HeroSection />
+        <FeaturedSafaris />
+        <ExploreToursSection />
+        <AboutSection />
+        <GallerySection />
+        <Testimonials />
+        <CallToAction />
+        <NewsletterSection />
+      </main>
       <Footer />
     </div>
   );
