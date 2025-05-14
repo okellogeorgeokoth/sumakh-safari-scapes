@@ -46,10 +46,10 @@ const HeroSection = () => {
       <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-4">
         <div className="max-w-4xl animate-fade-in">
           <h1 className="text-white text-4xl md:text-5xl lg:text-6xl font-bold font-heading mb-6">
-            Experience the Magic of African Wildlife
+            Experience the Magic of African Wildlife and Real African Culture
           </h1>
           <p className="text-white text-lg md:text-xl mb-8">
-            Discover untamed wilderness with our expert guides and unforgettable safari experiences
+            Discover untamed wilderness and authentic Samburu cultural experiences with our expert guides
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link

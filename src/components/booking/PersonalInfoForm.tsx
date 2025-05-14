@@ -1,9 +1,8 @@
 
-import React from 'react';
+import React from "react";
 import { UseFormReturn } from "react-hook-form";
 import { FormField, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { z } from "zod";
 
 interface PersonalInfoFormProps {
   form: UseFormReturn<any>;
@@ -22,13 +21,12 @@ const PersonalInfoForm = ({ form }: PersonalInfoFormProps) => {
             <FormItem>
               <FormLabel className="text-safari-brown">First Name*</FormLabel>
               <FormControl>
-                <Input {...field} className="focus:ring-safari-gold" />
+                <Input placeholder="Enter your first name" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
-        
         <FormField
           control={form.control}
           name="last_name"
@@ -36,7 +34,50 @@ const PersonalInfoForm = ({ form }: PersonalInfoFormProps) => {
             <FormItem>
               <FormLabel className="text-safari-brown">Last Name*</FormLabel>
               <FormControl>
-                <Input {...field} className="focus:ring-safari-gold" />
+                <Input placeholder="Enter your last name" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+      </div>
+
+      <FormField
+        control={form.control}
+        name="nationality"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel className="text-safari-brown">Nationality*</FormLabel>
+            <FormControl>
+              <Input placeholder="Enter your nationality" {...field} />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="text-safari-brown">Email Address*</FormLabel>
+              <FormControl>
+                <Input type="email" placeholder="Enter your email" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="phone"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="text-safari-brown">Phone Number</FormLabel>
+              <FormControl>
+                <Input type="tel" placeholder="Enter your phone number" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -44,33 +85,34 @@ const PersonalInfoForm = ({ form }: PersonalInfoFormProps) => {
         />
       </div>
       
-      <FormField
-        control={form.control}
-        name="email"
-        render={({ field }) => (
-          <FormItem>
-            <FormLabel className="text-safari-brown">Email*</FormLabel>
-            <FormControl>
-              <Input {...field} type="email" className="focus:ring-safari-gold" />
-            </FormControl>
-            <FormMessage />
-          </FormItem>
-        )}
-      />
-      
-      <FormField
-        control={form.control}
-        name="phone"
-        render={({ field }) => (
-          <FormItem>
-            <FormLabel className="text-safari-brown">Phone Number</FormLabel>
-            <FormControl>
-              <Input {...field} type="tel" className="focus:ring-safari-gold" />
-            </FormControl>
-            <FormMessage />
-          </FormItem>
-        )}
-      />
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <FormField
+          control={form.control}
+          name="adults"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="text-safari-brown">Number of Adults*</FormLabel>
+              <FormControl>
+                <Input type="number" min="1" placeholder="Enter number of adults" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="children"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="text-safari-brown">Number of Children</FormLabel>
+              <FormControl>
+                <Input type="number" min="0" placeholder="Enter number of children" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+      </div>
     </div>
   );
 };

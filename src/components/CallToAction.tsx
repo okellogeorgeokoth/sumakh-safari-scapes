@@ -18,7 +18,7 @@ const CallToAction = () => {
             Ready for Your African Adventure?
           </h2>
           <p className="text-safari-beige text-lg mb-8">
-            Contact us today to plan your dream safari adventure. Our expert team is ready to create 
+            Contact us today to plan your dream safari adventure combining wildlife encounters with authentic cultural experiences. Our expert team is ready to create 
             a customized itinerary that matches your interests and preferences.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">

@@ -1,5 +1,5 @@
 
-import { Camera, Shield, Compass, Award } from 'lucide-react';
+import { Camera, Shield, Compass, Award, Users } from 'lucide-react';
 
 const AboutSection = () => {
   return (
@@ -13,13 +13,14 @@ const AboutSection = () => {
             </h2>
             <div className="w-24 h-1 bg-safari-gold mb-8"></div>
             <p className="text-lg text-safari-darkbrown mb-6">
-              SUMAKH SAFARIS offers unforgettable wildlife adventures across Africa's most spectacular landscapes. 
-              With over 15 years of experience, our team of expert guides ensures an authentic and immersive safari 
+              Based in Samburu County, SUMAKH SAFARIS offers unforgettable wildlife adventures across Africa's most spectacular 
+              landscapes. With over 15 years of experience, our team of expert guides ensures an authentic and immersive safari 
               experience that connects you with nature and local cultures.
             </p>
             <p className="text-lg text-safari-darkbrown mb-8">
-              We are committed to sustainable tourism and conservation efforts, working closely with local 
-              communities and wildlife preservation initiatives to protect the magnificent ecosystems we visit.
+              We are proud to showcase not only the magnificent wildlife but also the rich Samburu culture and numerous natural 
+              wonders of the region. Our commitment to sustainable tourism and conservation efforts includes working closely with 
+              local communities and wildlife preservation initiatives to protect the magnificent ecosystems we visit.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -82,9 +83,14 @@ const advantages = [
     description: "Comprehensive safety measures and experienced guides ensure your protection."
   },
   {
+    icon: <Users size={24} />,
+    title: "Cultural Immersion",
+    description: "Authentic interactions with Samburu communities and traditional ceremonies."
+  },
+  {
     icon: <Compass size={24} />,
     title: "Local Knowledge",
-    description: "Deep understanding of wildlife habitats and animal behavior patterns."
+    description: "Deep understanding of wildlife habitats, natural features, and cultural traditions."
   },
   {
     icon: <Award size={24} />,

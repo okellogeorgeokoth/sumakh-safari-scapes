@@ -19,6 +19,7 @@ import { safariOptions } from './SafariOptions';
 const formSchema = z.object({
   first_name: z.string().min(2, { message: "First name must be at least 2 characters." }),
   last_name: z.string().min(2, { message: "Last name must be at least 2 characters." }),
+  nationality: z.string().min(2, { message: "Please enter your nationality." }),
   email: z.string().email({ message: "Please enter a valid email address." }),
   phone: z.string().optional(),
   selected_safari: z.string().min(1, { message: "Please select a safari." }),
@@ -41,6 +42,7 @@ const BookingForm = () => {
     defaultValues: {
       first_name: "",
       last_name: "",
+      nationality: "",
       email: "",
       phone: "",
       selected_safari: "",
@@ -70,6 +72,7 @@ const BookingForm = () => {
         const bookingData = {
           first_name: values.first_name,
           last_name: values.last_name,
+          nationality: values.nationality,
           email: values.email,
           phone: values.phone || null,
           selected_safari: values.selected_safari,
@@ -100,7 +103,10 @@ const BookingForm = () => {
           },
           body: JSON.stringify({
             type: 'booking',
-            data: bookingData
+            data: {
+              ...bookingData,
+              recipientEmail: 'info@sumakhsafaris.com'
+            }
           }),
         });
         
