@@ -210,7 +210,7 @@ const BookNow = () => {
               <div>
                 <label htmlFor="phone" className="block text-safari-brown mb-2">Nationality</label>
                 <input
-                  type="tel"
+                  type="text"
                   id="nationality"
                   name="naitonality"
                   value={bookingData.nationality}
