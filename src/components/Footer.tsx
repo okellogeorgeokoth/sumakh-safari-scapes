@@ -1,3 +1,4 @@
+
 import { Link } from 'react-router-dom';
 import { Facebook, Instagram, Mail, Phone, MapPin } from 'lucide-react';
 import { FaXTwitter, FaWhatsapp } from 'react-icons/fa6';
@@ -90,7 +91,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center">
                 <Phone className="mr-3 h-5 w-5 text-safari-gold" />
-                <span>+254 123 456 789</span>
+                <span>+254 792 465156</span>
               </li>
               <li className="flex items-center">
                 <Mail className="mr-3 h-5 w-5 text-safari-gold" />
@@ -135,7 +136,7 @@ const Footer = () => {
               <a href="#" className="text-white hover:text-safari-gold transition-colors">
                 <Instagram size={20} />
               </a>
-              <a href="https://wa.me/254123456789" className="text-white hover:text-safari-gold transition-colors">
+              <a href="https://wa.me/254792465156" className="text-white hover:text-safari-gold transition-colors">
                 <FaWhatsapp size={20} />
               </a>
             </div>

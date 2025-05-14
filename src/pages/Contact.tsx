@@ -192,7 +192,7 @@ const Contact = () => {
                     <Phone className="text-safari-gold mr-4 flex-shrink-0" size={24} />
                     <div>
                       <h3 className="font-semibold text-safari-brown">Phone</h3>
-                      <p className="text-safari-brown">+254 712 345 678</p>
+                      <p className="text-safari-brown">+254 792 465156</p>
                     </div>
                   </div>
                   <div className="flex items-center">
