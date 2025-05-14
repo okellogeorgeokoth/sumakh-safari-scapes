@@ -202,8 +202,8 @@ const Contact = () => {
                     <div>
                       <h3 className="font-semibold text-safari-brown">Main Office</h3>
                       <p className="text-safari-brown">
-                        Sumakh House, Karen Road<br />
-                        Nairobi, Kenya
+                        Samburu County<br />
+                        Samburu, Kenya
                       </p>
                     </div>
                   </div>

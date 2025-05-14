@@ -51,7 +51,7 @@ const HeroSection = () => {
       <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-4">
         <div className="max-w-4xl animate-fade-in">
           <h1 className="text-white text-4xl md:text-5xl lg:text-6xl font-bold font-heading mb-6">
-            Experience the Magic of African Wildlife and Real African Culture
+            Experience the Magic of African Wildlife and Rich African Culture
           </h1>
           <p className="text-white text-lg md:text-xl mb-8">
             Discover untamed wilderness and authentic Samburu cultural experiences with our expert guides

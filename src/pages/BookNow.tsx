@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import { Button } from '../components/ui/button';
@@ -402,12 +402,11 @@ const BookNow = () => {
                 <label htmlFor="agree_to_terms" className="text-safari-brown">
                   I agree to the terms and conditions and privacy policy. I understand that a 30% deposit 
                   will be required to confirm my booking and that my personal information will be handled 
-                  confidentially according to GDPR regulations.
+                  confidentially according to Global Data Protection regulations.
                 </label>
               </div>
               <p className="text-sm text-safari-brown">
-                Our privacy policy ensures your personal information is protected. We will only use your 
-                email address to communicate about your booking and will not share it with third parties 
+                Our privacy policy ensures your personal information is protected. We will only use information to communicate about your booking and will not share it with third parties 
                 without your consent.
               </p>
             </div>
@@ -523,7 +522,7 @@ const BookNow = () => {
               </div>
               <div className="flex items-center mt-2">
                 <span className="text-safari-gold font-bold mr-2">Phone:</span>
-                <span className="text-safari-brown">+254 712 345 678</span>
+                <span className="text-safari-brown">+254 792 465156</span>
               </div>
             </div>
           </div>
