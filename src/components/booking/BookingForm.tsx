@@ -92,6 +92,24 @@ const BookingForm = () => {
           return;
         }
         
+        // Send email notification
+        const response = await fetch('https://kkslhmagkyoujwxgfaha.supabase.co/functions/v1/send-notification', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            type: 'booking',
+            data: bookingData
+          }),
+        });
+        
+        if (!response.ok) {
+          // If email fails, we still consider the booking successful
+          // since we already saved to the database
+          console.warn('Email notification failed, but booking was saved');
+        }
+        
         toast.success("Your booking request has been submitted successfully!");
         console.log("Booking data:", bookingData);
         

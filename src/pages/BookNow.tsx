@@ -64,27 +64,47 @@ const BookNow = () => {
       
       try {
         // Format the data for submission to match the updated database schema
+        const formattedData = {
+          legal_name: bookingData.legal_name,
+          first_name: bookingData.first_name,
+          last_name: bookingData.last_name,
+          email: bookingData.email,
+          phone: bookingData.phone || null,
+          preferred_destination: bookingData.preferred_destination,
+          selected_safari: null, // This field is not used in the new form
+          check_in_date: bookingData.check_in_date,
+          check_out_date: bookingData.check_out_date,
+          adults: bookingData.adults,
+          children: bookingData.children || '0',
+          children_ages: bookingData.children_ages || null,
+          accommodation_type: bookingData.accommodation_type,
+          special_requirements: bookingData.special_requirements || null,
+          notes: null
+        };
+        
         const { error } = await supabase
           .from('booking_requests')
-          .insert({
-            legal_name: bookingData.legal_name,
-            first_name: bookingData.first_name,
-            last_name: bookingData.last_name,
-            email: bookingData.email,
-            phone: bookingData.phone || null,
-            preferred_destination: bookingData.preferred_destination,
-            selected_safari: null, // This field is not used in the new form
-            check_in_date: bookingData.check_in_date,
-            check_out_date: bookingData.check_out_date,
-            adults: bookingData.adults,
-            children: bookingData.children || '0',
-            children_ages: bookingData.children_ages || null,
-            accommodation_type: bookingData.accommodation_type,
-            special_requirements: bookingData.special_requirements || null,
-            notes: null
-          });
+          .insert(formattedData);
           
         if (error) throw error;
+        
+        // Send email notification
+        const response = await fetch('https://kkslhmagkyoujwxgfaha.supabase.co/functions/v1/send-notification', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            type: 'booking',
+            data: formattedData
+          }),
+        });
+        
+        if (!response.ok) {
+          // If email fails, we still consider the booking successful
+          // since we already saved to the database
+          console.warn('Email notification failed, but booking was saved');
+        }
         
         toast.success("Your booking request has been submitted successfully!");
         
