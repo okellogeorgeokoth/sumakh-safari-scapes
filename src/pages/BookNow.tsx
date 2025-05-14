@@ -208,11 +208,11 @@ const BookNow = () => {
                 />
               </div>
               <div>
-                <label htmlFor="phone" className="block text-safari-brown mb-2">Nationality</label>
+                <label htmlFor="nationality" className="block text-safari-brown mb-2">Nationality</label>
                 <input
                   type="text"
                   id="nationality"
-                  name="naitonality"
+                  name="nationality"
                   value={bookingData.nationality}
                   onChange={handleChange}
                   className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-safari-gold"
