@@ -14,6 +14,7 @@ const BookNow = () => {
     last_name: '',
     email: '',
     phone: '',
+    nationality: '',
     preferred_destination: '',
     preferred_month: '',
     check_in_date: '',
@@ -114,6 +115,7 @@ const BookNow = () => {
           first_name: '',
           last_name: '',
           email: '',
+          nationality: '',
           phone: '',
           preferred_destination: '',
           preferred_month: '',
@@ -195,12 +197,23 @@ const BookNow = () => {
                 />
               </div>
               <div>
-                <label htmlFor="phone" className="block text-safari-brown mb-2">Phone Number</label>
+                <label htmlFor="last_name" className="block text-safari-brown mb-2">Last Name</label>
+                <input
+                  type="text"
+                  id="last_name"
+                  name="last_name"
+                  value={bookingData.last_name}
+                  onChange={handleChange}
+                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-safari-gold"
+                />
+              </div>
+              <div>
+                <label htmlFor="phone" className="block text-safari-brown mb-2">Nationality</label>
                 <input
                   type="tel"
-                  id="phone"
-                  name="phone"
-                  value={bookingData.phone}
+                  id="nationality"
+                  name="naitonality"
+                  value={bookingData.nationality}
                   onChange={handleChange}
                   className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-safari-gold"
                 />
@@ -376,6 +389,7 @@ const BookNow = () => {
               <div className="space-y-2">
                 <p><span className="font-semibold">Legal Name:</span> {bookingData.legal_name}</p>
                 <p><span className="font-semibold">Email:</span> {bookingData.email}</p>
+                <p><span className="font-semibold">Nationality:</span> {bookingData.nationality || 'Not provided'}</p>
                 <p><span className="font-semibold">Phone:</span> {bookingData.phone || 'Not provided'}</p>
                 <p><span className="font-semibold">Travelers:</span> {bookingData.adults} adults, {bookingData.children || '0'} children</p>
                 {bookingData.children_ages && (
