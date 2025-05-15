@@ -48,10 +48,10 @@ const NavBar = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             <NavLink href="/" label="Home" />
+            <NavLink href="/about" label="About" />
             <NavLink href="/safaris" label="Safaris" />
             <NavLink href="/destinations" label="Destinations" />
             <NavLink href="/gallery" label="Gallery" />
-            <NavLink href="/about" label="About" />
             <NavLink href="/contact" label="Contact" />
             <button className="px-6 py-2 bg-safari-gold text-white rounded hover:bg-safari-brown transition-colors">
             <NavLink href="/BookNow" label="Book Now" />
