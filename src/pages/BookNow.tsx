@@ -76,18 +76,20 @@ const BookNow = () => {
       setIsSubmitting(true);
       
       try {
-        // Format the data for submission to match the updated database schema
+        console.log("Submitting booking data:", bookingData);
+        
+        // Format the data for submission to match the database schema
         const formattedData = {
           legal_name: bookingData.legal_name,
-          first_name: bookingData.first_name,
-          last_name: bookingData.last_name,
+          first_name: bookingData.first_name || null,
+          last_name: bookingData.last_name || null,
           email: bookingData.email,
           phone: bookingData.phone || null,
-          nationality: bookingData.nationality, // Ensure nationality is included
+          nationality: bookingData.nationality,
           preferred_destination: bookingData.preferred_destination,
-          selected_safari: null, // This field is not used in the new form
+          selected_safari: null,
           check_in_date: bookingData.check_in_date,
-          check_out_date: bookingData.check_out_date,
+          check_out_date: bookingData.check_out_date || null,
           adults: bookingData.adults,
           children: bookingData.children || '0',
           children_ages: bookingData.children_ages || null,
@@ -96,28 +98,40 @@ const BookNow = () => {
           notes: null
         };
         
-        const { error } = await supabase
+        console.log("Formatted data for Supabase:", formattedData);
+        
+        const { error, data } = await supabase
           .from('booking_requests')
-          .insert(formattedData);
+          .insert(formattedData)
+          .select();
           
-        if (error) throw error;
+        if (error) {
+          console.error("Supabase error:", error);
+          throw error;
+        }
+        
+        console.log("Booking submitted successfully:", data);
         
         // Send email notification
-        const response = await fetch('https://kkslhmagkyoujwxgfaha.supabase.co/functions/v1/send-notification', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            type: 'booking',
-            data: formattedData
-          }),
-        });
-        
-        if (!response.ok) {
-          // If email fails, we still consider the booking successful
-          // since we already saved to the database
-          console.warn('Email notification failed, but booking was saved');
+        try {
+          const response = await fetch('https://kkslhmagkyoujwxgfaha.supabase.co/functions/v1/send-notification', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              type: 'booking',
+              data: formattedData
+            }),
+          });
+          
+          if (!response.ok) {
+            console.warn('Email notification failed, but booking was saved');
+          } else {
+            console.log("Email notification sent successfully");
+          }
+        } catch (emailError) {
+          console.warn('Email notification error:', emailError);
         }
         
         toast({
@@ -146,7 +160,7 @@ const BookNow = () => {
         });
         setStep(1);
       } catch (error) {
-        console.error("Error:", error);
+        console.error("Error submitting booking:", error);
         toast({
           title: "Failed",
           description: "Failed to submit your booking. Please try again.",
