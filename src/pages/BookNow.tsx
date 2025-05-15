@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import { Button } from '../components/ui/button';
-import { toast } from 'sonner';
+import { toast } from '../components/ui/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 
 const BookNow = () => {
@@ -42,22 +42,34 @@ const BookNow = () => {
     e.preventDefault();
     
     if (step === 1) {
-      if (!bookingData.legal_name || !bookingData.email || !bookingData.adults) {
-        toast.error("Please fill in all required fields");
+      if (!bookingData.legal_name || !bookingData.email || !bookingData.adults || !bookingData.nationality) {
+        toast({
+          title: "Error",
+          description: "Please fill in all required fields, including nationality",
+          variant: "destructive"
+        });
         return;
       }
       setStep(2);
       window.scrollTo(0, 0);
     } else if (step === 2) {
       if (!bookingData.preferred_destination || !bookingData.preferred_month || !bookingData.check_in_date || !bookingData.check_out_date) {
-        toast.error("Please fill in all required fields");
+        toast({
+          title: "Error",
+          description: "Please fill in all required fields",
+          variant: "destructive"
+        });
         return;
       }
       setStep(3);
       window.scrollTo(0, 0);
     } else {
       if (!bookingData.agree_to_terms) {
-        toast.error("Please agree to the terms and conditions");
+        toast({
+          title: "Error",
+          description: "Please agree to the terms and conditions",
+          variant: "destructive"
+        });
         return;
       }
       
@@ -71,6 +83,7 @@ const BookNow = () => {
           last_name: bookingData.last_name,
           email: bookingData.email,
           phone: bookingData.phone || null,
+          nationality: bookingData.nationality, // Ensure nationality is included
           preferred_destination: bookingData.preferred_destination,
           selected_safari: null, // This field is not used in the new form
           check_in_date: bookingData.check_in_date,
@@ -107,7 +120,10 @@ const BookNow = () => {
           console.warn('Email notification failed, but booking was saved');
         }
         
-        toast.success("Your booking request has been submitted successfully!");
+        toast({
+          title: "Success",
+          description: "Your booking request has been submitted successfully!",
+        });
         
         // Reset form
         setBookingData({
@@ -131,7 +147,11 @@ const BookNow = () => {
         setStep(1);
       } catch (error) {
         console.error("Error:", error);
-        toast.error("Failed to submit your booking. Please try again.");
+        toast({
+          title: "Failed",
+          description: "Failed to submit your booking. Please try again.",
+          variant: "destructive"
+        });
       } finally {
         setIsSubmitting(false);
       }
@@ -198,7 +218,7 @@ const BookNow = () => {
               </div>
 
               <div>
-                <label htmlFor="nationality" className="block text-safari-brown mb-2">Nationality</label>
+                <label htmlFor="nationality" className="block text-safari-brown mb-2">Nationality*</label>
                 <input
                   type="text"
                   id="nationality"
@@ -206,6 +226,7 @@ const BookNow = () => {
                   value={bookingData.nationality}
                   onChange={handleChange}
                   className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-safari-gold"
+                  required
                 />
               </div>
             </div>
@@ -380,7 +401,6 @@ const BookNow = () => {
                 <p><span className="font-semibold">Legal Name:</span> {bookingData.legal_name}</p>
                 <p><span className="font-semibold">Email:</span> {bookingData.email}</p>
                 <p><span className="font-semibold">Nationality:</span> {bookingData.nationality || 'Not provided'}</p>
-                <p><span className="font-semibold">Phone:</span> {bookingData.phone || 'Not provided'}</p>
                 <p><span className="font-semibold">Travelers:</span> {bookingData.adults} adults, {bookingData.children || '0'} children</p>
                 {bookingData.children_ages && (
                   <p><span className="font-semibold">Children Ages:</span> {bookingData.children_ages}</p>
@@ -518,7 +538,6 @@ const BookNow = () => {
               <h3 className="text-lg font-bold text-safari-darkbrown mb-4">Need assistance?</h3>
               <p className="text-safari-brown mb-4">
                 Our safari specialists are ready to help you plan your perfect African adventure.
-                Contact us directly for personalized assistance.
               </p>
               <div className="flex items-center">
                 <span className="text-safari-gold font-bold mr-2">Email:</span>
