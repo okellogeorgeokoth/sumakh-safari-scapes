@@ -5,14 +5,15 @@ import Footer from '../components/Footer';
 import { Button } from '../components/ui/button';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 import { toast } from 'sonner';
+import { supabase } from '@/integrations/supabase/client';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
-    travelDate: '',
-    groupSize: '',
+    travel_date: '',
+    group_size: '',
     message: ''
   });
   
@@ -23,23 +24,55 @@ const Contact = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulating form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      // Save to Supabase
+      const { error } = await supabase
+        .from('contact_submissions')
+        .insert([formData]);
+        
+      if (error) {
+        console.error('Error submitting contact form:', error);
+        toast.error('Failed to submit your message. Please try again later.');
+        return;
+      }
+      
+      // Send email notification
+      const response = await fetch('https://kkslhmagkyoujwxgfaha.supabase.co/functions/v1/send-notification', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          type: 'contact',
+          data: formData
+        }),
+      });
+      
+      if (!response.ok) {
+        // If email fails, we still consider the form submission successful
+        // since we already saved to the database
+        console.warn('Email notification failed, but form data was saved');
+      }
+      
       toast.success("Thank you! Your message has been sent successfully.");
       setFormData({
         name: '',
         email: '',
         phone: '',
-        travelDate: '',
-        groupSize: '',
+        travel_date: '',
+        group_size: '',
         message: ''
       });
-    }, 1500);
+    } catch (error) {
+      console.error('Unexpected error during submission:', error);
+      toast.error('An unexpected error occurred. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -73,6 +106,7 @@ const Contact = () => {
                     onChange={handleChange}
                     className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-safari-gold"
                     required
+                    disabled={isSubmitting}
                   />
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -86,6 +120,7 @@ const Contact = () => {
                       onChange={handleChange}
                       className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-safari-gold"
                       required
+                      disabled={isSubmitting}
                     />
                   </div>
                   <div>
@@ -97,30 +132,33 @@ const Contact = () => {
                       value={formData.phone}
                       onChange={handleChange}
                       className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-safari-gold"
+                      disabled={isSubmitting}
                     />
                   </div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="travelDate" className="block text-safari-brown mb-2">Preferred Travel Date</label>
+                    <label htmlFor="travel_date" className="block text-safari-brown mb-2">Preferred Travel Date</label>
                     <input
                       type="text"
-                      id="travelDate"
-                      name="travelDate"
-                      value={formData.travelDate}
+                      id="travel_date"
+                      name="travel_date"
+                      value={formData.travel_date}
                       onChange={handleChange}
                       placeholder="Month/Year or Flexible"
                       className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-safari-gold"
+                      disabled={isSubmitting}
                     />
                   </div>
                   <div>
-                    <label htmlFor="groupSize" className="block text-safari-brown mb-2">Group Size</label>
+                    <label htmlFor="group_size" className="block text-safari-brown mb-2">Group Size</label>
                     <select
-                      id="groupSize"
-                      name="groupSize"
-                      value={formData.groupSize}
+                      id="group_size"
+                      name="group_size"
+                      value={formData.group_size}
                       onChange={handleChange}
                       className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-safari-gold"
+                      disabled={isSubmitting}
                     >
                       <option value="">Select</option>
                       <option value="1">1 person</option>
@@ -141,6 +179,7 @@ const Contact = () => {
                     rows={5}
                     className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-safari-gold"
                     required
+                    disabled={isSubmitting}
                   ></textarea>
                 </div>
                 <Button 
@@ -163,8 +202,8 @@ const Contact = () => {
                     <div>
                       <h3 className="font-semibold text-safari-brown">Main Office</h3>
                       <p className="text-safari-brown">
-                        Sumakh House, Karen Road<br />
-                        Nairobi, Kenya
+                        Samburu County<br />
+                        Samburu, Kenya
                       </p>
                     </div>
                   </div>

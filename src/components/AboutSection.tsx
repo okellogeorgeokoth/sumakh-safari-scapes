@@ -1,5 +1,5 @@
 
-import { Camera, Shield, Compass, Award } from 'lucide-react';
+import { Camera, Shield, Compass, Award, Users } from 'lucide-react';
 
 const AboutSection = () => {
   return (
@@ -13,13 +13,14 @@ const AboutSection = () => {
             </h2>
             <div className="w-24 h-1 bg-safari-gold mb-8"></div>
             <p className="text-lg text-safari-darkbrown mb-6">
-              SUMAKH SAFARIS offers unforgettable wildlife adventures across Africa's most spectacular landscapes. 
-              With over 15 years of experience, our team of expert guides ensures an authentic and immersive safari 
-              experience that connects you with nature and local cultures.
+              Based in Samburu County, SUMAKH SAFARIS offers unforgettable wildlife adventures across Africa's most spectacular 
+              landscapes. With over 15 years of experience, our team of Samburu guides ensures an authentic and immersive safari 
+              experience that connects you with nature and traditional Samburu heritage.
             </p>
             <p className="text-lg text-safari-darkbrown mb-8">
-              We are committed to sustainable tourism and conservation efforts, working closely with local 
-              communities and wildlife preservation initiatives to protect the magnificent ecosystems we visit.
+              We are proud to showcase not only the magnificent wildlife but also the rich Samburu cultural traditions – from colorful beadwork 
+              and traditional dances to age-old ceremonies and warrior traditions. Our commitment to sustainable tourism includes working closely with 
+              local Samburu communities to preserve their cultural heritage while providing meaningful economic opportunities.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -74,22 +75,27 @@ const advantages = [
   {
     icon: <Camera size={24} />,
     title: "Photography Expertise",
-    description: "Our guides are skilled in helping you capture perfect wildlife moments."
+    description: "Our guides are skilled in helping you capture perfect wildlife moments and Samburu cultural ceremonies."
   },
   {
     icon: <Shield size={24} />,
     title: "Safety First",
-    description: "Comprehensive safety measures and experienced guides ensure your protection."
+    description: "Comprehensive safety measures and experienced Samburu guides ensure your protection."
+  },
+  {
+    icon: <Users size={24} />,
+    title: "Cultural Immersion",
+    description: "Authentic interactions with Samburu communities, traditional ceremonies, and local crafts."
   },
   {
     icon: <Compass size={24} />,
     title: "Local Knowledge",
-    description: "Deep understanding of wildlife habitats and animal behavior patterns."
+    description: "Deep understanding of Samburu traditions, wildlife habitats, and sacred natural sites."
   },
   {
     icon: <Award size={24} />,
     title: "Award Winning",
-    description: "Recognized for our sustainable tourism practices and excellent service."
+    description: "Recognized for our cultural preservation efforts and sustainable tourism practices."
   }
 ];
 

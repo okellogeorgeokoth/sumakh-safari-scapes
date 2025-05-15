@@ -1,8 +1,54 @@
+
 import { Link } from 'react-router-dom';
 import { Facebook, Instagram, Mail, Phone, MapPin } from 'lucide-react';
 import { FaXTwitter, FaWhatsapp } from 'react-icons/fa6';
+import { useState } from 'react';
+import { toast } from 'sonner';
+import { supabase } from '@/integrations/supabase/client';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 
 const Footer = () => {
+  const [email, setEmail] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!email || !email.includes('@')) {
+      toast.error('Please enter a valid email address');
+      return;
+    }
+    
+    setIsSubmitting(true);
+    
+    try {
+      const { data, error } = await supabase
+        .from('newsletter_subscriptions')
+        .insert([{ email }]);
+        
+      if (error) {
+        if (error.code === '23505') {
+          toast.error('This email is already subscribed to our newsletter');
+        } else {
+          console.error('Error submitting newsletter subscription:', error);
+          toast.error('Failed to submit. Please try again later.');
+        }
+      } else {
+        toast.success('Thank you for subscribing to our newsletter!', {
+          duration: 5000,
+          icon: '🎉',
+        });
+        setEmail('');
+      }
+    } catch (error) {
+      console.error('Unexpected error during submission:', error);
+      toast.error('An unexpected error occurred. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <footer className="bg-safari-darkbrown text-white pt-16 pb-8">
       <div className="container mx-auto px-4">
@@ -41,11 +87,11 @@ const Footer = () => {
             <ul className="space-y-4">
               <li className="flex items-start">
                 <MapPin className="mr-3 h-5 w-5 text-safari-gold shrink-0 mt-1" />
-                <span>Safari House, Wildlife Road<br />Nairobi, Kenya</span>
+                <span>Safari House, Samburu County<br />Samburu, Kenya</span>
               </li>
               <li className="flex items-center">
                 <Phone className="mr-3 h-5 w-5 text-safari-gold" />
-                <span>+254 123 456 789</span>
+                <span>+254 792 465156</span>
               </li>
               <li className="flex items-center">
                 <Mail className="mr-3 h-5 w-5 text-safari-gold" />
@@ -60,18 +106,25 @@ const Footer = () => {
             <p className="mb-4 text-safari-beige">
               Subscribe to receive updates on special offers and wildlife insights.
             </p>
-            <form className="space-y-3">
-              <input
+            <form onSubmit={handleSubmit} className="space-y-3">
+              <Input
                 type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="Your email address"
-                className="w-full px-4 py-2 rounded bg-white/10 border border-white/20 focus:outline-none focus:border-safari-gold"
+                className="w-full bg-white/10 border-white/20 text-white"
+                required
+                disabled={isSubmitting}
+                aria-label="Email address"
               />
-              <button
+              <Button
                 type="submit"
-                className="w-full px-4 py-2 bg-safari-gold text-white rounded hover:bg-safari-brown transition-colors"
+                variant="default"
+                className="w-full bg-safari-gold hover:bg-safari-brown"
+                disabled={isSubmitting}
               >
-                Subscribe
-              </button>
+                {isSubmitting ? 'Subscribing...' : 'Subscribe'}
+              </Button>
             </form>
             <div className="flex space-x-4 mt-6">
               <a href="#" className="text-white hover:text-safari-gold transition-colors">
@@ -83,7 +136,7 @@ const Footer = () => {
               <a href="#" className="text-white hover:text-safari-gold transition-colors">
                 <Instagram size={20} />
               </a>
-              <a href="https://wa.me/254123456789" className="text-white hover:text-safari-gold transition-colors">
+              <a href="https://wa.me/254792465156" className="text-white hover:text-safari-gold transition-colors">
                 <FaWhatsapp size={20} />
               </a>
             </div>

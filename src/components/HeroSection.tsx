@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { ChevronRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const heroImages = [
   "/lovable-uploads/4e85ab06-cb98-486a-bfd7-861a79b562ab.png",
@@ -11,6 +12,11 @@ const heroImages = [
 
 const HeroSection = () => {
   const [currentImage, setCurrentImage] = useState(0);
+  
+  // Add logging to confirm component is rendering
+  useEffect(() => {
+    console.log('HeroSection rendered');
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -45,24 +51,24 @@ const HeroSection = () => {
       <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-4">
         <div className="max-w-4xl animate-fade-in">
           <h1 className="text-white text-4xl md:text-5xl lg:text-6xl font-bold font-heading mb-6">
-            Experience the Magic of African Wildlife
+            Experience the Magic of African Wildlife and Rich Samburu Culture
           </h1>
           <p className="text-white text-lg md:text-xl mb-8">
-            Discover untamed wilderness with our expert guides and unforgettable safari experiences
+            Discover untamed wilderness and authentic Samburu cultural experiences with our expert guides
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <a
-              href="/safaris"
+            <Link
+              to="/safaris"
               className="px-8 py-3 bg-safari-gold text-white text-lg rounded hover:bg-safari-brown transition-colors"
             >
               Explore Safaris
-            </a>
-            <a
-              href="/contact"
+            </Link>
+            <Link
+              to="/contact"
               className="px-8 py-3 border-2 border-white text-white text-lg rounded hover:bg-white/20 transition-colors"
             >
               Contact Us
-            </a>
+            </Link>
           </div>
         </div>
       </div>

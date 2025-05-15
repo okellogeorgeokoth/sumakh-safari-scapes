@@ -1,20 +1,53 @@
 
 import { useState } from 'react';
 import { toast } from 'sonner';
+import { supabase } from '@/integrations/supabase/client';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 
 const NewsletterSection = () => {
   const [email, setEmail] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
     if (!email || !email.includes('@')) {
       toast.error('Please enter a valid email address');
       return;
     }
     
-    // Simulate successful subscription
-    toast.success('Thank you for subscribing to our newsletter!');
-    setEmail('');
+    setIsSubmitting(true);
+    
+    try {
+      console.log('Attempting to submit email:', email);
+      
+      const { data, error } = await supabase
+        .from('newsletter_subscriptions')
+        .insert([{ email }]);
+        
+      console.log('Supabase response:', { data, error });
+        
+      if (error) {
+        if (error.code === '23505') {
+          toast.error('This email is already subscribed to our newsletter');
+        } else {
+          console.error('Error submitting newsletter subscription:', error);
+          toast.error('Failed to submit. Please try again later.');
+        }
+      } else {
+        toast.success('Thank you for subscribing to our newsletter!', {
+          duration: 5000,
+          icon: '🎉',
+        });
+        setEmail('');
+      }
+    } catch (error) {
+      console.error('Unexpected error during submission:', error);
+      toast.error('An unexpected error occurred. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -31,20 +64,24 @@ const NewsletterSection = () => {
           </div>
 
           <form onSubmit={handleSubmit} className="flex flex-col md:flex-row gap-4">
-            <input
+            <Input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Your email address"
               className="flex-1 px-4 py-3 border border-safari-tan rounded focus:outline-none focus:border-safari-gold"
               required
+              disabled={isSubmitting}
+              aria-label="Email address"
             />
-            <button
+            <Button
               type="submit"
+              variant="default"
               className="px-6 py-3 bg-safari-gold text-white rounded hover:bg-safari-brown transition-colors whitespace-nowrap"
+              disabled={isSubmitting}
             >
-              Subscribe Now
-            </button>
+              {isSubmitting ? 'Subscribing...' : 'Subscribe Now'}
+            </Button>
           </form>
 
           <p className="text-sm text-gray-500 mt-4 text-center">
