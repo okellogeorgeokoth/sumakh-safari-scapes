@@ -1,234 +1,144 @@
 
-import React from 'react';
-import { FormField, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form";
-import { UseFormReturn } from "react-hook-form";
-import { Calendar } from "@/components/ui/calendar";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { Button } from "@/components/ui/button";
-import { format } from "date-fns";
-import { cn } from "@/lib/utils";
-import { CalendarIcon } from "lucide-react";
-import { SafariOption } from './SafariOptions';
+import React, { useEffect, useState } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import NavBar from '../components/NavBar';
+import Footer from '../components/Footer';
+import { Button } from '@/components/ui/button';
+import { SafariOption, safariOptions } from '@/components/booking/SafariOptions';
 
-interface SafariDetailsFormProps {
-  form: UseFormReturn<any>;
-  safariOptions: SafariOption[];
-}
+const SafariDetails = () => {
+  const { tourId } = useParams<{ tourId: string }>();
+  const [safari, setSafari] = useState<{ 
+    id: string;
+    title: string;
+    description: string;
+    image: string;
+  } | null>(null);
+  
+  useEffect(() => {
+    console.log('SafariDetails rendered with tourId:', tourId);
+    // Here you would typically fetch the safari details from an API
+    // For now, we're just using the static data from Safaris.tsx
+    
+    // Mock fetching safari data based on tourId
+    const fetchSafariData = () => {
+      const data = {
+        "tour-1": {
+          id: "tour-1",
+          title: "Masai Mara Adventure",
+          description: "Experience the wonder of the Masai Mara with our adventure safari. Witness the great migration and encounter Africa's magnificent wildlife up close.",
+          image: "/lovable-uploads/4e85ab06-cb98-486a-bfd7-861a79b562ab.png"
+        },
+        "tour-2": {
+          id: "tour-2",
+          title: "Serengeti Explorer",
+          description: "Explore the vast plains of Serengeti National Park on this safari. Perfect for wildlife photographers and nature enthusiasts.",
+          image: "/lovable-uploads/b001e1c4-ee94-4106-bb1e-20a0ccabcace.png"
+        },
+        "tour-3": {
+          id: "tour-3",
+          title: "Amboseli & Tsavo Safari",
+          description: "Combine two iconic Kenyan parks in one amazing journey. See elephants against the backdrop of Mt. Kilimanjaro.",
+          image: "/lovable-uploads/aa970d22-5828-4358-87ad-e46953031aeb.png"
+        },
+        "tour-6": {
+          id: "tour-6",
+          title: "Samburu Special",
+          description: "Discover the unique wildlife of Samburu National Reserve, home to species not found in other Kenyan parks like the Grevy's zebra and reticulated giraffe.",
+          image: "/lovable-uploads/samburu.jpeg"
+        },
+        // Add more tours as needed
+      }[tourId || ""] || null;
+      
+      setSafari(data);
+    };
+    
+    fetchSafariData();
+  }, [tourId]);
 
-const SafariDetailsForm = ({ form, safariOptions }: SafariDetailsFormProps) => {
+  if (!safari) {
+    return (
+      <div>
+        <NavBar />
+        <div className="container mx-auto py-20 px-4 text-center">
+          <h1 className="text-3xl font-bold text-safari-darkbrown mb-4">Safari not found</h1>
+          <p className="mb-8">The safari you are looking for does not exist or has been removed.</p>
+          <Button asChild className="bg-safari-gold hover:bg-safari-brown text-white">
+            <Link to="/safaris">Return to All Safaris</Link>
+          </Button>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+
   return (
-    <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-safari-darkbrown">Safari Details</h2>
-      
-      <FormField
-        control={form.control}
-        name="selected_safari"
-        render={({ field }) => (
-          <FormItem>
-            <FormLabel className="text-safari-brown">Select Safari Package*</FormLabel>
-            <FormControl>
-              <select
-                {...field}
-                className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-safari-gold"
-              >
-                <option value="">Select a Safari Package</option>
-                {safariOptions.map((option) => (
-                  <option key={option.id} value={option.id}>
-                    {option.name} - {option.location}
-                  </option>
-                ))}
-              </select>
-            </FormControl>
-            <FormMessage />
-          </FormItem>
-        )}
-      />
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <FormField
-          control={form.control}
-          name="check_in_date"
-          render={({ field }) => (
-            <FormItem className="flex flex-col">
-              <FormLabel className="text-safari-brown">Check-in Date*</FormLabel>
-              <Popover>
-                <PopoverTrigger asChild>
-                  <FormControl>
-                    <Button
-                      variant={"outline"}
-                      className={cn(
-                        "w-full pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
-                      )}
-                    >
-                      {field.value ? (
-                        format(field.value, "PPP")
-                      ) : (
-                        <span>Select check-in date</span>
-                      )}
-                      <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                    </Button>
-                  </FormControl>
-                </PopoverTrigger>
-                <PopoverContent className="w-auto p-0" align="start">
-                  <Calendar
-                    mode="single"
-                    selected={field.value}
-                    onSelect={field.onChange}
-                    disabled={(date) => date < new Date()}
-                    initialFocus
-                    className="pointer-events-auto"
-                  />
-                </PopoverContent>
-              </Popover>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        
-        <FormField
-          control={form.control}
-          name="check_out_date"
-          render={({ field }) => (
-            <FormItem className="flex flex-col">
-              <FormLabel className="text-safari-brown">Check-out Date*</FormLabel>
-              <Popover>
-                <PopoverTrigger asChild>
-                  <FormControl>
-                    <Button
-                      variant={"outline"}
-                      className={cn(
-                        "w-full pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
-                      )}
-                    >
-                      {field.value ? (
-                        format(field.value, "PPP")
-                      ) : (
-                        <span>Select check-out date</span>
-                      )}
-                      <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                    </Button>
-                  </FormControl>
-                </PopoverTrigger>
-                <PopoverContent className="w-auto p-0" align="start">
-                  <Calendar
-                    mode="single"
-                    selected={field.value}
-                    onSelect={field.onChange}
-                    disabled={(date) => {
-                      const checkInDate = form.getValues("check_in_date");
-                      return date < new Date() || (checkInDate && date < checkInDate);
-                    }}
-                    initialFocus
-                    className="pointer-events-auto"
-                  />
-                </PopoverContent>
-              </Popover>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-      </div>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <FormField
-          control={form.control}
-          name="adults"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="text-safari-brown">Number of Adults*</FormLabel>
-              <FormControl>
-                <select
-                  {...field}
-                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-safari-gold"
-                >
-                  <option value="">Select number</option>
-                  {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
-                    <option key={num} value={num.toString()}>
-                      {num} {num === 1 ? 'adult' : 'adults'}
-                    </option>
-                  ))}
-                  <option value="10+">More than 10</option>
-                </select>
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        
-        <FormField
-          control={form.control}
-          name="children"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="text-safari-brown">Number of Children*</FormLabel>
-              <FormControl>
-                <select
-                  {...field}
-                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-safari-gold"
-                >
-                  <option value="0">0 children</option>
-                  {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
-                    <option key={num} value={num.toString()}>
-                      {num} {num === 1 ? 'child' : 'children'}
-                    </option>
-                  ))}
-                  <option value="10+">More than 10</option>
-                </select>
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-      </div>
-      
-      <FormField
-        control={form.control}
-        name="accommodation_type"
-        render={({ field }) => (
-          <FormItem>
-            <FormLabel className="block text-safari-brown mb-2">Accommodation Type</FormLabel>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="flex items-center">
-                <input
-                  type="radio"
-                  id="standard"
-                  value="standard"
-                  checked={field.value === 'standard'}
-                  onChange={() => field.onChange('standard')}
-                  className="mr-2"
-                />
-                <label htmlFor="standard">Standard</label>
-              </div>
-              <div className="flex items-center">
-                <input
-                  type="radio"
-                  id="comfort"
-                  value="comfort"
-                  checked={field.value === 'comfort'}
-                  onChange={() => field.onChange('comfort')}
-                  className="mr-2"
-                />
-                <label htmlFor="comfort">Comfort</label>
-              </div>
-              <div className="flex items-center">
-                <input
-                  type="radio"
-                  id="luxury"
-                  value="luxury"
-                  checked={field.value === 'luxury'}
-                  onChange={() => field.onChange('luxury')}
-                  className="mr-2"
-                />
-                <label htmlFor="luxury">Luxury</label>
+    <div>
+      <NavBar />
+      <div className="container mx-auto py-12 px-4">
+        <div className="mb-8">
+          <h1 className="text-4xl font-bold text-safari-darkbrown mb-4">{safari.title}</h1>
+          <div className="w-24 h-1 bg-safari-gold mb-6"></div>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Main Content */}
+          <div className="lg:col-span-2">
+            <img 
+              src={safari.image} 
+              alt={safari.title} 
+              className="w-full h-96 object-cover rounded-lg mb-6"
+            />
+            <div className="bg-white p-6 rounded-lg shadow-md mb-8">
+              <h2 className="text-2xl font-bold text-safari-brown mb-4">Overview</h2>
+              <p className="text-gray-700 mb-6">{safari.description}</p>
+              <p className="text-gray-700 mb-6">
+                Our safari packages are designed to provide an authentic and unforgettable African experience. 
+                Our experienced guides will ensure you spot the most magnificent wildlife while learning about 
+                the local ecosystems and conservation efforts.
+              </p>
+            </div>
+
+            {/* Additional sections like itinerary, accommodation, etc. would go here */}
+          </div>
+
+          {/* Sidebar */}
+          <div className="lg:col-span-1">
+            <div className="bg-safari-beige p-6 rounded-lg shadow-md mb-6">
+              <h3 className="text-xl font-bold text-safari-brown mb-4">Book This Safari</h3>
+              <p className="text-gray-700 mb-4">Reserve your spot on this incredible safari adventure.</p>
+              <Button asChild className="w-full bg-safari-gold hover:bg-safari-brown text-white">
+                <Link to="/booknow">Book Now</Link>
+              </Button>
+            </div>
+
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <h3 className="text-xl font-bold text-safari-brown mb-4">Safari Details</h3>
+              <div className="space-y-3">
+                <div className="flex justify-between">
+                  <span className="font-medium">Duration:</span>
+                  <span>3-7 Days</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="font-medium">Group Size:</span>
+                  <span>2-12 People</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="font-medium">Location:</span>
+                  <span>Kenya</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="font-medium">Best Time:</span>
+                  <span>July - October</span>
+                </div>
               </div>
             </div>
-          </FormItem>
-        )}
-      />
+          </div>
+        </div>
+      </div>
+      <Footer />
     </div>
   );
 };
 
-export default SafariDetailsForm;
+export default SafariDetails;
