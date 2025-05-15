@@ -36,7 +36,6 @@ const teamMembers = [
     location: "Arusha, Tanzania"
   }
 ];
-
 const values = [
   {
     title: "Authentic Experiences",
