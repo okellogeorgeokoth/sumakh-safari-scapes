@@ -25,7 +25,7 @@ const destinations = [
     name: "Tsavo National Parks",
     region: "Southeastern Kenya",
     description: "One of the world's largest game reserves, divided into Tsavo East and Tsavo West with diverse landscapes.",
-    image: "/lovable-uploads/meru.jpeg",
+    image: "/lovable-uploads/tsavo.jpeg",
     highlights: ["Red Elephants", "Mzima Springs", "Diverse Landscapes", "Bird Watching"]
   },
   {
@@ -33,7 +33,7 @@ const destinations = [
     name: "Samburu National Reserve",
     region: "Northern Kenya",
     description: "Home to unique wildlife species not found in other Kenyan parks, set in a rugged semi-desert landscape.",
-    image: "/lovable-uploads/samburu.jpeg",
+    image: "/lovable-uploads/samburu.jpg",
     highlights: ["Special Five", "Ewaso Ng'iro River", "Cultural Experiences", "Rare Species"]
   },
   {

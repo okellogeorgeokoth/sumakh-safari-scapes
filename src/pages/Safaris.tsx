@@ -28,7 +28,7 @@ const safariPackages = [
     id: "tour-6",
     title: "Samburu Special",
     description: "Immerse yourself in authentic Samburu culture in Samburu National Reserve. Visit traditional villages, participate in ceremonies, and learn about the unique relationship between the Samburu people and local wildlife.",
-    image: "/lovable-uploads/samburu.jpeg"
+    image: "/lovable-uploads/samburu.jpg"
   },
   {
     id: "tour-7",
