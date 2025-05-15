@@ -8,74 +8,74 @@ const safariPackages = [
   {
     id: "tour-1",
     title: "Masai Mara Adventure",
-    description: "Experience the wonder of the Masai Mara with our adventure safari. Witness the great migration and encounter Africa's magnificent wildlife up close.",
+    description: "Experience the wonder of the Masai Mara with our adventure safari. Witness the great migration and encounter Africa's magnificent wildlife up close while enjoying authentic Samburu cultural experiences.",
     image: "/lovable-uploads/4e85ab06-cb98-486a-bfd7-861a79b562ab.png"
   },
   {
     id: "tour-2",
     title: "Serengeti Explorer",
-    description: "Explore the vast plains of Serengeti National Park on this safari. Perfect for wildlife photographers and nature enthusiasts.",
+    description: "Explore the vast plains of Serengeti National Park on this safari. Perfect for wildlife photographers and those interested in learning traditional Samburu tracking and navigation techniques.",
     image: "/lovable-uploads/b001e1c4-ee94-4106-bb1e-20a0ccabcace.png"
   },
   {
     id: "tour-3",
     title: "Amboseli & Tsavo Safari",
-    description: "Combine two iconic Kenyan parks in one amazing journey. See elephants against the backdrop of Mt. Kilimanjaro.",
+    description: "Combine two iconic Kenyan parks in one amazing journey. See elephants against the backdrop of Mt. Kilimanjaro and learn about their significance in Samburu folklore and traditions.",
     image: "/lovable-uploads/aa970d22-5828-4358-87ad-e46953031aeb.png"
   },
   // New Kenyan destinations added below
   {
     id: "tour-6",
     title: "Samburu Special",
-    description: "Discover the unique wildlife of Samburu National Reserve, home to species not found in other Kenyan parks like the Grevy's zebra and reticulated giraffe.",
+    description: "Immerse yourself in authentic Samburu culture in Samburu National Reserve. Visit traditional villages, participate in ceremonies, and learn about the unique relationship between the Samburu people and local wildlife.",
     image: "/lovable-uploads/samburu.jpeg"
   },
   {
     id: "tour-7",
-    title: "Lake Nakuru & Naivasha",
-    description: "A birdwatcher's paradise featuring flamingos at Lake Nakuru and boat rides among hippos at Lake Naivasha.",
+    title: "Lake Nakuru & Cultural Heritage",
+    description: "A birdwatcher's paradise featuring flamingos at Lake Nakuru combined with rich cultural experiences including traditional Samburu folk performances and cultural exchange opportunities.",
     image: "/lovable-uploads/naivasha.jpg"
   },
   {
     id: "tour-8",
-    title: "Laikipia Plateau Experience",
-    description: "Exclusive wildlife viewing in Kenya's private conservancies with opportunities for walking safaris and night game drives.",
+    title: "Laikipia Cultural Experience",
+    description: "Exclusive wildlife viewing in Kenya's private conservancies with opportunities for walking safaris led by Samburu guides who share their deep knowledge of local plants, wildlife, and cultural traditions.",
     image: "/lovable-uploads/laiikipia.jpeg"
   },
   {
     id: "tour-9",
-    title: "Meru National Park Adventure",
-    description: "Explore the wild and less-visited Meru National Park, famous for its diverse landscapes and the setting of 'Born Free'.",
+    title: "Meru National Park & Samburu Heritage",
+    description: "Explore the wild Meru National Park while learning about its significance in Samburu oral history. Includes visits to traditional homesteads and demonstrations of traditional survival skills.",
     image: "/lovable-uploads/meru.jpeg"
   },
   {
     id: "tour-10",
-    title: "Coastal & Tsavo Combo",
-    description: "Combine wildlife viewing in Tsavo East/West with relaxation at Diani Beach for the perfect bush-and-beach holiday.",
+    title: "Coastal & Tsavo Cultural Safari",
+    description: "Combine wildlife viewing in Tsavo with coastal cultural experiences including traditional Samburu ceremonies, craft demonstrations, and heritage preservation projects.",
     image: "/lovable-uploads/coastal.jpg"
   },
   {
     id: "tour-11",
-    title: "Aberdare Mountain Retreat",
-    description: "Stay in unique tree lodges overlooking waterholes in Aberdare National Park, known for its dramatic waterfalls and dense forests.",
+    title: "Aberdare Mountain Retreat & Cultural Immersion",
+    description: "Stay in unique tree lodges overlooking waterholes in Aberdare National Park while participating in cultural workshops led by Samburu elders sharing traditional ecological knowledge.",
     image: "/lovable-uploads/aberdare.jpg"
   },
   {
     id: "tour-4",
     title: "Luxury Kruger Expedition",
-    description: "Experience South Africa's premier wildlife destination in luxury. This safari includes private game drives and premium accommodations.",
+    description: "Experience South Africa's premier wildlife destination in luxury with cultural exchange opportunities between local rangers and Samburu tracking experts who share different approaches to conservation.",
     image: "/lovable-uploads/f3efa77a-b14d-41c7-9fc8-a6b63a8c267c.png"
   },
   {
     id: "tour-5",
-    title: "Tanzania Northern Circuit",
-    description: "Visit Tanzania's northern safari circuit including Tarangire, Ngorongoro Crater and the Serengeti on this comprehensive safari.",
+    title: "Tanzania Northern Circuit & Cultural Heritage",
+    description: "Visit Tanzania's northern safari circuit including Tarangire, Ngorongoro Crater and the Serengeti on this comprehensive safari featuring cultural performances and traditional craft demonstrations.",
     image: "/lovable-uploads/0d822250-7ed2-4474-a513-653b6544aa6d.png"
   },
   {
     id: "serengeti-adventure",
-    title: "Botswana Delta Safari",
-    description: "Explore the unique Okavango Delta ecosystem by traditional mokoro canoe and safari vehicle on this unforgettable adventure.",
+    title: "Botswana Delta Safari & Cultural Exchange",
+    description: "Explore the unique Okavango Delta ecosystem by traditional mokoro canoe and safari vehicle while participating in cultural exchange activities with Samburu representatives sharing sustainable living practices.",
     image: "/lovable-uploads/2134e863-3ca4-4039-84d7-9dd07c81e59f.png"
   },
 ];
@@ -88,9 +88,9 @@ const Safaris = () => {
         {/* Hero Banner */}
         <div className="bg-safari-darkbrown py-20 px-4">
           <div className="container mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">Our Safari Packages</h1>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">Our Safari & Cultural Experiences</h1>
             <p className="text-xl text-safari-beige max-w-2xl mx-auto">
-              Discover Africa's breathtaking landscapes, wildlife, and authentic cultural experiences with our curated safari packages
+              Discover Africa's breathtaking wildlife, landscapes, and the rich cultural heritage of the Samburu people with our curated packages
             </p>
           </div>
         </div>
@@ -129,13 +129,13 @@ const Safaris = () => {
         {/* Call to Action */}
         <div className="bg-safari-beige py-16 px-4">
           <div className="container mx-auto text-center">
-            <h2 className="text-3xl font-bold text-safari-darkbrown mb-6">Can't find what you're looking for?</h2>
+            <h2 className="text-3xl font-bold text-safari-darkbrown mb-6">Experience Authentic Samburu Culture</h2>
             <p className="text-lg text-safari-brown mb-8 max-w-2xl mx-auto">
-              We offer custom safari packages tailored to your preferences and schedule.
-              Let us help you create the perfect African adventure combining wildlife and cultural experiences.
+              We offer custom safari packages tailored to your preferences with a focus on authentic cultural experiences.
+              Let our Samburu guides share their rich heritage through traditional ceremonies, crafts, and storytelling.
             </p>
             <Button asChild className="bg-safari-gold hover:bg-safari-brown text-white px-8 py-6 text-lg">
-              <Link to="/contact">Contact Us for Custom Safari</Link>
+              <Link to="/contact">Contact Us for Cultural Safari Experience</Link>
             </Button>
           </div>
         </div>

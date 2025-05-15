@@ -10,35 +10,39 @@ interface SafariCard {
   duration: string;
   location: string;
   groupSize: string;
+  culturalHighlight?: string;
 }
 
 const safaris: SafariCard[] = [
   {
     id: "serengeti-adventure",
     title: "Serengeti Migration Safari",
-    description: "Witness the spectacular wildebeest migration across the Serengeti plains.",
+    description: "Witness the spectacular wildebeest migration across the Serengeti plains, guided by Samburu trackers who share traditional knowledge.",
     image: "/lovable-uploads/0d822250-7ed2-4474-a513-653b6544aa6d.png",
     duration: "7 Days",
     location: "Tanzania",
-    groupSize: "2-8 people"
+    groupSize: "2-8 people",
+    culturalHighlight: "Samburu storytelling and stargazing traditions"
   },
   {
     id: "masai-mara",
     title: "Masai Mara Experience",
-    description: "Experience the rich wildlife and culture of Kenya's famous Masai Mara reserve.",
+    description: "Experience the rich wildlife and vibrant Samburu culture with village visits, traditional dances, and authentic crafts demonstrations.",
     image: "/lovable-uploads/95ba0202-21e5-4c0b-bbb3-aacb836f480f.png",
     duration: "5 Days",
     location: "Kenya",
-    groupSize: "2-6 people"
+    groupSize: "2-6 people",
+    culturalHighlight: "Traditional beadwork and dance performances"
   },
   {
     id: "kruger-expedition",
     title: "Kruger National Park Expedition",
-    description: "Explore South Africa's largest game reserve with expert guides.",
+    description: "Explore South Africa's largest game reserve with expert Samburu guides sharing their tracking techniques and cultural knowledge.",
     image: "/lovable-uploads/dec41872-c8c3-4837-aeab-2ac82286def2.png",
     duration: "6 Days",
     location: "South Africa",
-    groupSize: "4-10 people"
+    groupSize: "4-10 people",
+    culturalHighlight: "Samburu cultural exchange program"
   }
 ];
 
@@ -47,10 +51,11 @@ const FeaturedSafaris = () => {
     <section id="featured-safaris" className="py-20 bg-safari-beige">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold font-heading text-safari-brown mb-4">Our Featured Safari Tours</h2>
+          <h2 className="text-3xl md:text-4xl font-bold font-heading text-safari-brown mb-4">Cultural Safari Experiences</h2>
           <div className="w-24 h-1 bg-safari-gold mx-auto mb-6"></div>
           <p className="max-w-2xl mx-auto text-safari-darkbrown">
-            Explore our most popular safari packages, each offering unique wildlife experiences and unforgettable adventures.
+            Explore our most popular safari packages, each offering unique wildlife experiences and 
+            authentic Samburu cultural immersion for an unforgettable African adventure.
           </p>
         </div>
 
@@ -65,7 +70,7 @@ const FeaturedSafaris = () => {
             to="/safaris"
             className="inline-flex items-center px-8 py-3 bg-safari-brown text-white rounded hover:bg-safari-darkbrown transition-colors"
           >
-            View All Safari Tours
+            View All Safari & Cultural Tours
           </Link>
         </div>
       </div>
@@ -94,6 +99,12 @@ const SafariCard = ({ safari }: { safari: SafariCard }) => {
         <p className="text-gray-600 mb-4">
           {safari.description}
         </p>
+        {safari.culturalHighlight && (
+          <div className="mb-4 p-3 bg-safari-beige rounded-md">
+            <span className="font-medium text-safari-brown">Cultural Highlight:</span>
+            <p className="text-safari-darkbrown mt-1">{safari.culturalHighlight}</p>
+          </div>
+        )}
         <div className="space-y-2 mb-6">
           <div className="flex items-center text-safari-darkbrown">
             <Clock size={18} className="mr-2" />
