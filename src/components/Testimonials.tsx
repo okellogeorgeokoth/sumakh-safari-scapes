@@ -47,7 +47,7 @@ const Testimonials = () => {
           <h2 className="text-3xl md:text-4xl font-bold font-heading text-safari-brown mb-4">What Our Clients Say</h2>
           <div className="w-24 h-1 bg-safari-gold mx-auto mb-6"></div>
           <p className="max-w-2xl mx-auto text-safari-darkbrown">
-            Read testimonials from travelers who have experienced unforgettable moments with SUMAKH SAFARIS.
+            Read testimonials from travelers who have experienced unforgettable moments with SUMAKH SAFARIS LTD.
           </p>
         </div>
 
