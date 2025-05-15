@@ -7,7 +7,6 @@ interface SafariCard {
   title: string;
   description: string;
   image: string;
-  duration: string;
   location: string;
   groupSize: string;
   culturalHighlight?: string;
@@ -15,12 +14,11 @@ interface SafariCard {
 
 const safaris: SafariCard[] = [
   {
-    id: "serengeti-adventure",
-    title: "Serengeti Migration Safari",
-    description: "Witness the spectacular wildebeest migration across the Serengeti plains, guided by Samburu trackers who share traditional knowledge.",
+    id: "samburu-adventure",
+    title: "Samburu Safari",
+    description: "Witness the spectacular wildebeest migration across the Samburu plains, guided by Samburu trackers who share traditional knowledge.",
     image: "/lovable-uploads/0d822250-7ed2-4474-a513-653b6544aa6d.png",
-    duration: "7 Days",
-    location: "Tanzania",
+    location: "Samburu, Kenya",
     groupSize: "2-8 people",
     culturalHighlight: "Samburu storytelling and stargazing traditions"
   },
@@ -29,18 +27,16 @@ const safaris: SafariCard[] = [
     title: "Masai Mara Experience",
     description: "Experience the rich wildlife and vibrant Samburu culture with village visits, traditional dances, and authentic crafts demonstrations.",
     image: "/lovable-uploads/95ba0202-21e5-4c0b-bbb3-aacb836f480f.png",
-    duration: "5 Days",
     location: "Kenya",
     groupSize: "2-6 people",
     culturalHighlight: "Traditional beadwork and dance performances"
   },
   {
-    id: "kruger-expedition",
-    title: "Kruger National Park Expedition",
-    description: "Explore South Africa's largest game reserve with expert Samburu guides sharing their tracking techniques and cultural knowledge.",
+    id: "serengeti-explorer",
+    title: "Serengeti Explorer Expedition",
+    description: "Explore Serengeti's largest game reserve with expert Samburu guides sharing their tracking techniques and cultural knowledge.",
     image: "/lovable-uploads/dec41872-c8c3-4837-aeab-2ac82286def2.png",
-    duration: "6 Days",
-    location: "South Africa",
+    location: "Kenya",
     groupSize: "4-10 people",
     culturalHighlight: "Samburu cultural exchange program"
   }
@@ -106,10 +102,6 @@ const SafariCard = ({ safari }: { safari: SafariCard }) => {
           </div>
         )}
         <div className="space-y-2 mb-6">
-          <div className="flex items-center text-safari-darkbrown">
-            <Clock size={18} className="mr-2" />
-            <span>{safari.duration}</span>
-          </div>
           <div className="flex items-center text-safari-darkbrown">
             <MapPin size={18} className="mr-2" />
             <span>{safari.location}</span>

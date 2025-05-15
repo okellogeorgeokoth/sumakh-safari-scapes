@@ -19,7 +19,6 @@ interface TourItem {
   id: string;
   title: string;
   location: string;
-  duration: string;
   rating: number;
   image: string;
   highlights: string[];
@@ -30,7 +29,6 @@ const tourItems: TourItem[] = [
     id: "tour-1",
     title: "Masai Mara Adventure",
     location: "Masai Mara, Kenya",
-    duration: "4 Days / 3 Nights",
     rating: 4.9,
     image: "/lovable-uploads/aberdare.jpg",
     highlights: ["Game drives in Masai Mara", "Visit Maasai village", "Hot air balloon safari"]
@@ -39,7 +37,6 @@ const tourItems: TourItem[] = [
     id: "tour-2",
     title: "Coastal Kenya Escape",
     location: "Mombasa, Kenya",
-    duration: "5 Days / 4 Nights",
     rating: 4.8,
     image: "/lovable-uploads/coastal.jpg",
     highlights: ["Old Town exploration", "Beach relaxation", "Fort Jesus visit"]
@@ -48,7 +45,6 @@ const tourItems: TourItem[] = [
     id: "tour-3", 
     title: "Mount Kenya Trek",
     location: "Mount Kenya",
-    duration: "6 Days / 5 Nights",
     rating: 4.7,
     image: "/lovable-uploads/meru.jpeg",
     highlights: ["Point Lenana summit", "Mountain forests", "Alpine vegetation"]
@@ -57,7 +53,6 @@ const tourItems: TourItem[] = [
     id: "tour-4",
     title: "Amboseli Safari",
     location: "Amboseli, Kenya",
-    duration: "3 Days / 2 Nights",
     rating: 5.0,
     image: "/lovable-uploads/2134e863-3ca4-4039-84d7-9dd07c81e59f.png",
     highlights: ["Elephant sightings", "View of Kilimanjaro", "Game drives"]
@@ -66,7 +61,6 @@ const tourItems: TourItem[] = [
     id: "tour-5",
     title: "Lakeside Exploration",
     location: "Naivasha & Nakuru",
-    duration: "4 Days / 3 Nights",
     rating: 4.9,
     image: "/lovable-uploads/naivasha.jpg",
     highlights: ["Lake Nakuru flamingos", "Hell's Gate cycling", "Boat ride in Naivasha"]
@@ -75,7 +69,6 @@ const tourItems: TourItem[] = [
     id: "tour-6",
     title: "Samburu Wilderness",
     location: "Samburu, Kenya",
-    duration: "4 Days / 3 Nights",
     rating: 4.8,
     image: "/lovable-uploads/samburu.jpeg",
     highlights: ["Special five wildlife", "Cultural experience", "Ewaso Nyiro river"]
@@ -155,10 +148,6 @@ const TourCard = ({ tour }: { tour: TourItem }) => {
           <div className="flex items-center text-safari-darkbrown">
             <MapPin size={16} className="mr-1" />
             <span className="text-sm">{tour.location}</span>
-          </div>
-          <div className="flex items-center text-safari-darkbrown">
-            <Calendar size={16} className="mr-1" />
-            <span className="text-sm">{tour.duration}</span>
           </div>
         </div>
         

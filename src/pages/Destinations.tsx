@@ -1,4 +1,3 @@
-
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import { Button } from '../components/ui/button';
@@ -8,50 +7,50 @@ const destinations = [
   {
     id: 1,
     name: "Masai Mara National Reserve",
-    country: "Kenya",
-    description: "Home to the great migration and incredible year-round wildlife viewing opportunities.",
+    region: "Southwestern Kenya",
+    description: "World-famous for its exceptional population of wildlife and the annual Great Migration of wildebeest and zebra.",
     image: "/lovable-uploads/4e85ab06-cb98-486a-bfd7-861a79b562ab.png",
     highlights: ["Great Migration", "Big Five", "Maasai Culture", "Balloon Safaris"]
   },
   {
     id: 2,
-    name: "Serengeti National Park",
-    country: "Tanzania",
-    description: "Vast endless plains with the world's greatest concentration of wildlife and spectacular migration.",
-    image: "/lovable-uploads/b001e1c4-ee94-4106-bb1e-20a0ccabcace.png",
-    highlights: ["Endless Plains", "Wildebeest Migration", "Big Five", "Kopjes"]
+    name: "Amboseli National Park",
+    region: "Southern Kenya",
+    description: "Renowned for its large elephant herds and spectacular views of Mount Kilimanjaro across the border in Tanzania.",
+    image: "/lovable-uploads/aa970d22-5828-4358-87ad-e46953031aeb.png",
+    highlights: ["Elephant Herds", "Kilimanjaro Views", "Swamp Ecosystems", "Maasai Culture"]
   },
   {
     id: 3,
-    name: "Okavango Delta",
-    country: "Botswana",
-    description: "A lush wetland paradise in the middle of the Kalahari Desert, teeming with wildlife.",
-    image: "/lovable-uploads/0d822250-7ed2-4474-a513-653b6544aa6d.png",
-    highlights: ["Mokoro Canoe Safaris", "Water Wildlife", "Bird Watching", "Pristine Wilderness"]
+    name: "Tsavo National Parks",
+    region: "Southeastern Kenya",
+    description: "One of the world's largest game reserves, divided into Tsavo East and Tsavo West with diverse landscapes.",
+    image: "/lovable-uploads/meru.jpeg",
+    highlights: ["Red Elephants", "Mzima Springs", "Diverse Landscapes", "Bird Watching"]
   },
   {
     id: 4,
-    name: "Kruger National Park",
-    country: "South Africa",
-    description: "One of Africa's largest game reserves with an exceptional diversity of wildlife.",
-    image: "/lovable-uploads/f3efa77a-b14d-41c7-9fc8-a6b63a8c267c.png",
-    highlights: ["Big Five", "Self-Drive Options", "Diverse Ecosystems", "Accessibility"]
+    name: "Samburu National Reserve",
+    region: "Northern Kenya",
+    description: "Home to unique wildlife species not found in other Kenyan parks, set in a rugged semi-desert landscape.",
+    image: "/lovable-uploads/samburu.jpeg",
+    highlights: ["Special Five", "Ewaso Ng'iro River", "Cultural Experiences", "Rare Species"]
   },
   {
     id: 5,
-    name: "Ngorongoro Crater",
-    country: "Tanzania",
-    description: "An extinct volcanic caldera that forms a natural enclosure for a vast array of wildlife.",
-    image: "/lovable-uploads/2134e863-3ca4-4039-84d7-9dd07c81e59f.png",
-    highlights: ["Natural Wonder", "Concentrated Wildlife", "Scenic Views", "Ancient Ecosystem"]
+    name: "Lake Nakuru National Park",
+    region: "Central Kenya",
+    description: "Famous for its flamingo populations and rhino sanctuary, with stunning lake and forest ecosystems.",
+    image: "/lovable-uploads/naivasha.jpg",
+    highlights: ["Flamingoes", "Rhino Sanctuary", "Lake Views", "Diverse Birdlife"]
   },
   {
     id: 6,
-    name: "Etosha National Park",
-    country: "Namibia",
-    description: "Centered around a vast salt pan, offering unique wildlife viewing experiences.",
-    image: "/lovable-uploads/aa970d22-5828-4358-87ad-e46953031aeb.png",
-    highlights: ["Salt Pan", "Waterhole Viewing", "Desert Adapted Species", "Night Drives"]
+    name: "Aberdare National Park",
+    region: "Central Kenya",
+    description: "A mountain park with dramatic landscapes, waterfalls, and unique high-altitude wildlife viewing.",
+    image: "/lovable-uploads/aberdare.jpg",
+    highlights: ["Tree Lodges", "Waterfalls", "Moorland", "Forest Elephants"]
   }
 ];
 
@@ -67,10 +66,10 @@ const Destinations = () => {
         >
           <div className="container mx-auto text-center p-4">
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 drop-shadow-lg">
-              African Safari Destinations
+              Kenya Safari Destinations
             </h1>
             <p className="text-xl text-white max-w-3xl mx-auto drop-shadow-lg">
-              Explore the most iconic wildlife havens across the African continent
+              Explore the diverse wildlife havens across Kenya's spectacular landscapes
             </p>
           </div>
         </div>
@@ -79,12 +78,11 @@ const Destinations = () => {
         <div className="container mx-auto py-16 px-4">
           <div className="max-w-4xl mx-auto text-center mb-16">
             <h2 className="text-3xl font-bold text-safari-darkbrown mb-4">
-              Discover Africa's Treasures
+              Discover Kenya's Wildlife Treasures
             </h2>
             <p className="text-lg text-safari-brown">
-              From the vast savannas of East Africa to the lush wetlands of Botswana and the
-              stunning landscapes of Southern Africa, we offer expertly guided safari experiences
-              in the continent's most remarkable destinations.
+              From the world-famous Masai Mara to the flamingo-filled Lake Nakuru and the rugged landscapes of Samburu,
+              Kenya offers unparalleled safari experiences in its remarkable national parks and reserves.
             </p>
           </div>
 
@@ -101,7 +99,7 @@ const Destinations = () => {
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute top-4 right-4 bg-safari-gold text-white py-1 px-3 rounded-full">
-                    {destination.country}
+                    {destination.region}
                   </div>
                 </div>
                 <div className="p-6">
@@ -133,16 +131,16 @@ const Destinations = () => {
         <div className="bg-safari-beige py-16">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-safari-darkbrown mb-4">Our Safari Regions</h2>
+              <h2 className="text-3xl font-bold text-safari-darkbrown mb-4">Kenya's Safari Regions</h2>
               <p className="text-lg text-safari-brown max-w-3xl mx-auto">
-                We operate across multiple countries in Eastern and Southern Africa,
-                each offering unique wildlife experiences and landscapes.
+                Kenya offers diverse ecosystems across its national parks and reserves,
+                from savannah grasslands to mountain forests and lake systems.
               </p>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-lg">
               <img
-                src="/lovable-uploads/d43e9e4b-afa5-4931-93c2-16fbe3e76750.png"
-                alt="Africa Safari Map"
+                src="/lovable-uploads/safari.jpg"
+                alt="Kenya Safari Map"
                 className="w-full h-auto rounded"
               />
             </div>

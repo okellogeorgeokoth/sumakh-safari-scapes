@@ -101,8 +101,8 @@ const SafariDetails = () => {
     <div>
       <NavBar />
       <div className="container mx-auto py-12 px-4">
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold text-safari-darkbrown mb-4">{safari.title}</h1>
+        <div className="mb-12 text-center">
+          <h1 className="text-4xl font-bold text-safari-darkbrown mb-2 ">{safari.title}</h1>
           <div className="w-24 h-1 bg-safari-gold mb-6"></div>
         </div>
 
@@ -112,7 +112,7 @@ const SafariDetails = () => {
             <img 
               src={safari.image} 
               alt={safari.title} 
-              className="w-full h-96 object-cover rounded-lg mb-6"
+              className="w-full h-96 object-cover rounded-lg mb-6 "
             />
             <div className="bg-white p-6 rounded-lg shadow-md mb-8">
               <h2 className="text-2xl font-bold text-safari-brown mb-4">Overview</h2>
@@ -153,10 +153,6 @@ const SafariDetails = () => {
             <div className="bg-white p-6 rounded-lg shadow-md">
               <h3 className="text-xl font-bold text-safari-brown mb-4">Safari Details</h3>
               <div className="space-y-3">
-                <div className="flex justify-between">
-                  <span className="font-medium">Duration:</span>
-                  <span>3-7 Days</span>
-                </div>
                 <div className="flex justify-between">
                   <span className="font-medium">Group Size:</span>
                   <span>2-12 People</span>
