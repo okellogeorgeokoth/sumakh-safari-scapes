@@ -1,6 +1,7 @@
 
 import { useState } from 'react';
 import { X } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const galleryImages = [
   {
@@ -90,13 +91,13 @@ const GallerySection = () => {
         </div>
 
         <div className="text-center mt-12">
-          <a 
-            href="/gallery" 
-            className="inline-flex items-center px-8 py-3 bg-safari-gold text-white rounded hover:bg-safari-brown transition-colors"
-          >
-            View Complete Gallery
-          </a>
-        </div>
+        <Link 
+          to="/gallery" 
+          className="inline-flex items-center px-8 py-3 bg-safari-gold text-white rounded hover:bg-safari-brown transition-colors"
+        >
+          View Complete Gallery
+        </Link>
+      </div>
       </div>
 
       {/* Lightbox */}
