@@ -64,7 +64,7 @@ const SafariDetails = () => {
           id: "tour-6",
           title: "Samburu Special",
           description: "Discover the unique wildlife of Samburu National Reserve, home to species not found in other Kenyan parks like the Grevy's zebra and reticulated giraffe. This tour focuses deeply on Samburu culture, with multiple opportunities for authentic community interaction and cultural exchanges.",
-          image: "/lovable-uploads/samburu.jpeg",
+          image: "/lovable-uploads/samburu.jpg",
           culturalExperiences: [
             "Extended stay at Samburu homestay",
             "Participation in traditional ceremonies",
