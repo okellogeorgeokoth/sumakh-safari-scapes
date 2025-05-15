@@ -80,7 +80,7 @@ const About = () => {
         {/* Hero Section */}
         <div className="bg-safari-darkbrown py-20">
           <div className="container mx-auto text-center px-4">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">About Sumakh Safaris</h1>
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">About Sumakh Safaris LTD</h1>
             <p className="text-xl text-safari-beige max-w-3xl mx-auto">
               Passionate about delivering authentic African safari experiences and showcasing Samburu culture since 2015
             </p>
@@ -130,7 +130,7 @@ const About = () => {
             <div>
               <h2 className="text-3xl font-bold text-safari-darkbrown mb-6">Our Story</h2>
               <p className="text-safari-brown mb-4">
-                Sumakh Safaris was born from a deep love for Africa's wilderness and the rich Samburu culture. Founded in 2015 by Khalif Lekudere, a native of Samburu County, our company has grown from humble beginnings to become a respected name in African safari experiences.
+                Sumakh Safaris LTD Company was born from a deep love for Africa's wilderness and the rich Samburu culture. Founded in 2015 by Khalif Lekudere, a native of Samburu County, our company has grown from humble beginnings to become a respected name in African safari experiences.
               </p>
               <p className="text-safari-brown mb-4">
                 The name "Sumakh" comes from the Samburu language and reflects our belief that every safari is not just a vacation, but a transformative journey that connects people with nature and authentic cultural traditions in profound ways.
@@ -178,7 +178,7 @@ const About = () => {
               <div>
                 <h2 className="text-3xl font-bold text-white mb-6">Our Commitment to Conservation</h2>
                 <p className="text-safari-beige mb-4">
-                  At Sumakh Safaris, based in Samburu County, we believe that responsible tourism plays a vital role in preserving Africa's natural heritage and cultural traditions. We are committed to minimizing our environmental footprint and supporting conservation initiatives across the continent.
+                  At Sumakh Safaris LTD, based in Samburu County, we believe that responsible tourism plays a vital role in preserving Africa's natural heritage and cultural traditions. We are committed to minimizing our environmental footprint and supporting conservation initiatives across the continent.
                 </p>
                 <p className="text-safari-beige mb-6">
                   A portion of every safari booking is donated to local conservation projects focused on wildlife protection, habitat restoration, and Samburu community development. We partner with organizations that work directly with local communities to ensure that tourism benefits those who live alongside wildlife.

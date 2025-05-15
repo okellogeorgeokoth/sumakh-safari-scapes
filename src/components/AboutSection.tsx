@@ -9,11 +9,11 @@ const AboutSection = () => {
           {/* Text Content */}
           <div className="order-2 lg:order-1 animate-fade-in">
             <h2 className="text-3xl md:text-4xl font-bold font-heading text-safari-brown mb-6">
-              About SUMAKH SAFARIS
+              About SUMAKH SAFARIS LTD
             </h2>
             <div className="w-24 h-1 bg-safari-gold mb-8"></div>
             <p className="text-lg text-safari-darkbrown mb-6">
-              Based in Samburu County, SUMAKH SAFARIS offers unforgettable wildlife adventures across Africa's most spectacular 
+              Based in Samburu County, SUMAKH SAFARIS LTD offers unforgettable wildlife adventures across Africa's most spectacular 
               landscapes. With over 15 years of experience, our team of Samburu guides ensures an authentic and immersive safari 
               experience that connects you with nature and traditional Samburu heritage.
             </p>

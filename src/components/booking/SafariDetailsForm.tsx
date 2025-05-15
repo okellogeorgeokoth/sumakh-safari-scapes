@@ -11,7 +11,14 @@ import { CalendarIcon } from "lucide-react";
 import { SafariOption } from '@/components/booking/SafariOptions';
 
 interface SafariDetailsFormProps {
-  form: UseFormReturn<any>;
+  form: UseFormReturn<{
+    selected_safari: string;
+    check_in_date: Date | null;
+    check_out_date: Date | null;
+    adults: string;
+    children: string;
+    accommodation_type: string;
+  }>;
   safariOptions: SafariOption[];
 }
 

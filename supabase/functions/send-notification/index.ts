@@ -1,153 +1,129 @@
+import { Resend } from 'resend';
 
-import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
-import { Resend } from "npm:resend@2.0.0";
+const resend = new Resend(process.env.RESEND_API_KEY);
 
-const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
-
-const corsHeaders = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers":
-    "authorization, x-client-info, apikey, content-type",
-};
-
-interface NotificationRequest {
-  type: "booking" | "contact";
-  data: Record<string, any>;
+interface BookingData {
+  legal_name: string;
+  first_name?: string;
+  last_name?: string;
+  email: string;
+  phone?: string;
+  nationality: string;
+  preferred_destination: string;
+  preferred_month: string;
+  check_in_date: string;
+  check_out_date: string;
+  adults: string;
+  children?: string;
+  children_ages?: string;
+  accommodation_type: string;
+  special_requirements?: string;
 }
 
-const handler = async (req: Request): Promise<Response> => {
-  // Handle CORS preflight requests
-  if (req.method === "OPTIONS") {
-    return new Response(null, { headers: corsHeaders });
-  }
+const generateAdminEmail = (booking: BookingData) => `
+  <div style="font-family: Arial, sans-serif; max-width: 600px; color: #333;">
+    <h2 style="color: #8B5A2B;">📋 New Booking Request</h2>
+    <div style="background: #f9f9f9; padding: 15px; border-radius: 5px;">
+      <p><strong>👤 Legal Name:</strong> ${booking.legal_name}</p>
+      ${booking.first_name ? `<p><strong>👤 First Name:</strong> ${booking.first_name}</p>` : ''}
+      ${booking.last_name ? `<p><strong>👤 Last Name:</strong> ${booking.last_name}</p>` : ''}
+      <p><strong>📧 Email:</strong> <a href="mailto:${booking.email}">${booking.email}</a></p>
+      ${booking.phone ? `<p><strong>📞 Phone:</strong> <a href="tel:${booking.phone}">${booking.phone}</a></p>` : ''}
+      <p><strong>🌍 Nationality:</strong> ${booking.nationality}</p>
+      
+      <h3 style="color: #8B5A2B; margin-top: 15px;">Safari Details</h3>
+      <p><strong>🌍 Destination:</strong> ${booking.preferred_destination}</p>
+      <p><strong>📅 Preferred Month:</strong> ${booking.preferred_month}</p>
+      <p><strong>📅 Dates:</strong> ${booking.check_in_date} to ${booking.check_out_date}</p>
+      <p><strong>🏨 Accommodation:</strong> ${booking.accommodation_type}</p>
+      
+      <h3 style="color: #8B5A2B; margin-top: 15px;">Group Details</h3>
+      <p><strong>👥 Travelers:</strong> ${booking.adults} adults${booking.children ? `, ${booking.children} children` : ''}</p>
+      ${booking.children_ages ? `<p><strong>👶 Children Ages:</strong> ${booking.children_ages}</p>` : ''}
+      
+      ${booking.special_requirements ? `
+      <div style="margin-top: 15px; padding: 10px; background: #fff8e1; border-left: 3px solid #ffc107;">
+        <strong>❗ Special Requirements:</strong>
+        <p>${booking.special_requirements}</p>
+      </div>
+      ` : ''}
+    </div>
+  </div>
+`;
 
+const generateConfirmationEmail = (booking: BookingData) => `
+  <div style="font-family: Arial, sans-serif; max-width: 600px; color: #333; line-height: 1.6;">
+    <h2 style="color: #8B5A2B;">✨ Thank You, ${booking.first_name || booking.legal_name.split(' ')[0]}!</h2>
+    
+    <p>We've received your request for a <strong>${booking.preferred_destination}</strong> safari.</p>
+    
+    <div style="background: #f5f5f5; padding: 15px; border-left: 4px solid #8B5A2B; margin: 20px 0;">
+      <h3 style="margin-top: 0; color: #8B5A2B;">Booking Summary</h3>
+      <p><strong>📅 Preferred Travel Month:</strong> ${booking.preferred_month}</p>
+      <p><strong>📅 Selected Dates:</strong> ${booking.check_in_date} to ${booking.check_out_date}</p>
+      <p><strong>👥 Travelers:</strong> ${booking.adults} adults${booking.children ? `, ${booking.children} children` : ''}</p>
+      ${booking.children_ages ? `<p><strong>👶 Children Ages:</strong> ${booking.children_ages}</p>` : ''}
+      <p><strong>🏨 Accommodation Preference:</strong> ${booking.accommodation_type}</p>
+      ${booking.special_requirements ? `<p><strong>❗ Special Requirements:</strong> ${booking.special_requirements}</p>` : ''}
+    </div>
+    
+    <p><strong>What Happens Next?</strong></p>
+    <ol>
+      <li>Our safari specialist will review your request</li>
+      <li>You'll receive a personalized itinerary within 24 hours</li>
+      <li>We'll discuss any special requirements</li>
+      <li>Finalize your booking with secure payment</li>
+    </ol>
+    
+    <p><strong>Need immediate assistance?</strong><br>
+    📧 <a href="mailto:info@sumakhsafaris.com">info@sumakhsafaris.com</a><br>
+    📞 +254 792 465156</p>
+  </div>
+`;
+
+export default async (req: { body: BookingData }) => {
   try {
-    const { type, data }: NotificationRequest = await req.json();
-    
-    // Define admin email address to receive notifications
-    const adminEmail = "info@sumakhsafaris.com";
-    let emailResponse;
-    
-    if (type === "booking") {
-      // Handle booking notification
-      const bookingData = data;
-      
-      // Send notification to admin
-      emailResponse = await resend.emails.send({
-        from: "Sumakh Safaris <onboarding@resend.dev>", // Update with your verified domain when ready
-        to: [adminEmail],
-        subject: "New Safari Booking Request",
-        html: `
-          <h1>New Safari Booking Request</h1>
-          <p>A new booking request has been submitted with the following details:</p>
-          <ul>
-            <li><strong>Name:</strong> ${bookingData.first_name || ""} ${bookingData.last_name || ""} ${bookingData.legal_name ? `(${bookingData.legal_name})` : ""}</li>
-            <li><strong>Email:</strong> ${bookingData.email}</li>
-            <li><strong>Phone:</strong> ${bookingData.phone || "Not provided"}</li>
-            <li><strong>Safari:</strong> ${bookingData.selected_safari || bookingData.preferred_destination || "Not specified"}</li>
-            <li><strong>Check-in Date:</strong> ${bookingData.check_in_date}</li>
-            <li><strong>Check-out Date:</strong> ${bookingData.check_out_date}</li>
-            <li><strong>Group Size:</strong> ${bookingData.adults} adults, ${bookingData.children || "0"} children</li>
-            <li><strong>Accommodation Type:</strong> ${bookingData.accommodation_type}</li>
-            <li><strong>Special Requirements:</strong> ${bookingData.special_requirements || "None"}</li>
-          </ul>
-          <p>Please respond to this client as soon as possible.</p>
-        `,
-      });
-      
-      // Send confirmation to the customer
-      await resend.emails.send({
-        from: "Sumakh Safaris <onboarding@resend.dev>", // Update with your verified domain when ready
-        to: [bookingData.email],
-        subject: "Your Safari Booking Request - Sumakh Safaris",
-        html: `
-          <h1>Thank you for your safari booking request!</h1>
-          <p>Dear ${bookingData.first_name || bookingData.legal_name || "Valued Customer"},</p>
-          <p>We have received your safari booking request and our team will review it shortly. 
-          A member of our team will be in touch with you within 24-48 hours to discuss your safari plans further.</p>
-          
-          <h2>Your Request Details:</h2>
-          <ul>
-            <li><strong>Safari:</strong> ${bookingData.selected_safari || bookingData.preferred_destination || "Custom Safari"}</li>
-            <li><strong>Dates:</strong> ${bookingData.check_in_date} to ${bookingData.check_out_date}</li>
-            <li><strong>Group Size:</strong> ${bookingData.adults} adults, ${bookingData.children || "0"} children</li>
-          </ul>
-          
-          <p>If you have any immediate questions, please contact us directly:</p>
-          <p>Email: info@sumakhsafaris.com<br>
-          Phone: +254 792 465156</p>
-          
-          <p>We look forward to creating an unforgettable African safari experience for you!</p>
-          
-          <p>Warm regards,<br>
-          The Sumakh Safaris Team</p>
-        `,
-      });
-      
-    } else if (type === "contact") {
-      // Handle contact form notification
-      const contactData = data;
-      
-      // Send notification to admin
-      emailResponse = await resend.emails.send({
-        from: "Sumakh Safaris <onboarding@resend.dev>", // Update with your verified domain when ready
-        to: [adminEmail],
-        subject: "New Contact Form Submission",
-        html: `
-          <h1>New Contact Form Submission</h1>
-          <p>A new message has been submitted through the contact form:</p>
-          <ul>
-            <li><strong>Name:</strong> ${contactData.name}</li>
-            <li><strong>Email:</strong> ${contactData.email}</li>
-            <li><strong>Phone:</strong> ${contactData.phone || "Not provided"}</li>
-            <li><strong>Travel Date:</strong> ${contactData.travel_date || "Not specified"}</li>
-            <li><strong>Group Size:</strong> ${contactData.group_size || "Not specified"}</li>
-          </ul>
-          <h2>Message:</h2>
-          <p>${contactData.message}</p>
-          <p>Please respond to this inquiry as soon as possible.</p>
-        `,
-      });
-      
-      // Send confirmation to the person who submitted the form
-      await resend.emails.send({
-        from: "Sumakh Safaris <onboarding@resend.dev>", // Update with your verified domain when ready
-        to: [contactData.email],
-        subject: "We've received your message - Sumakh Safaris",
-        html: `
-          <h1>Thank you for contacting Sumakh Safaris!</h1>
-          <p>Dear ${contactData.name},</p>
-          <p>We have received your message and appreciate your interest in our safari experiences. 
-          A member of our team will get back to you within 24-48 hours.</p>
-          
-          <p>If you have any urgent inquiries, please feel free to contact us directly:</p>
-          <p>Email: info@sumakhsafaris.com<br>
-          Phone: +254 792 465156</p>
-          
-          <p>We look forward to helping you plan your African adventure!</p>
-          
-          <p>Warm regards,<br>
-          The Sumakh Safaris Team</p>
-        `,
-      });
+    const booking = req.body;
+
+    // Validate required fields
+    if (!booking.legal_name || !booking.email || !booking.nationality || 
+        !booking.preferred_destination || !booking.check_in_date) {
+      throw new Error("Missing required fields");
     }
 
-    console.log("Email notification sent successfully");
-    
+    // Send emails
+    await Promise.all([
+      resend.emails.send({
+        from: "Sumakh Safaris <bookings@sumakhsafaris.com>",
+        to: "boniface@sumakhsafaris.com",
+        cc: ["info@sumakhsafaris.com"],
+        subject: "New Safari Booking Request",
+        html: generateAdminEmail(booking)
+      }),
+      resend.emails.send({
+        from: "Sumakh Safaris <bookings@sumakhsafaris.com>",
+        to: booking.email,
+        subject: "Your Booking Confirmation - Sumakh Safaris",
+        html: generateConfirmationEmail(booking)
+      })
+    ]);
+
     return new Response(JSON.stringify({ success: true }), {
       status: 200,
-      headers: { "Content-Type": "application/json", ...corsHeaders },
+      headers: { 'Content-Type': 'application/json' },
     });
+
   } catch (error) {
-    console.error("Error in send-notification function:", error);
+    console.error("Error:", error);
     return new Response(
-      JSON.stringify({ error: error.message }),
+      JSON.stringify({ 
+        success: false, 
+        error: error.message || "Failed to process request" 
+      }),
       {
         status: 500,
-        headers: { "Content-Type": "application/json", ...corsHeaders },
+        headers: { 'Content-Type': 'application/json' },
       }
     );
   }
 };
-
-serve(handler);
