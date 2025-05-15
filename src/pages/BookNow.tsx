@@ -73,6 +73,16 @@ const BookNow = () => {
         return;
       }
       
+      // Double check that we have nationality before submitting
+      if (!bookingData.nationality) {
+        toast({
+          title: "Error",
+          description: "Please provide your nationality",
+          variant: "destructive"
+        });
+        return;
+      }
+      
       setIsSubmitting(true);
       
       try {
@@ -145,8 +155,8 @@ const BookNow = () => {
           first_name: '',
           last_name: '',
           email: '',
-          nationality: '',
           phone: '',
+          nationality: '',
           preferred_destination: '',
           preferred_month: '',
           check_in_date: '',
