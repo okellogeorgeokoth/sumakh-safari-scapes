@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
@@ -110,6 +109,7 @@ const BookNow = () => {
         
         console.log("Formatted data for Supabase:", formattedData);
         
+        // First submit to database
         const { error, data } = await supabase
           .from('booking_requests')
           .insert(formattedData)
@@ -122,12 +122,13 @@ const BookNow = () => {
         
         console.log("Booking submitted successfully:", data);
         
-        // Send email notification
+        // Then send email notification
         try {
-          const response = await fetch('https://kkslhmagkyoujwxgfaha.supabase.co/functions/v1/send-notification', {
+          const emailResponse = await fetch('https://kkslhmagkyoujwxgfaha.supabase.co/functions/v1/send-notification', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
+              'Authorization': `Bearer ${supabase.auth.getSession()}`
             },
             body: JSON.stringify({
               type: 'booking',
@@ -135,13 +136,17 @@ const BookNow = () => {
             }),
           });
           
-          if (!response.ok) {
-            console.warn('Email notification failed, but booking was saved');
+          const emailResult = await emailResponse.json();
+          console.log("Email notification response:", emailResult);
+          
+          if (!emailResponse.ok) {
+            console.warn('Email notification failed, but booking was saved:', emailResult);
           } else {
             console.log("Email notification sent successfully");
           }
         } catch (emailError) {
           console.warn('Email notification error:', emailError);
+          // We don't throw here because we want to show success even if email fails
         }
         
         toast({
