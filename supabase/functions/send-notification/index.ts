@@ -1,8 +1,8 @@
 
-import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import express, { Request, Response } from "express";
 import { Resend } from "resend";
 
-const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -172,18 +172,22 @@ const handler = async (req: Request): Promise<Response> => {
         JSON.stringify({ 
           success: true, 
           message: "Emails sent successfully",
-          adminEmailId: adminEmailResult.id,
-          clientEmailId: clientEmailResult.id
+          adminEmailResult,
+          clientEmailResult
         }),
         { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
-    } catch (emailError: any) {
+    } catch (emailError: unknown) {
       console.error("Error sending emails:", emailError);
+      let errorMessage = "Unknown email error";
+      if (emailError && typeof emailError === "object" && "message" in emailError) {
+        errorMessage = (emailError as { message?: string }).message || errorMessage;
+      }
       return new Response(
         JSON.stringify({ 
           success: false, 
           error: "Failed to send emails",
-          details: emailError.message || "Unknown email error" 
+          details: errorMessage
         }),
         { 
           status: 500, 
@@ -191,12 +195,16 @@ const handler = async (req: Request): Promise<Response> => {
         }
       );
     }
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Error in send-notification function:", error);
+    let errorMessage = "Failed to process request";
+    if (error && typeof error === "object" && "message" in error) {
+      errorMessage = (error as { message?: string }).message || errorMessage;
+    }
     return new Response(
       JSON.stringify({ 
         success: false, 
-        error: error.message || "Failed to process request" 
+        error: errorMessage
       }),
       { 
         status: 500, 
@@ -207,3 +215,7 @@ const handler = async (req: Request): Promise<Response> => {
 };
 
 serve(handler);
+function serve(handler: (req: Request) => Promise<Response>) {
+  throw new Error("Function not implemented.");
+}
+
