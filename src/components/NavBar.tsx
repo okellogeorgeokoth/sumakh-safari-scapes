@@ -78,10 +78,10 @@ const NavBar = () => {
           <div className="container mx-auto px-4 py-4">
             <nav className="flex flex-col space-y-4">
               <MobileNavLink href="/" label="Home" onClick={toggleMobileMenu} />
+              <MobileNavLink href="/about" label="About" onClick={toggleMobileMenu} />
               <MobileNavLink href="/safaris" label="Safaris" onClick={toggleMobileMenu} />
               <MobileNavLink href="/destinations" label="Destinations" onClick={toggleMobileMenu} />
               <MobileNavLink href="/gallery" label="Gallery" onClick={toggleMobileMenu} />
-              <MobileNavLink href="/about" label="About" onClick={toggleMobileMenu} />
               <MobileNavLink href="/contact" label="Contact" onClick={toggleMobileMenu} />
               <button className="w-full px-6 py-3 bg-safari-gold text-white rounded hover:bg-safari-brown transition-colors">
               <NavLink href="/BookNow" label="Book Now" />
