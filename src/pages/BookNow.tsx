@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
@@ -117,7 +118,7 @@ const BookNow = () => {
           
         if (error) {
           console.error("Supabase error:", error);
-          throw error;
+          throw new Error(`Database error: ${error.message}`);
         }
         
         console.log("Booking submitted successfully:", data);
@@ -128,7 +129,6 @@ const BookNow = () => {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
-              'Authorization': `Bearer ${supabase.auth.getSession()}`
             },
             body: JSON.stringify({
               type: 'booking',
@@ -136,12 +136,13 @@ const BookNow = () => {
             }),
           });
           
-          const emailResult = await emailResponse.json();
-          console.log("Email notification response:", emailResult);
-          
           if (!emailResponse.ok) {
-            console.warn('Email notification failed, but booking was saved:', emailResult);
+            const errorText = await emailResponse.text();
+            console.warn('Email notification failed, but booking was saved:', errorText);
+            // We don't throw here because we want to show success even if email fails
           } else {
+            const emailResult = await emailResponse.json();
+            console.log("Email notification response:", emailResult);
             console.log("Email notification sent successfully");
           }
         } catch (emailError) {
@@ -178,7 +179,7 @@ const BookNow = () => {
         console.error("Error submitting booking:", error);
         toast({
           title: "Failed",
-          description: "Failed to submit your booking. Please try again.",
+          description: error instanceof Error ? error.message : "Failed to submit your booking. Please try again.",
           variant: "destructive"
         });
       } finally {

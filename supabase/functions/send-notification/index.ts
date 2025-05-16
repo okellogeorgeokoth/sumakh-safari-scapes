@@ -133,7 +133,7 @@ const handler = async (req: Request): Promise<Response> => {
     if (!booking.legal_name || !booking.email || !booking.nationality || 
         !booking.preferred_destination || !booking.check_in_date) {
       return new Response(
-        JSON.stringify({ error: "Missing required fields" }),
+        JSON.stringify({ error: "Missing required fields", details: { booking } }),
         { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
@@ -141,29 +141,44 @@ const handler = async (req: Request): Promise<Response> => {
     console.log("Sending emails for booking from:", booking.email);
     
     // Send emails in parallel
-    await Promise.all([
-      resend.emails.send({
-        from: CONFIG.from,
-        to: CONFIG.admin,
-        cc: CONFIG.cc,
-        subject: CONFIG.bookingSubject,
-        html: generateAdminEmail(booking)
-      }),
-      resend.emails.send({
-        from: CONFIG.from,
-        to: booking.email,
-        subject: CONFIG.confirmationSubject,
-        html: generateConfirmationEmail(booking)
-      })
-    ]);
-    
-    console.log("Emails sent successfully");
-    
-    return new Response(
-      JSON.stringify({ success: true, message: "Emails sent successfully" }),
-      { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-    );
-  } catch (error) {
+    try {
+      await Promise.all([
+        resend.emails.send({
+          from: CONFIG.from,
+          to: CONFIG.admin,
+          cc: CONFIG.cc,
+          subject: CONFIG.bookingSubject,
+          html: generateAdminEmail(booking)
+        }),
+        resend.emails.send({
+          from: CONFIG.from,
+          to: booking.email,
+          subject: CONFIG.confirmationSubject,
+          html: generateConfirmationEmail(booking)
+        })
+      ]);
+      
+      console.log("Emails sent successfully");
+      
+      return new Response(
+        JSON.stringify({ success: true, message: "Emails sent successfully" }),
+        { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    } catch (emailError: any) {
+      console.error("Error sending emails:", emailError);
+      return new Response(
+        JSON.stringify({ 
+          success: false, 
+          error: "Failed to send emails",
+          details: emailError.message || "Unknown email error" 
+        }),
+        { 
+          status: 500, 
+          headers: { ...corsHeaders, "Content-Type": "application/json" } 
+        }
+      );
+    }
+  } catch (error: any) {
     console.error("Error in send-notification function:", error);
     return new Response(
       JSON.stringify({ 
