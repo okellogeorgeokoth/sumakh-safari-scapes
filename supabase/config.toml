@@ -1,12 +1,5 @@
 
-# This file is used to configure your Supabase Function
-# Output of this file will be automatically inserted into Deno's code
-
-verify_jwt = false
-
-[build]
-cmd = "esbuild --bundle --format=esm --minify --platform=node --target=node18 --external:canvas --external:encoding index.ts"
-include = ["src/**/*", "index.ts"]
+project_id = "kkslhmagkyoujwxgfaha"
 
 [functions.send-notification]
 verify_jwt = false

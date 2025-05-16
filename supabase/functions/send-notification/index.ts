@@ -30,8 +30,8 @@ interface BookingData {
 
 const CONFIG = {
   from: "Sumakh Safaris <bookings@sumakhsafaris.com>",
-  admin: "boniface@sumakhsafaris.com",
-  cc: ["info@sumakhsafaris.com"],
+  admin: "bookings@sumakhsafaris.com", // Updated primary recipient
+  cc: ["info@sumakhsafaris.com", "boniface@sumakhsafaris.com"], // Added multiple CC recipients
   bookingSubject: "New Safari Booking Request",
   confirmationSubject: "Your Booking Confirmation - Sumakh Safaris"
 };
@@ -140,9 +140,16 @@ const handler = async (req: Request): Promise<Response> => {
     
     console.log("Sending emails for booking from:", booking.email);
     
+    // Log email configuration
+    console.log("Email configuration:", {
+      from: CONFIG.from,
+      to: CONFIG.admin,
+      cc: CONFIG.cc
+    });
+
     // Send emails in parallel
     try {
-      await Promise.all([
+      const [adminEmailResult, clientEmailResult] = await Promise.all([
         resend.emails.send({
           from: CONFIG.from,
           to: CONFIG.admin,
@@ -158,10 +165,16 @@ const handler = async (req: Request): Promise<Response> => {
         })
       ]);
       
-      console.log("Emails sent successfully");
+      console.log("Admin email result:", adminEmailResult);
+      console.log("Client email result:", clientEmailResult);
       
       return new Response(
-        JSON.stringify({ success: true, message: "Emails sent successfully" }),
+        JSON.stringify({ 
+          success: true, 
+          message: "Emails sent successfully",
+          adminEmailId: adminEmailResult.id,
+          clientEmailId: clientEmailResult.id
+        }),
         { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     } catch (emailError: any) {
