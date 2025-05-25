@@ -4,10 +4,12 @@ import { ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const heroImages = [
-  "/lovable-uploads/4e85ab06-cb98-486a-bfd7-861a79b562ab.png",
-  "/lovable-uploads/aa970d22-5828-4358-87ad-e46953031aeb.png",
-  "/lovable-uploads/f3efa77a-b14d-41c7-9fc8-a6b63a8c267c.png",
-  "/lovable-uploads/1baf8a69-d4b8-4982-bcad-e47c9281d3a1.png"
+  "/lovable-uploads/Kenya-samburu.jpg", // Actual Samburu landscape
+  "/lovable-uploads/elephants_serengeti.jpg", // Serengeti wildlife 
+  "/lovable-uploads/Kenya_CentralLaikipiaCamelBackSafari.jpg", // Laikipia camel safari
+  "/lovable-uploads/Amboseli-National-Park-1024x450-1.jpg", // Lake/wildlife scene
+  "/lovable-uploads/Where-to-go-on-safari-in-Kenya.jpg", // Shows Masai Mara landscape
+  "/lovable-uploads/3bf25673-fec4-40c6-af9b-e01badc4ee80.png" // Zebras (common in Meru)
 ];
 
 const HeroSection = () => {
