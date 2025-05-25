@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Facebook, Instagram, Mail, Phone, MapPin, X } from 'lucide-react';
-import { FaXTwitter, FaWhatsapp } from 'react-icons/fa6';
+import { FaXTwitter, FaWhatsapp, FaTiktok } from 'react-icons/fa6';
 import { useState } from 'react';
 import { toast } from 'sonner';
 import { supabase } from '@/integrations/supabase/client';
@@ -134,9 +134,12 @@ const Footer = () => {
               <a href="#" className="text-white hover:text-safari-gold transition-colors">
                 <FaXTwitter size={20} />
               </a>
-              <a href="#" className="text-white hover:text-safari-gold transition-colors">
+              <a href="https://www.instagram.com/sumakhsafaris/" className="text-white hover:text-safari-gold transition-colors">
                 <Instagram size={20} />
               </a>
+              <a href="https://www.tiktok.com/@sumakhsafaris" className="text-white hover:text-safari-gold transition-colors">
+                <FaTiktok size={20} />
+                 </a>
               <a href="https://wa.me/254792465156" className="text-white hover:text-safari-gold transition-colors">
                 <FaWhatsapp size={20} />
               </a>
