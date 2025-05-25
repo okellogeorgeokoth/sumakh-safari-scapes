@@ -9,75 +9,75 @@ const safariPackages = [
     id: "tour-1",
     title: "Masai Mara Adventure",
     description: "Experience the wonder of the Masai Mara with our adventure safari. Witness the great migration and encounter Africa's magnificent wildlife up close while enjoying authentic Samburu cultural experiences.",
-    image: "/lovable-uploads/4e85ab06-cb98-486a-bfd7-861a79b562ab.png"
+    image: "lovable-uploads/Where-to-go-on-safari-in-Kenya.jpg" // Shows Masai Mara landscape
   },
   {
     id: "tour-2",
     title: "Serengeti Explorer",
     description: "Explore the vast plains of Serengeti National Park on this safari. Perfect for wildlife photographers and those interested in learning traditional Samburu tracking and navigation techniques.",
-    image: "/lovable-uploads/b001e1c4-ee94-4106-bb1e-20a0ccabcace.png"
+    image: "lovable-uploads/elephants_serengeti.jpg" // Serengeti wildlife
   },
   {
     id: "tour-3",
     title: "Amboseli & Tsavo Safari",
     description: "Combine two iconic Kenyan parks in one amazing journey. See elephants against the backdrop of Mt. Kilimanjaro and learn about their significance in Samburu folklore and traditions.",
-    image: "/lovable-uploads/aa970d22-5828-4358-87ad-e46953031aeb.png"
+    image: "lovable-uploads/Kenya-Amboseli-National-Park-2.jpg" // Amboseli landscape
   },
-  // New Kenyan destinations added below
+  // New Kenyan destinations
   {
     id: "tour-6",
     title: "Samburu Special",
     description: "Immerse yourself in authentic Samburu culture in Samburu National Reserve. Visit traditional villages, participate in ceremonies, and learn about the unique relationship between the Samburu people and local wildlife.",
-    image: "/lovable-uploads/samburu.jpg"
+    image: "lovable-uploads/Kenya-samburu.jpg" // Actual Samburu landscape
   },
   {
     id: "tour-7",
     title: "Lake Nakuru & Cultural Heritage",
     description: "A birdwatcher's paradise featuring flamingos at Lake Nakuru combined with rich cultural experiences including traditional Samburu folk performances and cultural exchange opportunities.",
-    image: "/lovable-uploads/naivasha.jpg"
+    image: "lovable-uploads/Amboseli-National-Park-1024x450-1.jpg" // Lake/wildlife scene
   },
   {
     id: "tour-8",
     title: "Laikipia Cultural Experience",
     description: "Exclusive wildlife viewing in Kenya's private conservancies with opportunities for walking safaris led by Samburu guides who share their deep knowledge of local plants, wildlife, and cultural traditions.",
-    image: "/lovable-uploads/laiikipia.jpeg"
+    image: "lovable-uploads/Kenya_CentralLaikipiaCamelBackSafari.jpg" // Laikipia camel safari
   },
   {
     id: "tour-9",
     title: "Meru National Park & Samburu Heritage",
     description: "Explore the wild Meru National Park while learning about its significance in Samburu oral history. Includes visits to traditional homesteads and demonstrations of traditional survival skills.",
-    image: "/lovable-uploads/meru.jpeg"
+    image: "lovable-uploads/3bf25673-fec4-40c6-af9b-e01badc4ee80.png" // Zebras (common in Meru)
   },
   {
     id: "tour-10",
     title: "Coastal & Tsavo Cultural Safari",
     description: "Combine wildlife viewing in Tsavo with coastal cultural experiences including traditional Samburu ceremonies, craft demonstrations, and heritage preservation projects.",
-    image: "/lovable-uploads/coastal.jpg"
+    image: "lovable-uploads/botswana.jpg" // Generic African landscape
   },
   {
     id: "tour-11",
     title: "Aberdare Mountain Retreat & Cultural Immersion",
     description: "Stay in unique tree lodges overlooking waterholes in Aberdare National Park while participating in cultural workshops led by Samburu elders sharing traditional ecological knowledge.",
-    image: "/lovable-uploads/aberdare.jpg"
+    image: "lovable-uploads/d43e9e4b-afa5-4931-93c2-16fbe3e76750.png" // Mountain/forest scene
   },
   {
     id: "tour-4",
     title: "Luxury Kruger Expedition",
     description: "Experience South Africa's premier wildlife destination in luxury with cultural exchange opportunities between local rangers and Samburu tracking experts who share different approaches to conservation.",
-    image: "/lovable-uploads/f3efa77a-b14d-41c7-9fc8-a6b63a8c267c.png"
+    image: "lovable-uploads/Botswana__OkavangoDelta_WildernessSafarisVumburaPlains_GameDrive.jpg" // Luxury safari camp
   },
   {
     id: "tour-5",
     title: "Tanzania Northern Circuit & Cultural Heritage",
     description: "Visit Tanzania's northern safari circuit including Tarangire, Ngorongoro Crater and the Serengeti on this comprehensive safari featuring cultural performances and traditional craft demonstrations.",
-    image: "/lovable-uploads/0d822250-7ed2-4474-a513-653b6544aa6d.png"
+    image: "/lovable-uploads/Tansania_SerengetiNationalpark_2_Responsive_1080x608.jpg" // Tanzania landscape
   },
   {
     id: "serengeti-adventure",
     title: "Botswana Delta Safari & Cultural Exchange",
     description: "Explore the unique Okavango Delta ecosystem by traditional mokoro canoe and safari vehicle while participating in cultural exchange activities with Samburu representatives sharing sustainable living practices.",
-    image: "/lovable-uploads/2134e863-3ca4-4039-84d7-9dd07c81e59f.png"
-  },
+    image: "lovable-uploads/okavango-delta-hippo-boat-yellow-zebra-safaris.jpg" // Okavango Delta scene
+  }
 ];
 
 const Safaris = () => {

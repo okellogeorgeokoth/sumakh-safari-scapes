@@ -13,33 +13,33 @@ interface SafariCard {
 }
 
 const safaris: SafariCard[] = [
-  {
-    id: "samburu-adventure",
-    title: "Samburu Safari",
-    description: "Witness the spectacular wildebeest migration across the Samburu plains, guided by Samburu trackers who share traditional knowledge.",
-    image: "/lovable-uploads/0d822250-7ed2-4474-a513-653b6544aa6d.png",
-    location: "Samburu, Kenya",
-    groupSize: "2-8 people",
-    culturalHighlight: "Samburu storytelling and stargazing traditions"
-  },
-  {
-    id: "masai-mara",
-    title: "Masai Mara Experience",
-    description: "Experience the rich wildlife and vibrant Samburu culture with village visits, traditional dances, and authentic crafts demonstrations.",
-    image: "/lovable-uploads/95ba0202-21e5-4c0b-bbb3-aacb836f480f.png",
-    location: "Kenya",
-    groupSize: "2-6 people",
-    culturalHighlight: "Traditional beadwork and dance performances"
-  },
-  {
-    id: "serengeti-explorer",
-    title: "Serengeti Explorer Expedition",
-    description: "Explore Serengeti's largest game reserve with expert Samburu guides sharing their tracking techniques and cultural knowledge.",
-    image: "/lovable-uploads/dec41872-c8c3-4837-aeab-2ac82286def2.png",
-    location: "Kenya",
-    groupSize: "4-10 people",
-    culturalHighlight: "Samburu cultural exchange program"
-  }
+ {
+  id: "tour-6",
+  title: "Samburu Safari",
+  description: "Witness the spectacular wildebeest migration across the Samburu plains, guided by Samburu trackers who share traditional knowledge.",
+  image: "lovable-uploads/Kenya-samburu.jpg", // Shows Samburu landscape
+  location: "Samburu, Kenya",
+  groupSize: "2-8 people",
+  culturalHighlight: "Samburu storytelling and stargazing traditions"
+},
+{
+  id: "tour-1",
+  title: "Masai Mara Experience",
+  description: "Experience the rich wildlife and vibrant Samburu culture with village visits, traditional dances, and authentic crafts demonstrations.",
+  image: "lovable-uploads/Where-to-go-on-safari-in-Kenya.jpg", // Shows Masai Mara landscape
+  location: "Kenya",
+  groupSize: "2-6 people",
+  culturalHighlight: "Traditional beadwork and dance performances"
+},
+{
+  id: "tour-2",
+  title: "Serengeti Explorer Expedition",
+  description: "Explore Serengeti's largest game reserve with expert Samburu guides sharing their tracking techniques and cultural knowledge.",
+  image: "lovable-uploads/elephants_serengeti.jpg", // Shows Serengeti wildlife
+  location: "Kenya",
+  groupSize: "4-10 people",
+  culturalHighlight: "Samburu cultural exchange program"
+}
 ];
 
 const FeaturedSafaris = () => {
