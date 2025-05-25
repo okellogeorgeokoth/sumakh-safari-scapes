@@ -52,7 +52,7 @@ const safariPackages = [
     id: "tour-10",
     title: "Coastal & Tsavo Cultural Safari",
     description: "Combine wildlife viewing in Tsavo with coastal cultural experiences including traditional Samburu ceremonies, craft demonstrations, and heritage preservation projects.",
-    image: "lovable-uploads/botswana.jpg" // Generic African landscape
+    image: "lovable-uploads/coastal.jpg" // Generic African landscape
   },
   {
     id: "tour-11",
