@@ -4,7 +4,7 @@ import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 
 // Image gallery data
-const galleryImages = [
+ const galleryImages = [
   {
     id: 1,
     src: "/lovable-uploads/4e85ab06-cb98-486a-bfd7-861a79b562ab.png",
@@ -76,6 +76,90 @@ const galleryImages = [
     src: "/lovable-uploads/95ba0202-21e5-4c0b-bbb3-aacb836f480f.png",
     alt: "Hot air balloon safari",
     category: "safari-experience"
+  },
+  {
+    id: 13,
+    src: "lovable-uploads/Kenya_CentralLaikipiaCamelBackSafari.jpg",
+    alt: "Camel Back Safaris",
+    category: "safari-experience" // Changed from wildlife
+  },
+  {
+    id: 14,
+    src: "lovable-uploads/camel-safaris-header.jpg",
+    alt: "Camera Safari Header",
+    category: "landscapes"
+  },
+  {
+    id: 15,
+    src: "lovable-uploads/Kenya-Amboseli-National-Park-2.jpg",
+    alt: "Aboseli National Park",
+    category: "landscapes" // Changed from accommodations
+  },
+  {
+    id: 16,
+    src: "lovable-uploads/Amboseli-National-Park-1024x450-1.jpg",
+    alt: "Safari wildlife tracking",
+    category: "wildlife" // Changed from safari-experience
+  },
+  {
+    id: 17,
+    src: "lovable-uploads/Where-to-go-on-safari-in-Kenya.jpg",
+    alt: "Serengeti National Park",
+    category: "landscapes" // Changed from wildlife
+  },
+  {
+    id: 18,
+    src: "lovable-uploads/botswana.jpg",
+    alt: "Botswana Safari Landscape",
+    category: "landscapes"
+  },
+  {
+    id: 19,
+    src: "lovable-uploads/Botswana__OkavangoDelta_WildernessSafarisVumburaPlains_GameDrive.jpg",
+    alt: "Botswana Wilderness Safaris",
+    category: "accommodations"
+  },
+  {
+    id: 20,
+    src: "lovable-uploads/4-Day-Okavango-Delta-Botswana-Safari-Moremi-Khwai.jpg",
+    alt: "Tanzania Safari Experience",
+    category: "safari-experience"
+  },
+  {
+    id: 21,
+    src: "lovable-uploads/okavango-delta-hippo-boat-yellow-zebra-safaris.jpg",
+    alt: "Boat Safari Experience",
+    category: "safari-experience"
+  },
+  {
+    id: 22,
+    src: "lovable-uploads/Kenya-samburu.jpg",
+    alt: "Samburu Landscape",
+    category: "landscapes" // Changed from safari-experience
+  },
+  {
+    id: 23,
+    src: "lovable-uploads/samburu national reseve.jpg",
+    alt: "Samburu Wildlife",
+    category: "wildlife" // Changed from safari-experience
+  },
+  {
+    id: 24,
+    src: "lovable-uploads/4-days-samburu-lodge-safari.jpg",
+    alt: "Samburu Lodge Safari",
+    category: "accommodations" // Changed from safari-experience
+  },
+  {
+    id: 25,
+    src: "lovable-uploads/elephants_serengeti.jpg",
+    alt: "Serengeti Elephants",
+    category: "wildlife"
+  },
+  {
+    id: 26,
+    src: "/lovable-uploads/Tansania_SerengetiNationalpark_2_Responsive_1080x608.jpg",
+    alt: "Tanzania Serengeti National Park",
+    category: "landscapes" // Changed from safari-experience
   }
 ];
 
