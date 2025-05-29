@@ -128,7 +128,7 @@ const Footer = () => {
               </Button>
             </form>
             <div className="flex space-x-4 mt-6">
-              <a href="#" className="text-white hover:text-safari-gold transition-colors">
+              <a href="https://web.facebook.com/profile.php?id=61576338584643" className="text-white hover:text-safari-gold transition-colors">
                 <Facebook size={20} />
               </a>
               <a href="#" className="text-white hover:text-safari-gold transition-colors">
@@ -167,7 +167,7 @@ const Footer = () => {
               Terms & Conditions
             </button>
             <a 
-              href="https://my-portfolio-snowy-pi.vercel.app/" 
+              href="https://georgeokello.co.ke/" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-sm text-safari-beige hover:text-safari-gold"

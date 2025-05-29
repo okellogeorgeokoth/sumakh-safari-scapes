@@ -109,54 +109,48 @@ import Footer from '../components/Footer';
   },
   {
     id: 18,
-    src: "lovable-uploads/botswana.jpg",
-    alt: "Botswana Safari Landscape",
-    category: "landscapes"
-  },
-  {
-    id: 19,
     src: "lovable-uploads/Botswana__OkavangoDelta_WildernessSafarisVumburaPlains_GameDrive.jpg",
     alt: "Botswana Wilderness Safaris",
     category: "accommodations"
   },
   {
-    id: 20,
+    id: 19,
     src: "lovable-uploads/4-Day-Okavango-Delta-Botswana-Safari-Moremi-Khwai.jpg",
     alt: "Tanzania Safari Experience",
     category: "safari-experience"
   },
   {
-    id: 21,
+    id: 20,
     src: "lovable-uploads/okavango-delta-hippo-boat-yellow-zebra-safaris.jpg",
     alt: "Boat Safari Experience",
     category: "safari-experience"
   },
   {
-    id: 22,
+    id: 21,
     src: "lovable-uploads/Kenya-samburu.jpg",
     alt: "Samburu Landscape",
     category: "landscapes" // Changed from safari-experience
   },
   {
-    id: 23,
+    id: 22,
     src: "lovable-uploads/samburu national reseve.jpg",
     alt: "Samburu Wildlife",
     category: "wildlife" // Changed from safari-experience
   },
   {
-    id: 24,
+    id: 23,
     src: "lovable-uploads/4-days-samburu-lodge-safari.jpg",
     alt: "Samburu Lodge Safari",
     category: "accommodations" // Changed from safari-experience
   },
   {
-    id: 25,
+    id: 24,
     src: "lovable-uploads/elephants_serengeti.jpg",
     alt: "Serengeti Elephants",
     category: "wildlife"
   },
   {
-    id: 26,
+    id: 25,
     src: "/lovable-uploads/Tansania_SerengetiNationalpark_2_Responsive_1080x608.jpg",
     alt: "Tanzania Serengeti National Park",
     category: "landscapes" // Changed from safari-experience
