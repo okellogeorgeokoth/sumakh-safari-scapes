@@ -1,46 +1,95 @@
 
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://sumakhsafaris.com/</loc>
-    <lastmod>2025-05-16</lastmod>
+    <lastmod>2025-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://sumakhsafaris.com/lovable-uploads/Kenya-samburu.jpg</image:loc>
+      <image:title>Sumakh Safaris - Kenya Safari Experience</image:title>
+      <image:caption>Authentic Kenya safari tours with Samburu cultural experiences</image:caption>
+    </image:image>
   </url>
+  
   <url>
     <loc>https://sumakhsafaris.com/safaris</loc>
-    <lastmod>2025-05-16</lastmod>
+    <lastmod>2025-06-03</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://sumakhsafaris.com/lovable-uploads/elephants_serengeti.jpg</image:loc>
+      <image:title>Kenya Safari Tours</image:title>
+      <image:caption>Wildlife safari adventures across Kenya's national parks</image:caption>
+    </image:image>
   </url>
-  <url>
-    <loc>https://sumakhsafaris.com/destinations</loc>
-    <lastmod>2025-05-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://sumakhsafaris.com/gallery</loc>
-    <lastmod>2025-05-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://sumakhsafaris.com/about</loc>
-    <lastmod>2025-05-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://sumakhsafaris.com/contact</loc>
-    <lastmod>2025-05-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
+  
   <url>
     <loc>https://sumakhsafaris.com/booknow</loc>
-    <lastmod>2025-05-16</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2025-06-03</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://sumakhsafaris.com/destinations</loc>
+    <lastmod>2025-06-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://sumakhsafaris.com/lovable-uploads/Where-to-go-on-safari-in-Kenya.jpg</image:loc>
+      <image:title>Kenya Safari Destinations</image:title>
+      <image:caption>Top safari destinations in Kenya including Masai Mara and Samburu</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://sumakhsafaris.com/gallery</loc>
+    <lastmod>2025-06-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://sumakhsafaris.com/lovable-uploads/bb27b92c-e758-489f-83c8-c808ec122b89.png</image:loc>
+      <image:title>Safari Wildlife Gallery</image:title>
+      <image:caption>Wildlife photography from Kenya safari tours</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://sumakhsafaris.com/about</loc>
+    <lastmod>2025-06-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://sumakhsafaris.com/contact</loc>
+    <lastmod>2025-06-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <!-- Individual Safari Tours -->
+  <url>
+    <loc>https://sumakhsafaris.com/safaris/tour-1</loc>
+    <lastmod>2025-06-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://sumakhsafaris.com/safaris/tour-2</loc>
+    <lastmod>2025-06-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://sumakhsafaris.com/safaris/tour-6</loc>
+    <lastmod>2025-06-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>
