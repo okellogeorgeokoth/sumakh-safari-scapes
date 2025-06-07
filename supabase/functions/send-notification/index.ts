@@ -1,8 +1,8 @@
 
-import express, { Request, Response } from "express";
-import { Resend } from "resend";
+import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
+import { Resend } from "npm:resend@2.0.0";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -28,15 +28,26 @@ interface BookingData {
   notes?: string | null;
 }
 
+interface ContactData {
+  name: string;
+  email: string;
+  phone?: string;
+  travel_date?: string;
+  group_size?: string;
+  message: string;
+}
+
 const CONFIG = {
   from: "Sumakh Safaris <bookings@sumakhsafaris.com>",
-  admin: "bookings@sumakhsafaris.com", // Updated primary recipient
-  cc: ["info@sumakhsafaris.com", "boniface@sumakhsafaris.com"], // Added multiple CC recipients
+  admin: "bookings@sumakhsafaris.com",
+  cc: ["info@sumakhsafaris.com", "boniface@sumakhsafaris.com"],
   bookingSubject: "New Safari Booking Request",
-  confirmationSubject: "Your Booking Confirmation - Sumakh Safaris"
+  contactSubject: "New Contact Form Submission",
+  confirmationSubject: "Your Message Received - Sumakh Safaris",
+  bookingConfirmationSubject: "Your Booking Confirmation - Sumakh Safaris"
 };
 
-const generateAdminEmail = (booking: BookingData) => `
+const generateBookingAdminEmail = (booking: BookingData) => `
   <div style="font-family: Arial, sans-serif; max-width: 600px; color: #333;">
     <h2 style="color: #8B5A2B;">📋 New Booking Request</h2>
     <div style="background: #f9f9f9; padding: 15px; border-radius: 5px;">
@@ -72,7 +83,31 @@ const generateAdminEmail = (booking: BookingData) => `
   </div>
 `;
 
-const generateConfirmationEmail = (booking: BookingData) => `
+const generateContactAdminEmail = (contact: ContactData) => `
+  <div style="font-family: Arial, sans-serif; max-width: 600px; color: #333;">
+    <h2 style="color: #8B5A2B;">📧 New Contact Form Submission</h2>
+    <div style="background: #f9f9f9; padding: 15px; border-radius: 5px;">
+      <p><strong>👤 Name:</strong> ${contact.name}</p>
+      <p><strong>📧 Email:</strong> <a href="mailto:${contact.email}">${contact.email}</a></p>
+      ${contact.phone ? `<p><strong>📞 Phone:</strong> <a href="tel:${contact.phone}">${contact.phone}</a></p>` : ''}
+      ${contact.travel_date ? `<p><strong>📅 Travel Date:</strong> ${contact.travel_date}</p>` : ''}
+      ${contact.group_size ? `<p><strong>👥 Group Size:</strong> ${contact.group_size}</p>` : ''}
+      
+      <h3 style="color: #8B5A2B; margin-top: 15px;">Message</h3>
+      <div style="background: white; padding: 10px; border-radius: 3px;">
+        <p>${contact.message}</p>
+      </div>
+    </div>
+    <p style="margin-top: 20px;">
+      <a href="mailto:${contact.email}?subject=Re: Your Contact Form Submission"
+          style="display: inline-block; background: #8B5A2B; color: white; padding: 10px 15px; text-decoration: none; border-radius: 4px;">
+        ✉️ Respond to Client
+      </a>
+    </p>
+  </div>
+`;
+
+const generateBookingConfirmationEmail = (booking: BookingData) => `
   <div style="font-family: Arial, sans-serif; max-width: 600px; color: #333; line-height: 1.6;">
     <h2 style="color: #8B5A2B;">✨ Thank You, ${booking.first_name || booking.legal_name.split(' ')[0]}!</h2>
     
@@ -108,6 +143,37 @@ const generateConfirmationEmail = (booking: BookingData) => `
   </div>
 `;
 
+const generateContactConfirmationEmail = (contact: ContactData) => `
+  <div style="font-family: Arial, sans-serif; max-width: 600px; color: #333; line-height: 1.6;">
+    <h2 style="color: #8B5A2B;">✨ Thank You, ${contact.name}!</h2>
+    
+    <p>We've received your message and will get back to you as soon as possible.</p>
+    
+    <div style="background: #f5f5f5; padding: 15px; border-left: 4px solid #8B5A2B; margin: 20px 0;">
+      <h3 style="margin-top: 0; color: #8B5A2B;">Your Message</h3>
+      <p>${contact.message}</p>
+    </div>
+    
+    <p><strong>What Happens Next?</strong></p>
+    <ul>
+      <li>Our team will review your inquiry</li>
+      <li>You'll receive a personalized response within 24 hours</li>
+      <li>We'll provide detailed information about our safari options</li>
+    </ul>
+    
+    <p><strong>Need immediate assistance?</strong><br>
+    📧 <a href="mailto:info@sumakhsafaris.com">info@sumakhsafaris.com</a><br>
+    📞 +254 792 465156</p>
+    
+    <p style="margin-top: 30px;">Warm regards,<br>
+    <strong>The Sumakh Safaris Team</strong></p>
+    
+    <div style="margin-top: 40px; padding-top: 15px; border-top: 1px solid #eee; font-size: 12px; color: #777;">
+      <p>Sumakh Safaris<br>Nairobi, Kenya</p>
+    </div>
+  </div>
+`;
+
 const handler = async (req: Request): Promise<Response> => {
   // Enable CORS
   if (req.method === "OPTIONS") {
@@ -124,98 +190,160 @@ const handler = async (req: Request): Promise<Response> => {
     
     console.log("Received notification request");
     const requestData = await req.json();
-    console.log("Request data:", JSON.stringify(requestData));
+    console.log("Request data:", JSON.stringify(requestData, null, 2));
     
-    // Extract booking data
-    const booking = requestData.data;
+    const { type, data } = requestData;
     
-    // Validate required fields
-    if (!booking.legal_name || !booking.email || !booking.nationality || 
-        !booking.preferred_destination || !booking.check_in_date) {
+    if (!type || !data) {
       return new Response(
-        JSON.stringify({ error: "Missing required fields", details: { booking } }),
+        JSON.stringify({ error: "Missing type or data in request" }),
         { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
-    
-    console.log("Sending emails for booking from:", booking.email);
-    
-    // Log email configuration
+
+    // Check if we have the RESEND_API_KEY
+    const resendApiKey = Deno.env.get("RESEND_API_KEY");
+    if (!resendApiKey) {
+      console.error("RESEND_API_KEY is not set");
+      return new Response(
+        JSON.stringify({ error: "Email service not configured" }),
+        { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
     console.log("Email configuration:", {
       from: CONFIG.from,
       to: CONFIG.admin,
-      cc: CONFIG.cc
+      cc: CONFIG.cc,
+      type: type
     });
 
-    // Send emails in parallel
-    try {
-      const [adminEmailResult, clientEmailResult] = await Promise.all([
-        resend.emails.send({
-          from: CONFIG.from,
-          to: CONFIG.admin,
-          cc: CONFIG.cc,
-          subject: CONFIG.bookingSubject,
-          html: generateAdminEmail(booking)
-        }),
-        resend.emails.send({
-          from: CONFIG.from,
-          to: booking.email,
-          subject: CONFIG.confirmationSubject,
-          html: generateConfirmationEmail(booking)
-        })
-      ]);
+    if (type === 'booking') {
+      // Handle booking request
+      const booking = data as BookingData;
       
-      console.log("Admin email result:", adminEmailResult);
-      console.log("Client email result:", clientEmailResult);
-      
-      return new Response(
-        JSON.stringify({ 
-          success: true, 
-          message: "Emails sent successfully",
-          adminEmailResult,
-          clientEmailResult
-        }),
-        { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-      );
-    } catch (emailError: unknown) {
-      console.error("Error sending emails:", emailError);
-      let errorMessage = "Unknown email error";
-      if (emailError && typeof emailError === "object" && "message" in emailError) {
-        errorMessage = (emailError as { message?: string }).message || errorMessage;
+      // Validate required fields for booking
+      if (!booking.legal_name || !booking.email || !booking.nationality || 
+          !booking.preferred_destination || !booking.check_in_date) {
+        return new Response(
+          JSON.stringify({ error: "Missing required booking fields" }),
+          { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
       }
+      
+      console.log("Sending booking emails for:", booking.email);
+      
+      try {
+        const [adminEmailResult, clientEmailResult] = await Promise.all([
+          resend.emails.send({
+            from: CONFIG.from,
+            to: CONFIG.admin,
+            cc: CONFIG.cc,
+            subject: CONFIG.bookingSubject,
+            html: generateBookingAdminEmail(booking)
+          }),
+          resend.emails.send({
+            from: CONFIG.from,
+            to: booking.email,
+            subject: CONFIG.bookingConfirmationSubject,
+            html: generateBookingConfirmationEmail(booking)
+          })
+        ]);
+        
+        console.log("Booking admin email result:", adminEmailResult);
+        console.log("Booking client email result:", clientEmailResult);
+        
+        return new Response(
+          JSON.stringify({ 
+            success: true, 
+            message: "Booking emails sent successfully",
+            adminEmailResult,
+            clientEmailResult
+          }),
+          { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      } catch (emailError: unknown) {
+        console.error("Error sending booking emails:", emailError);
+        return new Response(
+          JSON.stringify({ 
+            success: false, 
+            error: "Failed to send booking emails",
+            details: emailError instanceof Error ? emailError.message : "Unknown error"
+          }),
+          { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      }
+    } else if (type === 'contact') {
+      // Handle contact form submission
+      const contact = data as ContactData;
+      
+      // Validate required fields for contact
+      if (!contact.name || !contact.email || !contact.message) {
+        return new Response(
+          JSON.stringify({ error: "Missing required contact fields" }),
+          { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      }
+      
+      console.log("Sending contact emails for:", contact.email);
+      
+      try {
+        const [adminEmailResult, clientEmailResult] = await Promise.all([
+          resend.emails.send({
+            from: CONFIG.from,
+            to: CONFIG.admin,
+            cc: CONFIG.cc,
+            subject: CONFIG.contactSubject,
+            html: generateContactAdminEmail(contact)
+          }),
+          resend.emails.send({
+            from: CONFIG.from,
+            to: contact.email,
+            subject: CONFIG.confirmationSubject,
+            html: generateContactConfirmationEmail(contact)
+          })
+        ]);
+        
+        console.log("Contact admin email result:", adminEmailResult);
+        console.log("Contact client email result:", clientEmailResult);
+        
+        return new Response(
+          JSON.stringify({ 
+            success: true, 
+            message: "Contact emails sent successfully",
+            adminEmailResult,
+            clientEmailResult
+          }),
+          { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      } catch (emailError: unknown) {
+        console.error("Error sending contact emails:", emailError);
+        return new Response(
+          JSON.stringify({ 
+            success: false, 
+            error: "Failed to send contact emails",
+            details: emailError instanceof Error ? emailError.message : "Unknown error"
+          }),
+          { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      }
+    } else {
       return new Response(
-        JSON.stringify({ 
-          success: false, 
-          error: "Failed to send emails",
-          details: errorMessage
-        }),
-        { 
-          status: 500, 
-          headers: { ...corsHeaders, "Content-Type": "application/json" } 
-        }
+        JSON.stringify({ error: "Invalid notification type. Must be 'booking' or 'contact'" }),
+        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
   } catch (error: unknown) {
     console.error("Error in send-notification function:", error);
-    let errorMessage = "Failed to process request";
-    if (error && typeof error === "object" && "message" in error) {
-      errorMessage = (error as { message?: string }).message || errorMessage;
-    }
     return new Response(
       JSON.stringify({ 
         success: false, 
-        error: errorMessage
+        error: "Failed to process request",
+        details: error instanceof Error ? error.message : "Unknown error"
       }),
-      { 
-        status: 500, 
-        headers: { ...corsHeaders, "Content-Type": "application/json" } 
-      }
+      { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
   }
 };
 
 serve(handler);
-function serve(handler: (req: Request) => Promise<Response>) {
-  throw new Error("Function not implemented.");
-}
-
