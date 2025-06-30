@@ -33,6 +33,22 @@ const galleryImages = [
     id: 6,
     src: "/lovable-uploads/1baf8a69-d4b8-4982-bcad-e47c9281d3a1.png",
     alt: "Elephant family"
+  },
+  // Adding new images to the gallery section
+  {
+    id: 7,
+    src: "/lovable-uploads/f1440e23-1bec-4b33-991b-066c79bbd9ab.png",
+    alt: "Giraffe in African savanna"
+  },
+  {
+    id: 8,
+    src: "/lovable-uploads/640a4a88-4d95-4440-9ac5-6079682b675b.png",
+    alt: "Elephant family grazing"
+  },
+  {
+    id: 9,
+    src: "/lovable-uploads/c1b97ca8-d47c-4168-a2d2-d8ab693106c2.png",
+    alt: "Elephant with hot air balloon and Kilimanjaro"
   }
 ];
 

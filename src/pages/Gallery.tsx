@@ -4,7 +4,7 @@ import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 
 // Image gallery data
- const galleryImages = [
+const galleryImages = [
   {
     id: 1,
     src: "/lovable-uploads/4e85ab06-cb98-486a-bfd7-861a79b562ab.png",
@@ -81,7 +81,7 @@ import Footer from '../components/Footer';
     id: 13,
     src: "lovable-uploads/Kenya_CentralLaikipiaCamelBackSafari.jpg",
     alt: "Camel Back Safaris",
-    category: "safari-experience" // Changed from wildlife
+    category: "safari-experience"
   },
   {
     id: 14,
@@ -92,20 +92,20 @@ import Footer from '../components/Footer';
   {
     id: 15,
     src: "lovable-uploads/Kenya-Amboseli-National-Park-2.jpg",
-    alt: "Aboseli National Park",
-    category: "landscapes" // Changed from accommodations
+    alt: "Amboseli National Park",
+    category: "landscapes"
   },
   {
     id: 16,
     src: "lovable-uploads/Amboseli-National-Park-1024x450-1.jpg",
     alt: "Safari wildlife tracking",
-    category: "wildlife" // Changed from safari-experience
+    category: "wildlife"
   },
   {
     id: 17,
     src: "lovable-uploads/Where-to-go-on-safari-in-Kenya.jpg",
     alt: "Serengeti National Park",
-    category: "landscapes" // Changed from wildlife
+    category: "landscapes"
   },
   {
     id: 18,
@@ -129,19 +129,19 @@ import Footer from '../components/Footer';
     id: 21,
     src: "lovable-uploads/Kenya-samburu.jpg",
     alt: "Samburu Landscape",
-    category: "landscapes" // Changed from safari-experience
+    category: "landscapes"
   },
   {
     id: 22,
     src: "lovable-uploads/samburu national reseve.jpg",
     alt: "Samburu Wildlife",
-    category: "wildlife" // Changed from safari-experience
+    category: "wildlife"
   },
   {
     id: 23,
     src: "lovable-uploads/4-days-samburu-lodge-safari.jpg",
     alt: "Samburu Lodge Safari",
-    category: "accommodations" // Changed from safari-experience
+    category: "accommodations"
   },
   {
     id: 24,
@@ -153,7 +153,68 @@ import Footer from '../components/Footer';
     id: 25,
     src: "/lovable-uploads/Tansania_SerengetiNationalpark_2_Responsive_1080x608.jpg",
     alt: "Tanzania Serengeti National Park",
-    category: "landscapes" // Changed from safari-experience
+    category: "landscapes"
+  },
+  // New images uploaded by user
+  {
+    id: 26,
+    src: "/lovable-uploads/f1440e23-1bec-4b33-991b-066c79bbd9ab.png",
+    alt: "Giraffe in African savanna",
+    category: "wildlife"
+  },
+  {
+    id: 27,
+    src: "/lovable-uploads/640a4a88-4d95-4440-9ac5-6079682b675b.png",
+    alt: "Elephant family grazing",
+    category: "wildlife"
+  },
+  {
+    id: 28,
+    src: "/lovable-uploads/85acb4b0-f5bb-4942-9f15-75555167b57c.png",
+    alt: "Mount Kilimanjaro landscape view",
+    category: "landscapes"
+  },
+  {
+    id: 29,
+    src: "/lovable-uploads/095890a0-998a-4ca0-a484-f5616796b29e.png",
+    alt: "Kilimanjaro with acacia trees",
+    category: "landscapes"
+  },
+  {
+    id: 30,
+    src: "/lovable-uploads/74005988-3e1b-4478-b1fb-fa109c955a59.png",
+    alt: "Elephant family in golden light",
+    category: "wildlife"
+  },
+  {
+    id: 31,
+    src: "/lovable-uploads/14ed0748-45f8-418f-b4ea-fb9dfe2823ab.png",
+    alt: "Amboseli landscape with Kilimanjaro",
+    category: "landscapes"
+  },
+  {
+    id: 32,
+    src: "/lovable-uploads/c1b97ca8-d47c-4168-a2d2-d8ab693106c2.png",
+    alt: "Elephant with hot air balloon and Kilimanjaro",
+    category: "wildlife"
+  },
+  {
+    id: 33,
+    src: "/lovable-uploads/f1a12ee5-6fbf-44ff-b2c8-58ceaece8225.png",
+    alt: "Amboseli National Park entrance gate",
+    category: "safari-experience"
+  },
+  {
+    id: 34,
+    src: "/lovable-uploads/7ac65c41-7cb5-4f77-abd7-c79c35fa3cdf.png",
+    alt: "Elephant in Amboseli grasslands",
+    category: "wildlife"
+  },
+  {
+    id: 35,
+    src: "/lovable-uploads/8fac255b-f342-4929-88b6-c40a90448c41.png",
+    alt: "Elephant herd in golden grasslands",
+    category: "wildlife"
   }
 ];
 

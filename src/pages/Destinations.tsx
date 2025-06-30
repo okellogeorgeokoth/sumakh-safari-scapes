@@ -17,7 +17,7 @@ const destinations = [
     name: "Amboseli National Park",
     region: "Southern Kenya",
     description: "Renowned for its large elephant herds and spectacular views of Mount Kilimanjaro across the border in Tanzania.",
-    image: "/lovable-uploads/aa970d22-5828-4358-87ad-e46953031aeb.png",
+    image: "/lovable-uploads/c1b97ca8-d47c-4168-a2d2-d8ab693106c2.png", // Updated with new Amboseli image
     highlights: ["Elephant Herds", "Kilimanjaro Views", "Swamp Ecosystems", "Maasai Culture"]
   },
   {
