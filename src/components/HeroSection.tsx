@@ -14,7 +14,13 @@ const heroImages = [
   "/lovable-uploads/c1b97ca8-d47c-4168-a2d2-d8ab693106c2.png", // Elephant with hot air balloon and Kilimanjaro
   "/lovable-uploads/f1440e23-1bec-4b33-991b-066c79bbd9ab.png", // Giraffe in African savanna
   "/lovable-uploads/85acb4b0-f5bb-4942-9f15-75555167b57c.png", // Mount Kilimanjaro landscape view
-  "/lovable-uploads/640a4a88-4d95-4440-9ac5-6079682b675b.png" // Elephant family grazing
+  "/lovable-uploads/640a4a88-4d95-4440-9ac5-6079682b675b.png", // Elephant family grazing
+  // Latest batch of images
+  "/lovable-uploads/b6d5f483-0b53-4292-84c9-e677a83536eb.png", // New wildlife image
+  "/lovable-uploads/dec41872-c8c3-4837-aeab-2ac82286def2.png", // New safari scene
+  "/lovable-uploads/e7b05f1e-e028-4c52-8917-df1731faddd6.png", // New landscape
+  "/lovable-uploads/fcb37ae0-1e7f-41e3-ae91-6e2fd118f583.png", // New wildlife scene
+  "/lovable-uploads/fb10be0b-1470-4cb9-8a59-91297e3216f9.png" // New safari landscape
 ];
 
 const HeroSection = () => {

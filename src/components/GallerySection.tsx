@@ -49,6 +49,32 @@ const galleryImages = [
     id: 9,
     src: "/lovable-uploads/c1b97ca8-d47c-4168-a2d2-d8ab693106c2.png",
     alt: "Elephant with hot air balloon and Kilimanjaro"
+  },
+  // Latest batch of images added to gallery
+  {
+    id: 10,
+    src: "/lovable-uploads/b6d5f483-0b53-4292-84c9-e677a83536eb.png",
+    alt: "African wildlife scene"
+  },
+  {
+    id: 11,
+    src: "/lovable-uploads/dec41872-c8c3-4837-aeab-2ac82286def2.png",
+    alt: "Safari adventure scene"
+  },
+  {
+    id: 12,
+    src: "/lovable-uploads/e7b05f1e-e028-4c52-8917-df1731faddd6.png",
+    alt: "African landscape vista"
+  },
+  {
+    id: 13,
+    src: "/lovable-uploads/fcb37ae0-1e7f-41e3-ae91-6e2fd118f583.png",
+    alt: "Wildlife in natural habitat"
+  },
+  {
+    id: 14,
+    src: "/lovable-uploads/fb10be0b-1470-4cb9-8a59-91297e3216f9.png",
+    alt: "Safari landscape panorama"
   }
 ];
 
