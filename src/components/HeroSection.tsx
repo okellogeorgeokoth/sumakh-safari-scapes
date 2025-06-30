@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -18,9 +17,7 @@ const heroImages = [
   // Latest batch of images
   "/lovable-uploads/b6d5f483-0b53-4292-84c9-e677a83536eb.png", // New wildlife image
   "/lovable-uploads/dec41872-c8c3-4837-aeab-2ac82286def2.png", // New safari scene
-  "/lovable-uploads/e7b05f1e-e028-4c52-8917-df1731faddd6.png", // New landscape
-  "/lovable-uploads/fcb37ae0-1e7f-41e3-ae91-6e2fd118f583.png", // New wildlife scene
-  "/lovable-uploads/fb10be0b-1470-4cb9-8a59-91297e3216f9.png" // New safari landscape
+  "/lovable-uploads/e7b05f1e-e028-4c52-8917-df1731faddd6.png" // New landscape
 ];
 
 const HeroSection = () => {
