@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -9,7 +8,16 @@ const heroImages = [
   "/lovable-uploads/Kenya_CentralLaikipiaCamelBackSafari.jpg", // Laikipia camel safari
   "/lovable-uploads/Amboseli-National-Park-1024x450-1.jpg", // Lake/wildlife scene
   "/lovable-uploads/Where-to-go-on-safari-in-Kenya.jpg", // Shows Masai Mara landscape
-  "/lovable-uploads/3bf25673-fec4-40c6-af9b-e01badc4ee80.png" // Zebras (common in Meru)
+  "/lovable-uploads/3bf25673-fec4-40c6-af9b-e01badc4ee80.png", // Zebras (common in Meru)
+  // New images for the slider
+  "/lovable-uploads/c1b97ca8-d47c-4168-a2d2-d8ab693106c2.png", // Elephant with hot air balloon and Kilimanjaro
+  "/lovable-uploads/f1440e23-1bec-4b33-991b-066c79bbd9ab.png", // Giraffe in African savanna
+  "/lovable-uploads/85acb4b0-f5bb-4942-9f15-75555167b57c.png", // Mount Kilimanjaro landscape view
+  "/lovable-uploads/640a4a88-4d95-4440-9ac5-6079682b675b.png", // Elephant family grazing
+  // Latest batch of images
+  "/lovable-uploads/b6d5f483-0b53-4292-84c9-e677a83536eb.png", // New wildlife image
+  "/lovable-uploads/dec41872-c8c3-4837-aeab-2ac82286def2.png", // New safari scene
+  "/lovable-uploads/e7b05f1e-e028-4c52-8917-df1731faddd6.png" // New landscape
 ];
 
 const HeroSection = () => {
