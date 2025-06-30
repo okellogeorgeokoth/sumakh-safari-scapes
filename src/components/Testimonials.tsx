@@ -8,24 +8,21 @@ const testimonials = [
     name: "Sarah Johnson",
     location: "United States",
     rating: 5,
-    testimonial: "Our Serengeti safari exceeded all expectations! The wildlife sightings were incredible, and our guide's knowledge made the experience even more special. The accommodations were comfortable and authentic. We'll definitely book with SUMAKH again!",
-    image: "/lovable-uploads/b6d5f483-0b53-4292-84c9-e677a83536eb.png"
+    testimonial: "Our Serengeti safari exceeded all expectations! The wildlife sightings were incredible, and our guide's knowledge made the experience even more special. The accommodations were comfortable and authentic. We'll definitely book with SUMAKH again!"
   },
   {
     id: 2,
     name: "David Chen",
     location: "Australia",
     rating: 5,
-    testimonial: "The Masai Mara tour was a life-changing experience. We saw the big five in just two days! The staff was professional and friendly, making us feel safe and comfortable throughout the journey. The sunset views were absolutely breathtaking.",
-    image: "/lovable-uploads/e7b05f1e-e028-4c52-8917-df1731faddd6.png"
+    testimonial: "The Masai Mara tour was a life-changing experience. We saw the big five in just two days! The staff was professional and friendly, making us feel safe and comfortable throughout the journey. The sunset views were absolutely breathtaking."
   },
   {
     id: 3,
     name: "Maria Rodriguez",
     location: "Spain",
     rating: 5,
-    testimonial: "From the moment we were picked up at the airport, SUMAKH provided top-notch service. Our family safari to Kruger Park was perfectly organized with attention to every detail. The kids loved the special activities arranged for them, and we all enjoyed the close wildlife encounters.",
-    image: "/lovable-uploads/083c7f7a-a928-400d-afb5-bebd810ab07e.png"
+    testimonial: "From the moment we were picked up at the airport, SUMAKH provided top-notch service. Our family safari to Kruger Park was perfectly organized with attention to every detail. The kids loved the special activities arranged for them, and we all enjoyed the close wildlife encounters."
   }
 ];
 
@@ -53,31 +50,22 @@ const Testimonials = () => {
 
         <div className="max-w-4xl mx-auto relative">
           <div className="bg-white rounded-lg shadow-lg p-8 md:p-12 relative z-10">
-            <div className="flex flex-col md:flex-row items-center gap-8">
-              <div className="w-full md:w-1/3 flex-shrink-0">
-                <img 
-                  src={testimonials[activeIndex].image} 
-                  alt={testimonials[activeIndex].name} 
-                  className="rounded-full w-32 h-32 mx-auto object-cover border-4 border-safari-beige"
-                />
+            <div className="text-center">
+              <div className="flex justify-center mb-4">
+                {[...Array(testimonials[activeIndex].rating)].map((_, i) => (
+                  <Star key={i} size={20} fill="#C8A355" color="#C8A355" />
+                ))}
               </div>
-              <div className="w-full md:w-2/3">
-                <div className="flex mb-4">
-                  {[...Array(testimonials[activeIndex].rating)].map((_, i) => (
-                    <Star key={i} size={20} fill="#C8A355" color="#C8A355" />
-                  ))}
-                </div>
-                <blockquote className="text-safari-darkbrown italic mb-6">
-                  "{testimonials[activeIndex].testimonial}"
-                </blockquote>
-                <div>
-                  <h4 className="font-bold text-xl text-safari-brown">
-                    {testimonials[activeIndex].name}
-                  </h4>
-                  <p className="text-safari-brown">
-                    {testimonials[activeIndex].location}
-                  </p>
-                </div>
+              <blockquote className="text-safari-darkbrown italic mb-6 text-lg">
+                "{testimonials[activeIndex].testimonial}"
+              </blockquote>
+              <div>
+                <h4 className="font-bold text-xl text-safari-brown">
+                  {testimonials[activeIndex].name}
+                </h4>
+                <p className="text-safari-brown">
+                  {testimonials[activeIndex].location}
+                </p>
               </div>
             </div>
           </div>
