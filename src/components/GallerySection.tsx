@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { X } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -65,16 +64,6 @@ const galleryImages = [
     id: 12,
     src: "/lovable-uploads/e7b05f1e-e028-4c52-8917-df1731faddd6.png",
     alt: "African landscape vista"
-  },
-  {
-    id: 13,
-    src: "/lovable-uploads/fcb37ae0-1e7f-41e3-ae91-6e2fd118f583.png",
-    alt: "Wildlife in natural habitat"
-  },
-  {
-    id: 14,
-    src: "/lovable-uploads/fb10be0b-1470-4cb9-8a59-91297e3216f9.png",
-    alt: "Safari landscape panorama"
   }
 ];
 
