@@ -37,7 +37,7 @@ interface ContactData {
 
 const CONFIG = {
   from: "Sumakh Safaris <bookings@sumakhsafaris.com>",
-  admin: "bookings@sumakhsafaris.com",
+  admin: "okoth603@gmail.com",
   cc: ["info@sumakhsafaris.com", "boniface@sumakhsafaris.com"],
   bookingSubject: "🦁 New Safari Booking Request - Sumakh Safaris",
   contactSubject: "📧 New Contact Form Submission - Sumakh Safaris",
