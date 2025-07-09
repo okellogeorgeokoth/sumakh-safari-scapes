@@ -305,6 +305,8 @@ const validateContactData = (contact: ContactData): string[] => {
 
 const handler = async (req: Request): Promise<Response> => {
   console.log(`[${new Date().toISOString()}] Received ${req.method} request to send-notification`);
+  console.log("Request headers:", Object.fromEntries(req.headers.entries()));
+  console.log("Request URL:", req.url);
   
   // Handle CORS preflight requests
   if (req.method === "OPTIONS") {
