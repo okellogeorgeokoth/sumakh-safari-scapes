@@ -337,6 +337,49 @@ const galleryImages = [
     src: "/lovable-uploads/995f9d62-aee3-4073-a8bb-5795d8981775.png",
     alt: "Cheetah walking near safari vehicle",
     category: "safari-experience"
+  },
+  // New buffalo and safari images
+  {
+    id: 56,
+    src: "/lovable-uploads/ab1f6328-d361-4215-abcd-386f0b9801ea.png",
+    alt: "Buffalo herd grazing in savanna grasslands",
+    category: "wildlife"
+  },
+  {
+    id: 57,
+    src: "/lovable-uploads/70bebe43-ad52-4c38-9f4c-dfe50736c4fb.png",
+    alt: "Single buffalo in tall grass with acacia trees",
+    category: "wildlife"
+  },
+  {
+    id: 58,
+    src: "/lovable-uploads/5c5dc049-f7cf-4221-be21-2310ddb3091c.png",
+    alt: "Buffalo pair in the African savanna",
+    category: "wildlife"
+  },
+  {
+    id: 59,
+    src: "/lovable-uploads/292df00d-5147-49d4-8648-e28e1e13f6da.png",
+    alt: "Safari convoy vehicles on game drive",
+    category: "safari-experience"
+  },
+  {
+    id: 60,
+    src: "/lovable-uploads/15a09731-1f2a-4342-b729-3ff78f56362d.png",
+    alt: "Safari tourists at scenic stop under acacia tree",
+    category: "safari-experience"
+  },
+  {
+    id: 61,
+    src: "/lovable-uploads/9b3a4cc5-a7af-494e-9fa3-b52e0cae1547.png",
+    alt: "Hippos in lush green landscape",
+    category: "wildlife"
+  },
+  {
+    id: 62,
+    src: "/lovable-uploads/d8a23748-66c6-4b71-940b-407ad4fd757a.png",
+    alt: "Buffalo grazing in verdant savanna",
+    category: "wildlife"
   }
 ];
 
