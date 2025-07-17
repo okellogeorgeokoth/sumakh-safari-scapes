@@ -45,6 +45,7 @@ const Contact = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imtrc2xobWFna3lvdWp3eGdmYWhhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDY3MjU3OTMsImV4cCI6MjA2MjMwMTc5M30.2O-Df2D6ZuOUZZnU-Uze8S4w4_7s3-gv7sJhMX_urjc',
         },
         body: JSON.stringify({
           type: 'contact',

@@ -215,6 +215,67 @@ const galleryImages = [
     src: "/lovable-uploads/8fac255b-f342-4929-88b6-c40a90448c41.png",
     alt: "Elephant herd in golden grasslands",
     category: "wildlife"
+  },
+  // New safari photos
+  {
+    id: 36,
+    src: "/lovable-uploads/8b9c1da1-2ad5-465c-a74a-3e204a9039c5.png",
+    alt: "Buffalo herd grazing in the savanna",
+    category: "wildlife"
+  },
+  {
+    id: 37,
+    src: "/lovable-uploads/d7834334-5dc4-4607-b3ba-63f6126eaa91.png",
+    alt: "Lioness walking across the plains",
+    category: "wildlife"
+  },
+  {
+    id: 38,
+    src: "/lovable-uploads/f0062f5c-4bc0-4255-932e-9dffda932435.png",
+    alt: "Two cheetahs resting in the grassland",
+    category: "wildlife"
+  },
+  {
+    id: 39,
+    src: "/lovable-uploads/c8a67f86-0aba-4520-be2c-b3178d65fe6b.png",
+    alt: "Warthogs foraging in the African savanna",
+    category: "wildlife"
+  },
+  {
+    id: 40,
+    src: "/lovable-uploads/18c99035-891c-46fa-b723-8d9bcddab782.png",
+    alt: "Vultures perched on tree branches",
+    category: "wildlife"
+  },
+  {
+    id: 41,
+    src: "/lovable-uploads/810f8819-842c-494c-9e91-4136ee4aacc5.png",
+    alt: "Warthogs in their natural habitat",
+    category: "wildlife"
+  },
+  {
+    id: 42,
+    src: "/lovable-uploads/e2fb8b15-26ef-42fc-b508-4acb357e339c.png",
+    alt: "Majestic male lion resting under tree",
+    category: "wildlife"
+  },
+  {
+    id: 43,
+    src: "/lovable-uploads/24bcaed4-5891-4f72-b798-1c58e04592da.png",
+    alt: "Safari tourists on game drive",
+    category: "safari-experience"
+  },
+  {
+    id: 44,
+    src: "/lovable-uploads/de5ac579-dfe6-4714-a786-8c0b86a22897.png",
+    alt: "Spotted hyena in tall grass",
+    category: "wildlife"
+  },
+  {
+    id: 45,
+    src: "/lovable-uploads/15ec24f8-796b-4a14-9455-8e8253d6fb1f.png",
+    alt: "Antelopes in the savanna landscape",
+    category: "wildlife"
   }
 ];
 
