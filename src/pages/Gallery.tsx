@@ -276,6 +276,67 @@ const galleryImages = [
     src: "/lovable-uploads/15ec24f8-796b-4a14-9455-8e8253d6fb1f.png",
     alt: "Antelopes in the savanna landscape",
     category: "wildlife"
+  },
+  // Latest safari images
+  {
+    id: 46,
+    src: "/lovable-uploads/5963ae35-c301-4c95-8938-5113432b3539.png",
+    alt: "Safari vehicle under acacia tree in the plains",
+    category: "safari-experience"
+  },
+  {
+    id: 47,
+    src: "/lovable-uploads/d53533dc-f02e-444c-8bac-a7e228babbf1.png",
+    alt: "Cheetah spotted during game drive",
+    category: "wildlife"
+  },
+  {
+    id: 48,
+    src: "/lovable-uploads/9a961969-e843-4488-a1e0-077be01be10c.png",
+    alt: "Giraffes with stunning mountain backdrop",
+    category: "wildlife"
+  },
+  {
+    id: 49,
+    src: "/lovable-uploads/8a333314-20e9-4631-9c88-7079c4f7d164.png",
+    alt: "Giraffe family in their natural habitat",
+    category: "wildlife"
+  },
+  {
+    id: 50,
+    src: "/lovable-uploads/6284f775-e0b5-4e8c-9846-e0e8f0ae0489.png",
+    alt: "Two giraffes with scenic valley view",
+    category: "wildlife"
+  },
+  {
+    id: 51,
+    src: "/lovable-uploads/7f4eb436-72a3-4c28-b74f-e8dc495be3c8.png",
+    alt: "Giraffes in the African savanna landscape",
+    category: "wildlife"
+  },
+  {
+    id: 52,
+    src: "/lovable-uploads/bf417589-83e5-4b43-bd17-b8d481914812.png",
+    alt: "Safari convoy in the wilderness",
+    category: "safari-experience"
+  },
+  {
+    id: 53,
+    src: "/lovable-uploads/056a0cb4-e180-4964-86c8-9d2479c37b7d.png",
+    alt: "Two giraffes browsing in the bushland",
+    category: "wildlife"
+  },
+  {
+    id: 54,
+    src: "/lovable-uploads/d10118a3-aa4f-4bf6-a80d-f4f63b006cbc.png",
+    alt: "Close cheetah encounter on safari",
+    category: "safari-experience"
+  },
+  {
+    id: 55,
+    src: "/lovable-uploads/995f9d62-aee3-4073-a8bb-5795d8981775.png",
+    alt: "Cheetah walking near safari vehicle",
+    category: "safari-experience"
   }
 ];
 
