@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { toast } from 'sonner';
+import { toast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -13,7 +13,11 @@ const NewsletterSection = () => {
     e.preventDefault();
     
     if (!email || !email.includes('@')) {
-      toast.error('Please enter a valid email address');
+      toast({
+        title: "Error",
+        description: "Please enter a valid email address",
+        variant: "destructive"
+      });
       return;
     }
     
@@ -30,21 +34,33 @@ const NewsletterSection = () => {
         
       if (error) {
         if (error.code === '23505') {
-          toast.error('This email is already subscribed to our newsletter');
+          toast({
+            title: "Already Subscribed",
+            description: "This email is already subscribed to our newsletter",
+            variant: "destructive"
+          });
         } else {
           console.error('Error submitting newsletter subscription:', error);
-          toast.error('Failed to submit. Please try again later.');
+          toast({
+            title: "Error",
+            description: "Failed to submit. Please try again later.",
+            variant: "destructive"
+          });
         }
       } else {
-        toast.success('Thank you for subscribing to our newsletter!', {
-          duration: 5000,
-          icon: '🎉',
+        toast({
+          title: "Success! 🎉",
+          description: "Thank you for subscribing to our newsletter!"
         });
         setEmail('');
       }
     } catch (error) {
       console.error('Unexpected error during submission:', error);
-      toast.error('An unexpected error occurred. Please try again.');
+      toast({
+        title: "Error",
+        description: "An unexpected error occurred. Please try again.",
+        variant: "destructive"
+      });
     } finally {
       setIsSubmitting(false);
     }

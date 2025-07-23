@@ -4,7 +4,7 @@ import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import { Button } from '../components/ui/button';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
-import { toast } from 'sonner';
+import { toast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 
 const Contact = () => {
@@ -36,7 +36,11 @@ const Contact = () => {
         
       if (error) {
         console.error('Error submitting contact form:', error);
-        toast.error('Failed to submit your message. Please try again later.');
+        toast({
+          title: "Error",
+          description: "Failed to submit your message. Please try again later.",
+          variant: "destructive"
+        });
         return;
       }
       
@@ -59,7 +63,10 @@ const Contact = () => {
         console.warn('Email notification failed, but form data was saved');
       }
       
-      toast.success("Thank you! Your message has been sent successfully.");
+      toast({
+        title: "Success",
+        description: "Thank you! Your message has been sent successfully."
+      });
       setFormData({
         name: '',
         email: '',
@@ -70,7 +77,11 @@ const Contact = () => {
       });
     } catch (error) {
       console.error('Unexpected error during submission:', error);
-      toast.error('An unexpected error occurred. Please try again.');
+      toast({
+        title: "Error", 
+        description: "An unexpected error occurred. Please try again.",
+        variant: "destructive"
+      });
     } finally {
       setIsSubmitting(false);
     }
